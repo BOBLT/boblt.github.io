@@ -2,11 +2,12 @@
 <html>
   <head>
     <title>Fish R Friends Not Food</title>
-    <script>
-      function sayMONITOR() {
-          alert ("MONITOR");
-      }
-    </script>
+  <script>
+    <button id="myButton">Click me</button>
+    document.getElementById("myButton").addEventListener("click", function() {
+    alert("JAWS");
+  });
+  </script>
   </head>
   <body>
     <script>
@@ -20,5 +21,5 @@
       var message = showVars();
       alert(message + "\nGlobal variable 'TIGERSHARK' = " + TIGERSHARK);
     </script>
-  </body>
+    </body>
 </html>
