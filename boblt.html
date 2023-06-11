@@ -5,10 +5,10 @@
   </head>
   <body>
     <script>
-      const button = document.createElement("button");
-      button.innerText = "Click me!";
-      document.body.appendChild(button);
-      <button onclick="window.location='http://www.boblt.github.io';">ButtonLink</button>
+      const button = document.createElement('button');
+      button.innerHTML = "Go to website";
+      button.addEventListner("click",function() {
+        window.location.href = "https://www.boblt.github.io"; });
     </script>
     <script>
       var TIGERSHARK = 10;
