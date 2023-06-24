@@ -2,8 +2,25 @@
 <html>
 <head>
     <title>Welcome To Boblt</title>
+    <p>SHARK</p>
+    <script>
+    function setup () {
+        let counter = 0;
+        console.log("Click count: " + counter);
+        return function () {
+            counter += 1;
+            console.log("Click count: " + counter);
+        }
+    }
+
+    var add = setup();
+    window.onload = function() {
+        document.getElementById("b1").onclick = add();
+    }
+    </script>
 </head>
 <body>
+    <button id="b1" type="button">GO</button>
 
 <p>TRACK AX ""</p>
 <button 
@@ -13,6 +30,7 @@ button.textContent = 'IS THAT A SHARK';
 button.addEventListener('click', () => {
   alert('SHARRRRK')
 }); 
+
     <!--script>
 function myFunction() {
   alert("SHARK ATTACK");
