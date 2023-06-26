@@ -10,16 +10,22 @@
   
   <h3>VIZ CONFIRMED SHARK:SHARK</h3>
   <button onclick="myFunction()">VIZ</button>
+  
+  <p id="demo"></p>
+    
   <script>
-    function myFunction() {
-      var txt;
-      if (confirm("TYPE OF VIZ"))
-    {
+  function myFunction() {
+    var txt;
+    if (confirm("TYPE OF VIZ"))
+  {
         txt = "great white";
       } else {
         txt = "tiger";
       }
-    </script>
+    document.getElementById("demo")
+    .innerHTML = txt;
+  }
+  </script>
 
     <script>
     function myFunction() {
