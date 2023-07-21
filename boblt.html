@@ -2,37 +2,11 @@
 <html>
 <head>
 <title>Fish R Friends Not Food</title>
-
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1">
-
-<script>
-<input type='file' />
-</br>
-<img id="myImg" src="#" alt="your image" style="display: none;" width=100 />
-<img id="myImg" src="#" alt="your image" style="display: none;" width=200 />
-<img id="myImg" src="#" alt="your image" style="display: none;" width=400 />
-<img id="myImg" src="#" alt="your image" style="display: none;" width=800 />
-
-(":file").change(function () {
-    if (this.files && this.files[0]) {
-        var reader = new FileReader();
-        reader.onload = imageIsLoaded;
-        reader.readAsDataURL(this.files[0]);
-    }
-});
-
-function imageIsLoaded(e) {
-    $('img').attr('src', e.target.result);
-    $('img').fadeIn();
-};
-</script>
-
 </head>
 <body>
 
 <p>TIME- - - VIZ LOCAL.DRIVE:</p>
+<img src="image.jpg" alt="description of image">
 <h2>BOBLT.HTML SHARK COUNTER</h2>
 <button onclick="myFunction()">SCAN</button>
   
