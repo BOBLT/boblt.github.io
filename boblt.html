@@ -36,6 +36,21 @@ crossorigin="anonymous" + "UTF-8"></script>
     .innerHTML = txt;
   }
 </script>
+
+<script>
+const imageLoader = document.getElementById('filePhoto');
+imageLoader.addEventListener('change', handleImage, false);
+
+ function handleImage(e) {
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const img = document.getElementById('myImg');
+    img.src = event.target.result;
+  }
+  reader.readAsDataURL(e.target.files[0]);
+}
+</script>
+ 
 <script>
 function myFunction() {
   var txt;
