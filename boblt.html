@@ -38,20 +38,20 @@ crossorigin="anonymous" + "UTF-8"></script>
 </script>
 
 <script>
-<input type="file" name="userprofile_picture" id="filePhoto" accept="image/*">
-<img id="C:\Users\Boblt\OneDrive\Desktop\shark-week-michael-muller.jpg" src="">
+window.addEventListener('load', function() {
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+          var img = document.querySelector('img');
+          img.onload = () => {
+              URL.revokeObjectURL(img.src);  // no longer needed, free memory
+          }
 
-const imageLoader = document.getElementById('filePhoto');
-imageLoader.addEventListener('change', handleImage, false);
-
- function handleImage(e) {
-  const reader = new FileReader();
-  reader.onload = function(event) {
-    const img = document.getElementById('C:\Users\Boblt\OneDrive\Desktop\shark-week-michael-muller.jpg');
-    img.src = event.target.result;
-  }
-  reader.readAsDataURL(e.target.files[0]);
-}
+          img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+      }
+  });
+});
+<input type='file' />
+<br><img id="myImg" src="#">
 </script>
  
 <script>
