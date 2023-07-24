@@ -23,6 +23,20 @@
         </fieldset>
     </form>
 <input type"button" value="TI-89 TI-89call TI-89return TI-89" onclick="myNewObject.showInfo()" />
+
+navigator.getStorage().then(function(devices) {
+    devices.forEach(function(device) {
+        console.log(device.name);
+    });
+});
+ 
+<script>
+        navigator.getStorage().then(function(devices) {
+            devices.forEach(function(device) {
+                console.log(device.name);
+            });
+        });
+</script>
 <p>TIME- - - VIZ LOCAL.DRIVE:</p>
 
 <input type="text" id="num1">
