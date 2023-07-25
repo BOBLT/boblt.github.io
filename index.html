@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+var button = document.getElementById("button-id");
+
+// Add a click event listener to the button
+button.addEventListener("click", function(event) {
+  // Prevent the default behavior of the button
+  event.preventDefault();
+  // Redirect to a different URL
+  window.location.href = "https://boblt.github.io/boblt.html";
+});
+</script>
+    
 <style>
 .grid-container {
     display: grid;
