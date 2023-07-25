@@ -3,8 +3,13 @@
 <head>
 
 <script>
-window.location.href = "https://boblt.github.io/boblt.html";
-</script>    
+  function myFunction() {
+    event.preventDefault();
+    window.location.href = "https://boblt.github.io/boblt.html";
+  }
+</script>
+
+<button onclick="myFunction()">DO NOT TAP ON GLASS</button>
 
 <style>
 .grid-container {
