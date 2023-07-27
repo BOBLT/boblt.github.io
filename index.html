@@ -46,14 +46,14 @@
 <h2>viz.0202</h2>
 <p>00..000....0000</p> <!-- Added closing p tag -->
 
+<button id="myBtn">CLICK CLICK</button> <!-- Moved this line -->
+
 <div id="div_id">
   <!-- Use the img tag to insert the first image -->
   <img src="https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg" style="width: 100%; margin: 10px;"> <!-- Changed width to 100% and added margin -->
   <!-- Use the img tag to insert the second image -->
   <img src="https://www.deepblu.com/mag/wp-content/uploads/2019/07/stingrays_on_sand_patch.jpeg" style="width: 100%; margin: 10px;"> <!-- Changed width to 100% and added margin -->
 </div>
-
-<button id="myBtn">CLICK CLICK</button> <!-- Added this line -->
 
 <p id="demo"></p>
 <script>
@@ -87,22 +87,7 @@ sharkBtn.addEventListener("click", sharkAttack);
 // Use semicolons at the end of each statement
 </script>
 
-
-<p class="shark">PLEASE DO NOT TAP ON THE GLASS...NO SERIOUSLY DO NOT TAP THIS BUTTON</p> <!-- Added class attribute -->
-<button id="sharkBtn" class="shark">TIGER SHARK</button> <!-- Added id and class attributes -->
-
-<script>
-function sharkAttack() {
-  alert("SHARK ATTACK");
-  window.location.href = "https://boblt.github.io/boblt.html";
-}
-
-var sharkBtn = document.getElementById("sharkBtn");
-
-sharkBtn.addEventListener("click", sharkAttack);
-
-// Use semicolons at the end of each statement
-</script>
+<!-- Deleted the repeated code for the tiger shark button -->
 
 <div class="grid-container">
     <div class="grid-item">3</div>
