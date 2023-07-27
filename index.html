@@ -3,14 +3,14 @@
 <head>
   <title>Welcome To Boblt</title>
   <style>
-    /* Moved style element inside head element */
+  
     body {
       background-image: url("https://tse4.mm.bing.net/th?id=OIP.WFJBVCHaSwqhVL8JAKlJbwHaHa&pid=ImgDet&rs=1");
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center;
       background-size: cover;
-      opacity: 0.01; /* Changed opacity to a very low number */
+      opacity: 0.8; /* Changed opacity to a very low number */
     }
     #div_id {
       width: 500px;
@@ -35,8 +35,8 @@
         text-align: center;
     }
     .shark { /* Added a class for elements with shark-related content */
-      color: red; /* Changed the color to red */
-      font-weight: bold; /* Added bold font style */
+      color: red; 
+      font-weight: bold; 
     }
   </style>
   <!-- Added closing style tag -->
@@ -49,13 +49,11 @@
 
 <div id="div_id"></div>
 <script>
-// Create a new SVG element with a width of 500 and a height of 250
 var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 svg.setAttribute("width", "500");
 svg.setAttribute("height", "250");
-svg.setAttribute("id", "svg_id"); // Add an id attribute to the SVG element
+svg.setAttribute("id", "svg_id"); 
 
-// Create an <image> element for the first JPG image
 var image1 = document.createElementNS("http://www.w3.org/2000/svg", "image");
 image1.setAttribute("href", "https://www.bigstockphoto.com/image-324633127/stock-vector-globe-line-icons-world-sphere-with-longitude-and-latitude,-travel-and-destination-concept-vector-w"); // Specify the source of the image
 image1.setAttribute("x", "0"); // Set the x position of the image
@@ -63,7 +61,6 @@ image1.setAttribute("y", "0"); // Set the y position of the image
 image1.setAttribute("width", "250"); // Set the width of the image
 image1.setAttribute("height", "250"); // Set the height of the image
 
-// Create an <image> element for the second JPG image
 var image2 = document.createElementNS("http://www.w3.org/2000/svg", "image");
 image2.setAttribute("href", "https://eskipaper.com/pic/get"); // Specify the source of the image
 image2.setAttribute("x", "250"); // Set the x position of the image
@@ -84,13 +81,12 @@ document.body.appendChild(svg);
 // Get the button element by its id
 var myBtn = document.getElementById("myBtn");
 
-// Define a function to show an alert message when the button is clicked
 function showAlert() {
   var message = "IMPORTANT MESSAGE:\n\nError detected!\n!Please REFRESH DATA 001!";
   alert(message);
 }
 
-// Add an event listener to the button element to call the showAlert function when clicked
+
 myBtn.addEventListener("click", showAlert);
 
 // Use semicolons at the end of each statement
@@ -100,16 +96,13 @@ myBtn.addEventListener("click", showAlert);
 <button id="sharkBtn" class="shark">TIGER SHARK</button> <!-- Added id and class attributes -->
 
 <script>
-// Define a function to show an alert message and redirect to another page when the button is clicked
 function sharkAttack() {
   alert("SHARK ATTACK");
   window.location.href = "https://boblt.github.io/boblt.html";
 }
 
-// Get the button element by its id
 var sharkBtn = document.getElementById("sharkBtn");
 
-// Add an event listener to the button element to call the sharkAttack function when clicked
 sharkBtn.addEventListener("click", sharkAttack);
 
 // Use semicolons at the end of each statement
