@@ -27,6 +27,44 @@ auto auto;
 <p>00..000....0000</p>
 <button id="myBtn">CLICK CLICK</button>
 
+<style>
+  #div_id {
+    width: 500px;
+    height: 400px;
+    border: 1px solid black;
+  }
+</style>
+<script>
+<div id="div_id"></div>
+// Create a new SVG element with a width of 500 and a height of 250
+var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svg.setAttribute("width", "500");
+svg.setAttribute("height", "250");
+
+// Create an <image> element for the first JPG image
+var image1 = document.createElementNS("http://www.w3.org/2000/svg", "image");
+image1.setAttribute("href", "image1.jpg"); // Specify the source of the image
+image1.setAttribute("x", "0"); // Set the x position of the image
+image1.setAttribute("y", "0"); // Set the y position of the image
+image1.setAttribute("width", "250"); // Set the width of the image
+image1.setAttribute("height", "250"); // Set the height of the image
+
+// Create an <image> element for the second JPG image
+var image2 = document.createElementNS("http://www.w3.org/2000/svg", "image");
+image2.setAttribute("href", "image2.jpg"); // Specify the source of the image
+image2.setAttribute("x", "250"); // Set the x position of the image
+image2.setAttribute("y", "0"); // Set the y position of the image
+image2.setAttribute("width", "250"); // Set the width of the image
+image2.setAttribute("height", "250"); // Set the height of the image
+
+// Append the <image> elements to the SVG element
+svg.appendChild(image1);
+svg.appendChild(image2);
+
+// Append the SVG element to the document body
+document.body.appendChild(svg);
+</script>
+    
 <p id="demo"></p>
 <script>
 document.getElementById("myBtn").
