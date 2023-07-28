@@ -135,7 +135,7 @@ window.onload = function() {
   width: 300px;
   height: 200px;
   border: 2px solid black;
-  background-color: white;
+  background-color: transparent;
   z-index: 9999; /* Added a high z-index value */
 }
 
@@ -250,4 +250,30 @@ codeBox.addEventListener("mousedown", function(event) {
 
       // Calculate the offset between the mouse and the code box
       offsetX = mouseX - codeBoxX;
-      offsetY = mouseY -
+      offsetY = mouseY - codeBoxY;
+   }
+}};
+document.addEventListener("mousemove", function(event) {
+   // Check ifthe code box is being dragged
+   if (dragging) {
+      // Get themouse position relative tothe document
+      var mouseX = event.pageX;
+      var mouseY = event.pageY;
+
+      // Calculate the new position ofthe code box
+      var codeBoxX = mouseX - offsetX;
+      var codeBoxY = mouseY - offsetY;
+
+      // Setthe left and top properties ofthe code box
+      codeBox.style.left = codeBoxX + "px";
+      codeBox.style.top = codeBoxY + "px";
+   }
+});
+
+document.addEventListener("mouseup", function(event) {
+   // Check ifthe left mouse button is released
+   if (event.button ===0) {
+      // Setthe dragging flag to false
+      dragging = false;
+   }
+});
