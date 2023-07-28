@@ -111,5 +111,147 @@ window.onload = function() {
 };
 </script>
 <button id="b1" type="button">GO</button>
-</body>
-</html>
+
+<!-- Added the code for the zoom and motor function JavaScript below -->
+
+<div id="code-box">
+  <div id="code-header">
+    <span id="code-title">Code Box</span>
+    <div id="code-buttons">
+      <button id="zoom-in">+</button>
+      <button id="zoom-out">-</button>
+      <button id="rotate-left"><</button>
+      <button id="rotate-right">></button>
+    </div>
+  </div>
+  <div id="code-content">
+    <pre><code>// This is some sample code
+console.log("Hello, world!");</code></pre>
+  </div>
+</div>
+
+<style>
+#code-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  border: 2px solid black;
+  background-color: white;
+  z-index: 9999; /* Added a high z-index value */
+}
+
+#code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  padding: 5px;
+  background-color: lightgray;
+}
+
+#code-title {
+  font-weight: bold;
+}
+
+#code-buttons {
+  display: flex;
+}
+
+#code-buttons button {
+  width: 30px;
+  height: 20px;
+}
+
+#code-content {
+  overflow: auto;
+  height: calc(100% - 30px);
+}
+
+#code-content pre {
+  margin: 0;
+}
+
+#code-content code {
+  font-family: monospace;
+}
+</style>
+
+<script>
+// Get the code box element
+var codeBox = document.getElementById("code-box");
+
+// Get the zoom and rotate buttons
+var zoomInButton = document.getElementById("zoom-in");
+var zoomOutButton = document.getElementById("zoom-out");
+var rotateLeftButton = document.getElementById("rotate-left");
+var rotateRightButton = document.getElementById("rotate-right");
+
+// Set the initial scale and angle of the code box
+var scale = 1;
+var angle = 0;
+
+// Define a function to update the transform of the code box
+function updateTransform() {
+  // Set the transform property of the code box
+  codeBox.style.transform = "translate(-50%, -50%) scale(" + scale + ") rotate(" + angle + "deg)";
+}
+
+// Add event listeners to the zoom and rotate buttons
+zoomInButton.addEventListener("click", function() {
+  // Increase the scale by 0.1
+  scale +=0.1;
+
+   // Update the transform of the code box
+   updateTransform();
+});
+
+zoomOutButton.addEventListener("click", function() {
+   // Decrease the scale by0.1
+   scale -=0.1;
+
+   // Update the transform of the code box
+   updateTransform();
+});
+
+rotateLeftButton.addEventListener("click", function() {
+   // Decrease the angle by10 degrees
+   angle -=10;
+
+   // Update the transform of the code box
+   updateTransform();
+});
+
+rotateRightButton.addEventListener("click", function() {
+   // Increase the angle by10 degrees
+   angle +=10;
+
+   // Update the transform of the code box
+   updateTransform();
+});
+
+// Define some variables for dragging the code box
+var dragging = false; // Whether the code box is being dragged or not
+var offsetX =0; // The horizontal offset between themouse andthe code box
+var offsetY =0; // The vertical offset between themouse andthe code box
+
+// Add event listeners tothe code header for draggingthe code box
+codeBox.addEventListener("mousedown", function(event) {
+   // Check ifthe left mouse button is pressed
+   if (event.button ===0) {
+      // Setthe dragging flag to true
+      dragging = true;
+
+      // Get the mouse position relative to the document
+      var mouseX = event.pageX;
+      var mouseY = event.pageY;
+
+      // Get the code box position relative to the document
+      var codeBoxX = codeBox.offsetLeft;
+      var codeBoxY = codeBox.offsetTop;
+
+      // Calculate the offset between the mouse and the code box
+      offsetX = mouseX - codeBoxX;
+      offsetY = mouseY -
