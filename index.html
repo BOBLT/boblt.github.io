@@ -95,13 +95,35 @@ sharkBtn.addEventListener("click", sharkAttack);
 
 </div>
 
-<div id="target1" class="target">Drop here</div>
-<div id="target2" class="target">Drop here</div>
-<div id="target3" class="target">Drop here</div>
-<div id="target4" class="target">Drop here</div>
+<div id="target1" class="target" ondrop="drop(event)" ondragover="allowDrop(event)">Reptilia</div>
+<div id="target2" class="target" ondrop="drop(event)" ondragover="allowDrop(event)">Carcharodon carcharias</div>
+<div id="target3" class="target" ondrop="drop(event)" ondragover="allowDrop(event)">Sphyrnidae</div>
+<div id="target4" class="target" ondrop="drop(event)" ondragover="allowDrop(event)">BOBLT</div>
+</body>
+</html>
+</script>
 <script>
-  function allowDrop(event) {
+function allowDrop(event) {
+event.preventDefault();
+function drag(event) {
+  // Set the data type and value of the dragged element
+  event.dataTransfer.setData("text", event.target.id);
+}
+
+function allowDrop(event) {
+  // Prevent the default behavior of the element
   event.preventDefault();
+}
+
+function drop(event) {
+  // Prevent the default behavior of the element
+  event.preventDefault();
+  // Get the data of the dragged element
+  var data = event.dataTransfer.getData("text");
+  // Append the dragged element to the drop target
+  event.target.appendChild(document.getElementById(data));
+}
+
 }
 document.getElementById("target1").addEventListener("dragover", allowDrop);
 document.getElementById("target2").addEventListener("dragover", allowDrop);
@@ -117,9 +139,12 @@ document.getElementById("target2").addEventListener("drop", drop);
 document.getElementById("target3").addEventListener("drop", drop);
 document.getElementById("target4").addEventListener("drop", drop);
 
-<img id="drag1" src="logo.png" draggable="true">
-<p id="drag2" draggable="true">This is a paragraph</p>
-<button id="drag3" draggable="true">This is a button</button>
+<img id="drag1" src="logo.png" draggable="true"
+  ondragstart="drag(event)">
+<p id="drag2" draggable="true"
+    ondragstart="drag(event)">This is a paragraph</p>
+<button id="drag3" draggable="true"
+      ondragstart="drag(event)">This is a button</button>
   function drag(event) {
   event.dataTransfer.setData("text", event.target.id);
 }
