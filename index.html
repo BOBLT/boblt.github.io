@@ -41,7 +41,7 @@
         margin: 10px;
         display: none;
       }
-      .remote-call-box-visible
+      .remote-call-box-visible {
         display: block;
     }
 </style>
@@ -121,13 +121,13 @@ document.getElementById("remote-call-box").addEventListener("click",function() {
 
   if (input) {
 
-    document.getElementById("remote-call-box).innerHTML = input;
+    document.getElementById("remote-call-box").innerHTML = input;
 
       timeoutID = setTimeout(function() {
 
         document.getElementById("remote-call-box").innerHTML = 
       "TOUCH THE CPU";
-    }, 1000);
+    }, 10000);
   }
 });
 
