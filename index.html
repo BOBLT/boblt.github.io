@@ -112,6 +112,28 @@ sharkBtn.addEventListener("click", sharkAttack);
 
 <div id="remote-call-box">TOUCH THE BUTT</div>
 <script>
+ <button id="toggleBtn">Show/Hide Text-Box</button>
+<script>
+ // Get the text-box element by its id
+  var remoteCallBox = document.getElementById("remote-call-box");
+  // Get the button element by its id
+  var toggleBtn = document.getElementById("toggleBtn");
+
+  function toggleVisibility() {
+    // If the text-box is hidden, show it
+    if (remoteCallBox.style.display == "none") {
+      remoteCallBox.style.display = "block";
+    }
+    // Otherwise, hide it
+    else {
+      remoteCallBox.style.display = "none";
+    }
+  }
+
+  // Add a click event listener to the button
+  toggleBtn.addEventListener("click", toggleVisibility);
+</script>
+ 
 let timeoutID;
 
 document.getElementById("remote-call-box").addEventListener("click",function() {
