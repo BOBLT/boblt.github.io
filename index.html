@@ -127,6 +127,10 @@ document.getElementById("remote-call-box").addEventListener("click",function() {
   }, 5000);
 });
 
+function toggleElementBox() {
+  // Get the text-box element by its id
+  var remoteCallBox = document.getElementById("remote-call-box");
+
 document.getElementById("toggleBtn").addEventListener("click", function() {
   var textBox = document.getElementById("demo");
   if (textBox.style.display == "none") {
