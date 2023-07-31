@@ -45,8 +45,30 @@
       .remote-call-box-visible {
         display: block; /* Changed display to block */
     }
-</style>
+  </style>
+  <script>
+  function toggleElementBox() {
+
+    var elementBox = document.getElementById("remote-call-box");
+
+    if (elementBox.style.display == "none") {
+
+      elementBox.style.display = "block";
+    } else {
+
+      elementBox.style.display = "none";
+    }
+  }
+  </script>
+</head>
+<body>
 <!-- Added closing style tag -->
+  <button onclick="toggleElementBox()">click me</button>
+
+  <div id="remote-call-box">
+
+  </div>
+
 </head>    
 <body>
 <h1>BOBLT</h1>
