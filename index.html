@@ -94,7 +94,8 @@ sharkBtn.addEventListener("click", sharkAttack);
 
 <!-- Deleted the repeated code for the tiger shark button -->
 <div id="gridTable">Grid Table</div>
-<div class="grid-container">
+<div class="grid-container" id="grid-container">
+  
     <div class="grid-item">3</div>
     <div class="grid-item">2</div>
     <div class="grid-item">1</div>
@@ -118,10 +119,18 @@ function showGridItems() {
 
   for (var i = 0; i < gridItems.length; i++) {
     gridItems[i].style.color = "black";
-
   }
 }
 
+function hideGridItems() {
+
+  gridContainer.style.visibility = "hidden";
+
+  for (var i = 0; i < gridItems.length; i++) {
+    gridItems[i].style.color = "transparent";
+  }
+}
+  
 gridTable.addEventListener("mouseover", showGridItems);
 
 gridTable.addEventListener("mouseout", hideGridItems);
