@@ -2,26 +2,48 @@
 <html>
 <head>
   <title>Welcome To Boblt</title>
-<style>
-<style>
-  body {
-    background: url(https://www.w3schools.com/htmL/html_images_background.asp) no-repeat center center fixed; /* Set the background image */
-    background-size: 50% 50%; /* Set the background size to 50% of the element width and height */
-    opacity: 0.8; /* Set the opacity of the element to 0.8 */
-  }
-</style>
-<style>
-  body {
-    filter: brightness(50%); /* Set the brightness of the element to 50% */
-  }
-</style>
-<style>
-  body {
-    background: url(https://www.w3schools.com/htmL/html_images_background.asp) no-repeat center center fixed; /* Set the background image */
-    background-size: 50% 50%; /* Set the background size to 50% of the element width and height */
-    opacity: 0.8; /* Set the opacity of the element to 0.8 */
-    filter: brightness(50%); /* Set the brightness of the element to 50% */
-  }
+  <style>
+  
+    body {
+      background: url no-repeat center center fixed; /* Set the background image */
+      background-size: cover; /* Set the background size to cover the entire element */
+      opacity: 0.8; /* Set the opacity of the element to 0.8 */
+      filter: brightness(50%); /* Set the brightness of the element to 50% */
+    }
+    #svg_id {
+      max-width: 250px;
+      max-height: 250px;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        background: rgba(169, 169, 169, 0.5);
+        padding: 10px;
+        visibility: hidden; /* Added visibility property */
+        border: none; /* Added border property */
+    }
+    .grid-item {
+        background-color: transparent; /* Changed background-color property */
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+        color: transparent; /* Added color property */
+    }
+    .shark { /* Added a class for elements with shark-related content */
+      color: red; 
+      font-weight: bold; 
+    }
+      #remote-call-box {
+        width: 300px;
+        height: 100px;
+        border: 1px solid black;
+        padding: 10px;
+        margin: 10px;
+        display: none; /* Changed display to none */
+      }
+      .remote-call-box-visible {
+        display: block; /* Changed display to block */
+    }
 </style>
 <!-- Added closing style tag -->
 </head>    
@@ -60,7 +82,6 @@ myBtn.addEventListener("click", showAlert);
 <script>
 function sharkAttack() {
   alert("SHARK ATTACK");
-  window.location.href = "";
 }
 
 var sharkBtn = document.getElementById("sharkBtn");
@@ -71,9 +92,52 @@ sharkBtn.addEventListener("click", sharkAttack);
 </script>
 
 <!-- Deleted the repeated code for the tiger shark button -->
+
+<!-- Added a button that toggles the visibility of the text-box -->
+<button id="toggleBtn">Enter some text</button>
+<script>
+let timeoutID;
+
+document.getElementById("remote-call-box").addEventListener("click",function() {
+  clearTimeout(timeoutID);
+
+  let input = prompt("Enter some text");
+
+  if (input) {
+
+    document.getElementById("remote-call-box").innerHTML = input;
+
+      timeoutID = setTimeout(function() {
+
+        document.getElementById("remote-call-box").innerHTML = 
+      "TOUCH THE CPU";
+    }, 10000);
+  }
+});
+
+// Added a function that toggles the visibility of the text-box
+function toggleVisibility() {
+  // Get the text-box element by its id
+  var remoteCallBox = document.getElementById("remote-call-box");
+  // If the text-box is hidden, show it
+  if (remoteCallBox.style.display == "none") {
+    remoteCallBox.style.display = "block";
+  }
+  // Otherwise, hide it
+  else {
+    remoteCallBox.style.display = "none";
+  }
+}
+
+// Get the button element by its id
+var toggleBtn = document.getElementById("toggleBtn");
+// Add a click event listener to the button
+toggleBtn.addEventListener("click", toggleVisibility);
+</script>
+
+<!-- Added a container element that upon mouse over executes a function to display the other grid items -->
 <div id="gridTable">Grid Table</div>
-<div class="grid-container" id="grid-container">
-  
+<div class="grid-container" id="grid-container"> <!-- Added id attribute -->
     <div class="grid-item">3</div>
     <div class="grid-item">2</div>
     <div class="grid-item">1</div>
@@ -84,37 +148,39 @@ sharkBtn.addEventListener("click", sharkAttack);
 
 </div>
 <script>
-
+// Get the container element by its id
 var gridTable = document.getElementById("gridTable");
-
-var gridContainer = document.getElementsByClassName("grid-container")[0];
-
+// Get the grid container element by its id
+var gridContainer = document.getElementById("grid-container"); // Changed to get by id
+// Get the grid item elements by their class name
 var gridItems = document.getElementsByClassName("grid-item");
 
 function showGridItems() {
-
-  gridContainer.style.visibility = "visable";
-
+  // Change the visibility of the grid container to visible
+  gridContainer.style.visibility = "visible";
+  // Loop through the grid items and change their color to black
   for (var i = 0; i < gridItems.length; i++) {
     gridItems[i].style.color = "black";
   }
 }
 
 function hideGridItems() {
-
+  // Change the visibility of the grid container to hidden
   gridContainer.style.visibility = "hidden";
-
+  // Loop through the grid items and change their color to transparent
   for (var i = 0; i < gridItems.length; i++) {
     gridItems[i].style.color = "transparent";
   }
 }
-  
-gridTable.addEventListener("mouseover", showGridItems);
 
+// Add a mouseover event listener to the container element
+gridTable.addEventListener("mouseover", showGridItems);
+// Add a mouseout event listener to the container element
 gridTable.addEventListener("mouseout", hideGridItems);
 </script>
 </body>
 </html>
+
 
 <div id="target1" class="target" ondrop="drop(event)" ondragover="allowDrop(event)">Reptilia</div>
 <div id="target2" class="target" ondrop="drop(event)" ondragover="allowDrop(event)">Carcharodon carcharias</div>
