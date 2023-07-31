@@ -111,9 +111,9 @@ sharkBtn.addEventListener("click", sharkAttack);
 <div id="target4" class="target" ondrop="drop(event)" ondragover="allowDrop(event)">BOBLT</div>
 
 <div id="remote-call-box">TOUCH THE BUTT</div>
+  <button id="toggleBtn">Enter some tXt</button>
 <script>
- <button id="toggleBtn">Show/Hide Text-Box</button>
-<script>
+
  // Get the text-box element by its id
   var remoteCallBox = document.getElementById("remote-call-box");
   // Get the button element by its id
@@ -133,6 +133,7 @@ sharkBtn.addEventListener("click", sharkAttack);
   // Add a click event listener to the button
   toggleBtn.addEventListener("click", toggleVisibility);
 </script>
+<script>
  
 let timeoutID;
 
@@ -153,13 +154,25 @@ document.getElementById("remote-call-box").addEventListener("click",function() {
   }
 });
 
-(function() {
+function toggleVisibility() {
 
-  document.getElementById("remote-call-box").className = "remote-call-box-visible";
-})();
+  var remoteCallBox = document.getElementById("remote-call-box");
+
+  if (remoteCallBox.style.display == "none") {
+    remoteCallBox.style.display = "block";
+  }
+
+  else {
+    remoteCallBox.style.display = "none";
+  }
+}
+  var toggleBtn = document.getElementId("toggleBtn");
+
+  toggleBtn.addEventListener("click", toggleVisibility);
+</script>
 </body>
 </html>
-</script>
+
 <script>
 function allowDrop(event) {
 event.preventDefault();
