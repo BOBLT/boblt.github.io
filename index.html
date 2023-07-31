@@ -9,6 +9,7 @@
       background-size: cover; /* Set the background size to cover the entire element */
       opacity: 0.8; /* Set the opacity of the element to 0.8 */
       filter: brightness(50%); /* Set the brightness of the element to 50% */
+      z-index: -1; /* Set the z-index of the element to -1 */
     }
     #svg_id {
       max-width: 250px;
@@ -21,6 +22,7 @@
         padding: 10px;
         visibility: hidden; /* Added visibility property */
         border: none; /* Added border property */
+        z-index: 1; /* Set the z-index of the element to 1 */
     }
     .grid-item {
         background-color: transparent; /* Changed background-color property */
@@ -180,6 +182,7 @@ gridTable.addEventListener("mouseout", hideGridItems);
 </script>
 </body>
 </html>
+
 
 
 <div id="target1" class="target" ondrop="drop(event)" ondragover="allowDrop(event)">Reptilia</div>
