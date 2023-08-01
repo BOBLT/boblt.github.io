@@ -114,7 +114,9 @@
       // Get the button element by its id
       var myBtn = document.getElementById("myBtn");
 
-      function showAlert() {}
+      function showAlert() { // Show an alert message alert("..”); // Change the background color of the div element document.getElementById(“div_id”).style.backgroundColor = “blue”; }
+
+      myBtn.addEventListener(“click”, showAlert);
 
       myBtn.addEventListener("click", showAlert);
 
