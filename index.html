@@ -55,6 +55,7 @@
 </head>
 <body>
 <!-- Your content goes here -->
+<a href="https://www.example.com"><button>Click me</button></a>
 <button onclick="toggleElementBox()">Click me</button>
 
 <div id="remote-call-box">
@@ -114,14 +115,12 @@ document.getElementById("remote-call-box").addEventListener("click",function() {
   clearTimeout(timeoutID);
 
   let input = prompt("Enter some text");
+  
+  var output = input ? input : "No input"; // Used ternary operator
 
-  if (input) {
-    document.getElementById("demo").innerHTML = input;
-    document.getElementById("demo").style.display = "block";
-  } else {
-    document.getElementById("demo").style.display = "none";
-  }
-
+  document.getElementById("demo").innerHTML = output;
+  document.getElementById("demo").style.display = "block";
+  
   timeoutID = setTimeout(function() {
     document.getElementById("demo").style.display = "none";
   }, 5000);
