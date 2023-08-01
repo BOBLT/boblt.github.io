@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Welcome To Boblt</title>
-  <style>
-    body {
-      background: url("https://th.bing.com/th/id/R.5e226d0dcd154a14fc9ea079add92fe4?rik=9wNyYaUIIrAn3Q&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2fg%2fc%2fB%2fZ%2fO%2fT%2fglobe-hi.png&ehk=hVp7ekkf05F0olCWyPBceLaTNaUKlKoYWXrz2jQ0aO4%3d&risl=&pid=ImgRaw&r=0") no-repeat center center fixed; /* Set the background image, repeat, position, and attachment */
-      background-size: cover; /* Set the background size to cover the entire element */
-      opacity: 0.8; /* Set the opacity of the element to 0.8 */
-      filter: brightness(50%); /* Set the brightness of the element to 50% */
-      z-index: -1; /* Set the z-index of the element to -1 */
-    }
-    #svg_id {
-      max-width: 250px;
-      max-height: 250px;
-    }
-    .grid-container {
+  <head>
+    <title>Welcome To Boblt</title>
+    <style>
+      body {
+        background: url("https://th.bing.com/th/id/R.5e226d0dcd154a14fc9ea079add92fe4?rik=9wNyYaUIIrAn3Q&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2fg%2fc%2fB%2fZ%2fO%2fT%2fglobe-hi.png&ehk=hVp7ekkf05F0olCWyPBceLaTNaUKlKoYWXrz2jQ0aO4%3d&risl=&pid=ImgRaw&r=0")
+          no-repeat center center fixed; /* Set the background image, repeat, position, and attachment */
+        background-size: cover; /* Set the background size to cover the entire element */
+        opacity: 0.8; /* Set the opacity of the element to 0.8 */
+        filter: brightness(50%); /* Set the brightness of the element to 50% */
+        z-index: -1; /* Set the z-index of the element to -1 */
+      }
+      #svg_id {
+        max-width: 250px;
+        max-height: 250px;
+      }
+      .grid-container {
         display: grid;
         grid-template-columns: auto auto auto;
-        
+
         padding: 10px;
         visibility: hidden; /* Added visibility property */
         border: none; /* Added border property */
         z-index: 1; /* Set the z-index of the element to 1 */
-    }
-    .grid-item {
+      }
+      .grid-item {
         background-color: transparent; /* Changed background-color property */
         padding: 20px;
         font-size: 30px;
         text-align: center;
         color: transparent; /* Added color property */
-    }
-    .shark { /* Added a class for elements with shark-related content */
-      color: red; 
-      font-weight: bold; 
-    }
+      }
+      .shark {
+        /* Added a class for elements with shark-related content */
+        color: red;
+        font-weight: bold;
+      }
       #remote-call-box {
         width: 300px;
         height: 100px;
@@ -44,104 +46,163 @@
       }
       .remote-call-box-visible {
         display: block; /* Changed display to block */
-    }
-    button {
-      width: 100px; /* Set the width of the button to 100 pixels */
-      height: 50px; /* Set the height of the button to 50 pixels */
-      font-size: 20px; /* Set the font size of the text to 20 pixels */
-      padding: 10px; /* Set the padding around the text to 10 pixels */
-    }
-  </style>
-</head>
-<body>
-<!-- Your content goes here -->
-<!-- Added a div element that wraps around the buttons and the jpg image -->
-<div id="button-container" style="position: absolute; top: 0; left: 0;">
-  <a href="https://www.example.com"><button>Click me</button></a>
-  <button onclick="toggleElementBox()">Click me</button>
-  <a href="#" style="display: inline-block; width: 50px; height: 50px; background-image: url('https://www.bing.com/th?id=OIP.GURnZicaENMLYBMZN9k1LwHaFS&pid=Api&rs=1'); background-size: cover;"></a>
-</div>
+      }
+      button {
+        width: 100px; /* Set the width of the button to 100 pixels */
+        height: 50px; /* Set the height of the button to 50 pixels */
+        font-size: 20px; /* Set the font size of the text to 20 pixels */
+        padding: 10px; /* Set the padding around the text to 10 pixels */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Your content goes here -->
+    <!-- Added a div element that wraps around the buttons and the jpg image -->
+    <div id="button-container" style="position: absolute; top: 0; left: 0">
+      <a href="https://www.example.com"><button>Click me</button></a>
+      <button onclick="toggleElementBox()">Click me</button>
+      <a
+        href="#"
+        style="
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          background-image: url('https://www.bing.com/th?id=OIP.GURnZicaENMLYBMZN9k1LwHaFS&pid=Api&rs=1');
+          background-size: cover;
+        "
+      ></a>
+    </div>
 
-<div id="remote-call-box">
+    <div id="remote-call-box"></div>
 
-</div>
+    <h1>BOBLT</h1>
+    <h2>viz.0202</h2>
+    <p>00..000....0000</p>
 
-<h1>BOBLT</h1>
-<h2>viz.0202</h2>
-<p>00..000....0000</p>
+    <button id="myBtn">CLICK CLICK</button>
 
-<button id="myBtn">CLICK CLICK</button>
+    <div id="div_id">
+      <!-- Use the img tag to insert the first image -->
+      <img
+        src="https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg"
+        style="width: 50%; margin: 5px"
+      />
+      <!-- Use the img tag to insert the second image -->
+      <img
+        src="https://www.deepblu.com/mag/wp-content/uploads/2019/07/stingrays_on_sand_patch.jpeg"
+        style="width: 50%; margin: 5px"
+      />
+    </div>
 
-<div id="div_id">
-  <!-- Use the img tag to insert the first image -->
-  <img src="https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg" style="width: 50%; margin: 5px;">
-  <!-- Use the img tag to insert the second image -->
-  <img src="https://www.deepblu.com/mag/wp-content/uploads/2019/07/stingrays_on_sand_patch.jpeg" style="width: 50%; margin: 5px;">
-</div>
+    <!-- Added a div element that contains the text box and the counter -->
+    <div
+      id="text-box-container"
+      class="grid-item"
+      style="background-color: white; border: 1px solid black"
+    >
+      <p id="demo" style="padding: 10px; margin: 10px"></p>
+      <p
+        id="counter"
+        class="shark"
+        style="position: absolute; bottom: 0; right: 0"
+      >
+        0
+      </p>
+    </div>
 
-<!-- Added a div element that contains the text box and the counter -->
-<div id="text-box-container" class="grid-item" style="background-color: white; border: 1px solid black;">
-  <p id="demo" style="padding: 10px; margin: 10px;"></p>
-  <p id="counter" class="shark" style="position: absolute; bottom: 0; right: 0;">0</p>
-</div>
+    <script>
+      // Get the button element by its id
+      var myBtn = document.getElementById("myBtn");
 
-<script>
-// Get the button element by its id
-var myBtn = document.getElementById("myBtn");
+      function showAlert() {}
 
-function showAlert() {
-  
-}
+      myBtn.addEventListener("click", showAlert);
 
-myBtn.addEventListener("click", showAlert);
+      // Use semicolons at the end of each statement
+    </script>
 
-// Use semicolons at the end of each statement
-</script>
+    <p class="shark">
+      PLEASE DO NOT TAP ON THE GLASS...NO SERIOUSLY DO NOT TAP THIS BUTTON
+    </p>
+    <!-- Added class attribute -->
+    <button id="sharkBtn" class="shark">TIGER SHARK</button>
+    <!-- Added id and class attributes -->
 
-<p class="shark">PLEASE DO NOT TAP ON THE GLASS...NO SERIOUSLY DO NOT TAP THIS BUTTON</p> <!-- Added class attribute -->
-<button id="sharkBtn" class="shark">TIGER SHARK</button> <!-- Added id and class attributes -->
+    <script>
+      function sharkAttack() {
+        alert("SHARK ATTACK");
+      }
 
-<script>
-function sharkAttack() {
-  alert("SHARK ATTACK");
-}
+      var sharkBtn = document.getElementById("sharkBtn");
 
-var sharkBtn = document.getElementById("sharkBtn");
+      sharkBtn.addEventListener("click", sharkAttack);
 
-sharkBtn.addEventListener("click", sharkAttack);
+      // Use semicolons at the end of each statement
+    </script>
 
-// Use semicolons at the end of each statement
-</script>
+    <!-- Deleted the repeated code for the tiger shark button -->
 
-<!-- Deleted the repeated code for the tiger shark button -->
+    <!-- Deleted the button that toggles the visibility of the text-box -->
+    <!-- <button id="toggleBtn">Enter some text</button> -->
 
-<!-- Added a button that toggles the visibility of the text-box -->
+    <script>
+      let timeoutID;
+      let count = 0; // Initialize count variable
 
-<script>
-let timeoutID;
-let count = 0; // Initialize count variable
+      document.getElementById("remote-call-box").addEventListener("click", function () {
+        clearTimeout(timeoutID);
 
-document.getElementById("remote-call-box").addEventListener("click",function() {
-  clearTimeout(timeoutID);
+        let input = prompt("Enter some text");
 
-  let input = prompt("Enter some text");
+        if (input) {
+          // Check if input is truthy
+          document.getElementById("demo").innerHTML = input;
+          document.getElementById("text-box-container").style.visibility =
+            "visible"; // Show text box container
+          count++; // Increment count by one
+          document.getElementById("counter").innerHTML = count; // Display count in counter element
+        } else {
+          document.getElementById("text-box-container").style.visibility =
+            "hidden"; // Hide text box container
+        }
 
-  if (input) { // Check if input is truthy
-    document.getElementById("demo").innerHTML = input;
-    document.getElementById("text-box-container").style.visibility = "visible"; // Show text box container
-    count++; // Increment count by one
-    document.getElementById("counter").innerHTML = count; // Display count in counter element
-  } else {
-    document.getElementById("text-box-container").style.visibility = "hidden"; // Hide text box container
-  }
+        timeoutID = setTimeout(function () {
+          document.getElementById("text-box-container").style.visibility =
+            "hidden"; // Hide text box container after 5 seconds
+        }, 5000);
+      });
 
-  timeoutID = setTimeout(function() {
-    document.getElementById("text-box-container").style.visibility = "hidden"; // Hide text box container after 5 seconds
-  }, 5000);
-});
+      // Deleted the function that toggles the visibility of the text-box
+      // function toggleElementBox() {
+      // Get the text-box element by its id
+      // var remoteCallBox = document.getElementById("remote-call-box");
 
-<div>
-</div>
+      // var textBox = document.getElementById("demo");
+      // if (textBox.style.display == "none") {
+      //   textBox.style.display = "block";
+      // } else {
+      //   textBox.style.display = "none";
+      // }
+      // }
+
+      // Deleted the event listener for the toggleBtn element
+      // document.getElementById("toggleBtn").addEventListener("click", toggleElementBox);
+
+      // Get the image element by its id
+      var image = document.getElementById("image");
+
+      // Get the first button element by its tag name
+      var button1 = document.getElementsByTagName("a")[0];
+
+      // Get the second button element by its tag name
+      var button2 = document.getElementsByTagName("a")[1];
+
+      // Define a function that removes the div element
+      function removeDiv() {
+        buttonContainer.remove();
+      }
+
+      // Add an event listener
 
 <script>
 // Get the container element by its id
