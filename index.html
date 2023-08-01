@@ -17,7 +17,7 @@
     .grid-container {
         display: grid;
         grid-template-columns: auto auto auto;
-        background: rgba(169, 169, 169, 0.5);
+        
         padding: 10px;
         visibility: hidden; /* Added visibility property */
         border: none; /* Added border property */
@@ -116,7 +116,7 @@ sharkBtn.addEventListener("click", sharkAttack);
 <!-- Deleted the repeated code for the tiger shark button -->
 
 <!-- Added a button that toggles the visibility of the text-box -->
-<button id="toggleBtn">Enter some text</button>
+
 <script>
 let timeoutID;
 let count = 0; // Initialize count variable
@@ -144,8 +144,7 @@ function toggleElementBox() {
   // Get the text-box element by its id
   var remoteCallBox = document.getElementById("remote-call-box");
 
-document.getElementById("toggleBtn").addEventListener("click", function() {
-  var textBox = document.getElementById("demo");
+
   if (textBox.style.display == "none") {
     textBox.style.display = "block";
   } else {
@@ -181,8 +180,7 @@ function toggleImage() {
 }
 
 // Add event listeners to the buttons for the click and mouseover events
-button1.addEventListener("click", toggleImage);
-button1.addEventListener("mouseover", toggleImage);
+
 button2.addEventListener("click", toggleImage);
 button2.addEventListener("mouseover", toggleImage);
 </script>
@@ -200,9 +198,7 @@ button2.addEventListener("mouseover", toggleImage);
     <div class="grid-item">2</div>
     <div class="grid-item">1</div>
 
-    <div class="grid-item">6</div>
-    <div class="grid-item">5</div>
-    <div class="grid-item">4</div>
+
 
 </div>
 <script>
@@ -218,7 +214,7 @@ function showGridItems() {
   gridContainer.style.visibility = "visible";
   // Loop through the grid items and change their color to black
   for (var i = 0; i < gridItems.length; i++) {
-    gridItems[i].style.color = "black";
+    gridItems[i].style.color = "blue";
   }
 }
 
@@ -267,7 +263,7 @@ gridTable.addEventListener("mouseout", hideGridItems);
   }
 
   // Add a click event listener to the button
-  toggleBtn.addEventListener("click", toggleVisibility);
+ 
 </script>
 <script>
  
@@ -340,11 +336,6 @@ document.getElementById("target4").addEventListener("dragover", allowDrop);
   event.preventDefault();
   var data = event.dataTransfer.getData("text");
   event.target.appendChild(document.getElementById(data));
-}
-document.getElementById("target1").addEventListener("drop", drop);
-document.getElementById("target2").addEventListener("drop", drop);
-document.getElementById("target3").addEventListener("drop", drop);
-document.getElementById("target4").addEventListener("drop", drop);
 
 <img id="drag1" src="logo.png" draggable="true"
   ondragstart="drag(event)">
