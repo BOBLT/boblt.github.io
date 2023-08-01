@@ -55,8 +55,12 @@
 </head>
 <body>
 <!-- Your content goes here -->
-<a href="https://www.example.com"><button>Click me</button></a>
-<button onclick="toggleElementBox()">Click me</button>
+<!-- Added a div element that wraps around the buttons and the jpg image -->
+<div id="button-container" style="position: absolute; top: 0; left: 0;">
+  <a href="https://www.example.com"><button>Click me</button></a>
+  <button onclick="toggleElementBox()">Click me</button>
+  <a href="#" style="display: inline-block; width: 50px; height: 50px; background-image: url('https://www.bing.com/th?id=OIP.GURnZicaENMLYBMZN9k1LwHaFS&pid=Api&rs=1'); background-size: cover;"></a>
+</div>
 
 <div id="remote-call-box">
 
@@ -149,7 +153,6 @@ document.getElementById("toggleBtn").addEventListener("click", function() {
   }
 });
 </script>
-<script>
 
 // Get the image element by its id
 var image = document.getElementById("image");
@@ -159,6 +162,14 @@ var button1 = document.getElementsByTagName("a")[0];
 
 // Get the second button element by its tag name
 var button2 = document.getElementsByTagName("a")[1];
+
+// Define a function that removes the div element
+function removeDiv() {
+  buttonContainer.remove();
+}
+
+// Add an event listener to the div element for the click event
+buttonContainer.addEventListener("click", removeDiv);
 
 // Define a function that toggles the visibility of the image
 function toggleImage() {
@@ -177,6 +188,7 @@ button2.addEventListener("mouseover", toggleImage);
 </script>
 </body>
 </html>
+
 </body>
 </html>
 
