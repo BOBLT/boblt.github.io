@@ -149,6 +149,34 @@ document.getElementById("toggleBtn").addEventListener("click", function() {
   }
 });
 </script>
+<script>
+
+// Get the image element by its id
+var image = document.getElementById("image");
+
+// Get the first button element by its tag name
+var button1 = document.getElementsByTagName("a")[0];
+
+// Get the second button element by its tag name
+var button2 = document.getElementsByTagName("a")[1];
+
+// Define a function that toggles the visibility of the image
+function toggleImage() {
+  if (image.style.visibility == "hidden") {
+    image.style.visibility = "visible";
+  } else {
+    image.style.visibility = "hidden";
+  }
+}
+
+// Add event listeners to the buttons for the click and mouseover events
+button1.addEventListener("click", toggleImage);
+button1.addEventListener("mouseover", toggleImage);
+button2.addEventListener("click", toggleImage);
+button2.addEventListener("mouseover", toggleImage);
+</script>
+</body>
+</html>
 </body>
 </html>
 
