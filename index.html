@@ -140,67 +140,9 @@ document.getElementById("remote-call-box").addEventListener("click",function() {
   }, 5000);
 });
 
-function toggleElementBox() {
-  // Get the text-box element by its id
-  var remoteCallBox = document.getElementById("remote-call-box");
-
-
-  if (textBox.style.display == "none") {
-    textBox.style.display = "block";
-  } else {
-    textBox.style.display = "none";
-  }
-});
-</script>
-
-// Get the image element by its id
-var image = document.getElementById("image");
-
-// Get the first button element by its tag name
-var button1 = document.getElementsByTagName("a")[0];
-
-// Get the second button element by its tag name
-var button2 = document.getElementsByTagName("a")[1];
-
-// Define a function that removes the div element
-function removeDiv() {
-  buttonContainer.remove();
-}
-
-// Add an event listener to the div element for the click event
-buttonContainer.addEventListener("click", removeDiv);
-
-// Define a function that toggles the visibility of the image
-function toggleImage() {
-  if (image.style.visibility == "hidden") {
-    image.style.visibility = "visible";
-  } else {
-    image.style.visibility = "hidden";
-  }
-}
-
-// Add event listeners to the buttons for the click and mouseover events
-
-button2.addEventListener("click", toggleImage);
-button2.addEventListener("mouseover", toggleImage);
-</script>
-</body>
-</html>
-
-</body>
-</html>
-
-
-<!-- Added a container element that upon mouse over executes a function to display the other grid items -->
-<div id="gridTable">Grid Table</div>
-<div class="grid-container" id="grid-container"> <!-- Added id attribute -->
-    <div class="grid-item">3</div>
-    <div class="grid-item">2</div>
-    <div class="grid-item">1</div>
-
-
-
+<div>
 </div>
+
 <script>
 // Get the container element by its id
 var gridTable = document.getElementById("gridTable");
@@ -480,55 +422,6 @@ rotateLeftButton.addEventListener("click", function() {
    updateTransform();
 });
 
-rotateRightButton.addEventListener("click", function() {
-   // Increase the angle by10 degrees
-   angle +=10;
-
-   // Update the transform of the code box
-   updateTransform();
-});
-
-// Define some variables for dragging the code box
-var dragging = false; // Whether the code box is being dragged or not
-var offsetX =0; // The horizontal offset between themouse andthe code box
-var offsetY =0; // The vertical offset between themouse andthe code box
-
-// Add event listeners tothe code header for draggingthe code box
-codeBox.addEventListener("mousedown", function(event) {
-   // Check ifthe left mouse button is pressed
-   if (event.button ===0) {
-      // Setthe dragging flag to true
-      dragging = true;
-
-      // Get the mouse position relative to the document
-      var mouseX = event.pageX;
-      var mouseY = event.pageY;
-
-      // Get the code box position relative to the document
-      var codeBoxX = codeBox.offsetLeft;
-      var codeBoxY = codeBox.offsetTop;
-
-      // Calculate the offset between the mouse and the code box
-      offsetX = mouseX - codeBoxX;
-      offsetY = mouseY - codeBoxY;
-   }
-}};
-document.addEventListener("mousemove", function(event) {
-   // Check ifthe code box is being dragged
-   if (dragging) {
-      // Get themouse position relative tothe document
-      var mouseX = event.pageX;
-      var mouseY = event.pageY;
-
-      // Calculate the new position ofthe code box
-      var codeBoxX = mouseX - offsetX;
-      var codeBoxY = mouseY - offsetY;
-
-      // Setthe left and top properties ofthe code box
-      codeBox.style.left = codeBoxX + "px";
-      codeBox.style.top = codeBoxY + "px";
-   }
-});
 
 document.addEventListener("mouseup", function(event) {
    // Check ifthe left mouse button is released
