@@ -5,7 +5,7 @@
     <style>
       body {
         background: url("https://th.bing.com/th/id/R.5e226d0dcd154a14fc9ea079add92fe4?rik=9wNyYaUIIrAn3Q&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2fg%2fc%2fB%2fZ%2fO%2fT%2fglobe-hi.png&ehk=hVp7ekkf05F0olCWyPBceLaTNaUKlKoYWXrz2jQ0aO4%3d&risl=&pid=ImgRaw&r=0")
-        no-repeat center center fixed; /* Set the background image, repeat, position, and attachment */
+          no-repeat center center fixed; /* Set the background image, repeat, position, and attachment */
         background-size: cover; /* Set the background size to cover the entire element */
         opacity: 0.8; /* Set the opacity of the element to 0.8 */
         filter: brightness(50%); /* Set the brightness of the element to 50% */
@@ -50,48 +50,11 @@
         padding: 10px; /* Set the padding around the text to 10 pixels */
       }
 
-      /* Added CSS for the jpg element boxes and dropdown menu */
-      .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .box {
-        width: 200px;
-        height: 200px;
-        margin: 10px;
-        border: 1px solid black;
-        position: relative;
-      }
-      .dropdown {
-        display: none;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: white;
-        border-top: 1px solid black;
-      }
-      .dropdown a {
-        display: block;
-        padding: 5px;
-        text-decoration: none;
-        color: black;
-      }
-      .dropdown a:hover {
-        background-color: lightgray;
-      }
-      .box:hover .dropdown {
-        display: block;
-      }
-
-      #shark-box { 
-        position: absolute;
-
-        top : 10px;
-
-        left: 10px;
-
+      /* Added CSS for positioning the uploaded image on top of image 2 */
+      #uploaded-image {
+          position: absolute; /* Set the position to absolute */
+          top: 10px; /* Set the distance from the top edge to 10 pixels */
+          right: 10px; /* Set the distance from the right edge to 10 pixels */
       }
     </style>
     </style>
@@ -112,19 +75,24 @@
 
        <!-- Added two div elements that contain the jpg element boxes and dropdown menu -->
        <div class="box">
-         <img src="https://www.researchgate.net/profile/Ping-Jack-Soh/publication/258793360/figure/fig2/AS:392783337672704@1470658253047/Designed-radar-waveform_Q320.jpg" alt="Image 1" width="200" height="200">
+         <img src="image1.jpg" alt="Image 1" width="200" height="200">
          <div class="dropdown">
            <a href="image1.jpg" download>Download</a>
            <a href="#">Share</a>
            <a href="#">Edit</a>
          </div>
        </div>
-       <div class="box">
+       <!-- Added an id attribute to the div element that contains image 2 -->
+       <div class="box" id="image2">
          <img src="image2.jpg" alt="Image 2" width="200" height="200">
          <div class="dropdown">
            <a href="image2.jpg" download>Download</a>
            <a href="#">Share</a>
            <a href="#">Edit</a>
+         </div>
+         <!-- Added a div element that contains the uploaded image -->
+         <div id="uploaded-image">
+           <img src="uploaded-image.jpg" alt="Uploaded Image">
          </div>
        </div>
     </div>
