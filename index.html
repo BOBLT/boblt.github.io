@@ -19,43 +19,40 @@
         display: grid;
         grid-template-columns: auto auto auto;
 
-        padding: 10px;
-        visibility: hidden; /* Added visibility property */
-        border: none; /* Added border property */
-        z-index: 1; /* Set the z-index of the element to 1 */
-      }
-      .grid-item {
-        background-color: transparent; /* Changed background-color property */
-        padding: 20px;
-        font-size: 30px;
-        text-align: center;
-        color: transparent; /* Added color property */
-      }
-      .shark {
-        /* Added a class for elements with shark-related content */
-        color: red;
-        font-weight: bold;
-      }
-      #remote-call-box {
-        width: 300px;
-        height: 100px;
-        border: 1px solid black;
-        padding: 10px;
-        margin: 10px;
-        display: none; /* Changed display to none */
-      }
-      .remote-call-box-visible {
-        display: block; /* Changed display to block */
-      }
-      button {
-        width: 100px; /* Set the width of the button to 100 pixels */
-        height: 50px; /* Set the height of the button to 50 pixels */
-        font-size: 20px; /* Set the font size of the text to 20 pixels */
-        padding: 10px; /* Set the padding around the text to 10 pixels */
-      }
-    </style>
-  </head>
-  <body>
+            padding: 10px;
+  }
+  .grid-item {
+    background-color: transparent;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: transparent;
+  }
+  .shark {
+    color: red;
+    font-weight: bold;
+  }
+  #remote-call-box {
+    width: 300px;
+    height: 100px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    display: none; /* Changed display to none */
+  }
+  .remote-call-box-visible {
+    display: block; /* Changed display to block */
+  }
+  button {
+    width: 100px; /* Set the width of the button to 100 pixels */
+    height: 50px; /* Set the height of the button to 50 pixels */
+    font-size: 20px; /* Set the font size of the text to 20 pixels */
+    padding: 10px; /* Set the padding around the text to 10 pixels */
+  }
+</style>
+</style>
+</head>
+<body>
     <!-- Your content goes here -->
     <!-- Added a div element that wraps around the buttons and the jpg image -->
       <a
@@ -77,6 +74,43 @@
 <h1>BOBLT</h1>
 <h2>viz.0202</h2>
 <p>00..000....0000</p>
+
+<div id="div_id">
+  <!-- Use the img tag to insert the first image -->
+  <img
+    src="https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg"
+    style="width: 50%; margin: 5px"
+  />
+  <!-- Use the img tag to insert the second image -->
+  <img
+    src="https://www.deepblu.com/mag/wp-content/uploads/2019/07/stingrays_on_sand_patch.jpeg"
+    style="width: 50%; margin: 5px"
+  />
+</div>
+
+<!-- Added a div element that contains the text box and the counter -->
+<div
+  id="text-box-container"
+  class="grid-item"
+  style="background-color: white; border: 1px solid black"
+>
+  <p id="demo" style="padding: 10px; margin: 10px"></p>
+  <p
+    id="counter"
+    class="shark"
+    style="position: absolute; bottom: 0; right: 0"
+  >
+    0
+  </p>
+</div>
+
+<!-- Moved the button element inside the remote call box element -->
+<div
+  id="remote-call-box"
+  style="position: absolute; right: 0; top: 50%; border: 1px solid black"
+>
+  <button id="myBtn" style="width: 100%; height: 100%">SHOW GRID</button>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
@@ -104,22 +138,6 @@
       grid.style.visibility = "visible";
     } else {
       grid.style.visibility = "hidden";
-    }
-  });
-
-  // Get the second button element by id
-  var btn2 = document.getElementById("myBtn2");
-  // Add a click event listener to the second button
-  btn2.addEventListener("click", function () {
-    // Get the shark elements by class name
-    var sharks = document.getElementsByClassName("shark");
-    // Loop through the shark elements and toggle their color
-    for (var i = 0; i < sharks.length; i++) {
-      if (sharks[i].style.color === "red") {
-        sharks[i].style.color = "blue";
-      } else {
-        sharks[i].style.color = "red";
-      }
     }
   });
 </script>
