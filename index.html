@@ -19,116 +19,170 @@
         display: grid;
         grid-template-columns: auto auto auto;
 
-            padding: 10px;
-  }
-  .grid-item {
-    background-color: transparent;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-    color: transparent;
-  }
-  .shark {
-    color: red;
-    font-weight: bold;
-  }
-  #remote-call-box {
-    width: 300px;
-    height: 100px;
-    border: 1px solid black;
-    padding: 10px;
-    margin: 10px;
-    display: none; /* Changed display to none */
-  }
-  .remote-call-box-visible {
-    display: block; /* Changed display to block */
-  }
-  button {
-    width: 100px; /* Set the width of the button to 100 pixels */
-    height: 50px; /* Set the height of the button to 50 pixels */
-    font-size: 20px; /* Set the font size of the text to 20 pixels */
-    padding: 10px; /* Set the padding around the text to 10 pixels */
-  }
-</style>
-</style>
-</head>
-<body>
+        padding: 10px;
+      }
+      .grid-item {
+        background-color: transparent;
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+        color: transparent;
+      }
+      .shark {
+        color: red;
+        font-weight: bold;
+      }
+      #remote-call-box {
+        width: 300px;
+        height: 100px;
+        border: 1px solid black;
+        padding: 10px;
+        margin: 10px;
+        display: none; /* Changed display to none */
+      }
+      .remote-call-box-visible {
+        display: block; /* Changed display to block */
+      }
+      button {
+        width: 100px; /* Set the width of the button to 100 pixels */
+        height: 50px; /* Set the height of the button to 50 pixels */
+        font-size: 20px; /* Set the font size of the text to 20 pixels */
+        padding: 10px; /* Set the padding around the text to 10 pixels */
+      }
+
+      /* Added CSS for the jpg element boxes and dropdown menu */
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .box {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        border: 1px solid black;
+        position: relative;
+      }
+      .dropdown {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        border-top: 1px solid black;
+      }
+      .dropdown a {
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+        color: black;
+      }
+      .dropdown a:hover {
+        background-color: lightgray;
+      }
+      .box:hover .dropdown {
+        display: block;
+      }
+    </style>
+    </style>
+  </head>
+  <body>
     <!-- Your content goes here -->
     <!-- Added a div element that wraps around the buttons and the jpg image -->
+    <div class="container">
       <a
         href="#"
         style="
           display: inline-block;
           width: 50px;
           height: 50px;
-          background-image: url('https://th.bing.com/th/id/OIP.BpCe9eXB4ZJ7juZbhaSYXwHaFP?pid=ImgDet&rs=1');
-          background-size: cover;
-        "
-      ></a>
+          background-image:url('https://th.bing.com/th/id/OIP.BpCe9eXB4ZJ7juZbhaSYXwHaFP?pid=ImgDet&rs=1');
+          background-size : cover;"
+       ></a>
+
+       <!-- Added two div elements that contain the jpg element boxes and dropdown menu -->
+       <div class="box">
+         <img src="image1.jpg" alt="Image 1" width="200" height="200">
+         <div class="dropdown">
+           <a href="image1.jpg" download>Download</a>
+           <a href="#">Share</a>
+           <a href="#">Edit</a>
+         </div>
+       </div>
+       <div class="box">
+         <img src="image2.jpg" alt="Image 2" width="200" height="200">
+         <div class="dropdown">
+           <a href="image2.jpg" download>Download</a>
+           <a href="#">Share</a>
+           <a href="#">Edit</a>
+         </div>
+       </div>
     </div>
 
     <div id="remote-call-box"></div>
 
     <div id="remote-call-box"></div>
 
-<h1>BOBLT</h1>
-<h2>viz.0202</h2>
-<p>00..000....0000</p>
+    <h1>BOBLT</h1>
+    <h2>viz.0202</h2>
+    <p>00..000....0000</p>
 
-<div id="div_id">
-  <!-- Use the img tag to insert the first image -->
-  <img
-    src="https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg"
-    style="width: 50%; margin: 5px"
-  />
-  <!-- Use the img tag to insert the second image -->
-  <img
-    src="https://www.deepblu.com/mag/wp-content/uploads/2019/07/stingrays_on_sand_patch.jpeg"
-    style="width: 50%; margin: 5px"
-  />
-</div>
+    <div id="div_id">
+      <!-- Use the img tag to insert the first image -->
+      <img
+        src="https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg"
+        style="width: 50%; margin: 5px"
+      />
+      <!-- Use the img tag to insert the second image -->
+      <img
+        src="https://www.deepblu.com/mag/wp-content/uploads/2019/07/stingrays_on_sand_patch.jpeg"
+        style="width: 50%; margin: 5px"
+      />
+    </div>
 
-<!-- Added a div element that contains the text box and the counter -->
-<div
-  id="text-box-container"
-  class="grid-item"
-  style="background-color: white; border: 1px solid black"
->
-  <p id="demo" style="padding: 10px; margin: 10px"></p>
-  <p
-    id="counter"
-    class="shark"
-    style="position: absolute; bottom: 0; right: 0"
-  >
-    0
-  </p>
-</div>
+    <!-- Added a div element that contains the text box and the counter -->
+    <div
+      id="text-box-container"
+      class="grid-item"
+      style="background-color: white; border: 1px solid black"
+    >
+      <p id="demo" style="padding: 10px; margin: 10px"></p>
+      <p
+        id="counter"
+        class="shark"
+        style="position: absolute; bottom: 0; right: 0"
+      >
+        0
+      </p>
+    </div>
 
-<!-- Moved the button element inside the remote call box element -->
-<div
-  id="remote-call-box"
-  style="position: absolute; right: 0; top: 50%; border: 1px solid black"
->
-  <button id="myBtn" style="width: 100%; height: 100%">SHOW GRID</button>
-</div>
+    <!-- Moved the button element inside the remote call box element -->
+    <div
+      id="remote-call-box"
+      style="position: absolute; right: 0; top: 50%; border: 1px solid black"
+    >
+      <button id="myBtn" style="width: 100%; height: 100%">SHOW GRID</button>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-<script>
-  window.onload = function () {
-    // Get the remote call box element by id
-    var remoteCallBox = document.getElementById("remote-call-box");
-    // Add the class name of "remote-call-box-visible" to make it visible
-    remoteCallBox.classList.add("remote-call-box-visible");
-  };
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <script>
+      window.onload = function () {
+        // Get the remote call box element by id
+        var remoteCallBox = document.getElementById("remote-call-box");
+        // Add the class name of "remote-call-box-visible" to make it visible
+        remoteCallBox.classList.add("remote-call-box-visible");
+      };
 
-  $(function () {
-    // Make the remote call box element draggable by id
-    $("#remote-call-box").draggable();
-  });
+      $(function () {
+        // Make the remote call box element draggable by id
+        $("#remote-call-box").draggable();
+      });
 
-  // Get the button element by id
-  var btn = document.getElementById("myBtn");
+      // Get the button element by id
+      var btn = document.getElementById("myBtn");
+
   // Add a click event listener to the button
   btn.addEventListener("click", function () {
     // Get the grid container element by class name
@@ -143,7 +197,7 @@
 </script>
 
 
-    <h1>BOBLT</h1>
+    <h2>BOBLT</h2>
     <h2>viz.0202</h2>
     <p>00..000....0000</p>
 
