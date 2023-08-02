@@ -72,6 +72,59 @@
 
     <div id="remote-call-box"></div>
 
+    <div id="remote-call-box"></div>
+
+<h1>BOBLT</h1>
+<h2>viz.0202</h2>
+<p>00..000....0000</p>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<script>
+  window.onload = function () {
+    // Get the remote call box element by id
+    var remoteCallBox = document.getElementById("remote-call-box");
+    // Add the class name of "remote-call-box-visible" to make it visible
+    remoteCallBox.classList.add("remote-call-box-visible");
+  };
+
+  $(function () {
+    // Make the remote call box element draggable by id
+    $("#remote-call-box").draggable();
+  });
+
+  // Get the button element by id
+  var btn = document.getElementById("myBtn");
+  // Add a click event listener to the button
+  btn.addEventListener("click", function () {
+    // Get the grid container element by class name
+    var grid = document.getElementsByClassName("grid-container")[0];
+    // Toggle the visibility of the grid container element
+    if (grid.style.visibility === "hidden") {
+      grid.style.visibility = "visible";
+    } else {
+      grid.style.visibility = "hidden";
+    }
+  });
+
+  // Get the second button element by id
+  var btn2 = document.getElementById("myBtn2");
+  // Add a click event listener to the second button
+  btn2.addEventListener("click", function () {
+    // Get the shark elements by class name
+    var sharks = document.getElementsByClassName("shark");
+    // Loop through the shark elements and toggle their color
+    for (var i = 0; i < sharks.length; i++) {
+      if (sharks[i].style.color === "red") {
+        sharks[i].style.color = "blue";
+      } else {
+        sharks[i].style.color = "red";
+      }
+    }
+  });
+</script>
+
+
     <h1>BOBLT</h1>
     <h2>viz.0202</h2>
     <p>00..000....0000</p>
