@@ -124,9 +124,17 @@
        </div>
     </div>
     
-    <div class="box">
-      <img src="<https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg>" alt="<https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg>" width="<https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg>"
+    <div class="box" onmouseover="showImage()"
+    onmouseout="hideImage()">
+      
+      <img 
+        id="myImage"
+        src="<https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg>" alt="<https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg>" width="<https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg>"
 
+        style=width: 50%; margin: 5px; display: none;"
+      />
+    </div>
+    
     <div id="remote-call-box"></div>
 
     <div id="remote-call-box"></div>
@@ -304,5 +312,6 @@
             "hidden"; // Hide text box container after 5 seconds
         }, 5000);
       });
+    </script>
 
      
