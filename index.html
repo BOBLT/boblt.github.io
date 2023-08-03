@@ -126,7 +126,13 @@
     
     <div class="box" onmouseover="showImage()"
     onmouseout="hideImage()">
-      
+
+<!-- Added a button element with the id "myButton" -->
+<button id="myButton">Show Image</button>
+
+<!-- Added a div element with the class "box" -->
+<div class="box">
+  <!-- Added an img element with the id "myImage" and style display set to none -->
       <img 
         id="myImage"
         src="<https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg>" alt="<https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg>" width="<https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg>"
@@ -134,6 +140,19 @@
         style=width: 50%; margin: 5px; display: none;"
       />
     </div>
+
+// Added JavaScript code to show the image after 5 seconds of clicking on the button
+    <script>
+    var myButton = document.getElementById("myButton");
+    var myImage = document.getElementById("myImage");
+
+    myButton.addEventListener("click", function () {
+      setTimeout(function () {
+        myImage.style.display = "block";
+  }, 5000);
+});
+    </script>
+    
     
     <div id="remote-call-box"></div>
 
