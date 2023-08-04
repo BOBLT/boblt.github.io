@@ -3,6 +3,27 @@
   <head>
     <title>Welcome To Boblt</title>
     <style>
+          /* Add styles for the tab element box */
+      #tab-box {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 300px;
+        height: 200px;
+        background-color: white;
+        border: 1px solid black;
+        overflow-y: scroll;
+      }
+      #tab-box input {
+        width: 100%;
+        box-sizing: border-box;
+      }
+      #tab-box p {
+        margin: 0;
+      }
+      </style>
+    </head>
     <body>
       {
         background: url("https://th.bing.com/th/id/R.5e226d0dcd154a14fc9ea079add92fe4?rik=9wNyYaUIIrAn3Q&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2fg%2fc%2fB%2fZ%2fO%2fT%2fglobe-hi.png&ehk=hVp7ekkf05F0olCWyPBceLaTNaUKlKoYWXrz2jQ0aO4%3d&risl=&pid=ImgRaw&r=0")
@@ -70,6 +91,26 @@
   </head>
   <body>
     <h1>BOBLT.INC</h1>
+        <!-- Add the tab element box -->
+    <div id="tab-box">
+      <input type="text" id="math-input" placeholder="Enter math expression">
+      <p id="math-output"></p>
+    </div>
+
+      <script>
+      const mathInput = document.querySelector('#math-input');
+      const mathOutput = document.querySelector('#math-output');
+
+      mathInput.addEventListener('input', () => {
+        try {
+          mathOutput.textContent = eval(mathInput.value);
+        } catch (e) {
+          mathOutput.textContent = 'Invalid expression';
+        }
+      });
+    </script>
+  </body>
+</html>
     <!-- Your content goes here -->
     <!-- Added a div element that wraps around the buttons and the jpg image -->
     <div class="container">
