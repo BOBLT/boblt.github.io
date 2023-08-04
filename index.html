@@ -104,6 +104,10 @@
 
       mathInput.addEventListener('input', () => {
         try {
+
+          const result = Math.round(eval(mathInput.value) *
+                                    1000) / 1000;
+          mathOuput.textContent = result.toFixed(3);
           mathOutput.textContent = eval(mathInput.value);
         } catch (e) {
           mathOutput.textContent = 'Invalid expression';
