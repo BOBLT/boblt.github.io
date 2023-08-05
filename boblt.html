@@ -1,9 +1,19 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Fish R Friends Not Food</title>
 
-<script>
+<style>
+/* Style the select element */
+.abcd-select {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+</style>
+
+ <script>
  myNewObject = new Object();
  myNewObject.info = "GW-TI89 TS-TI89 HH-TI89
  function myFunc() {
@@ -14,6 +24,14 @@
 
 </head>
 <body>
+
+ <select class="abcd-select">
+    <option value="a">a</option>
+    <option value="b">b</option>
+    <option value="c">c</option>
+    <option value="d">d</option>
+</select>
+    
     <form>
         <fieldset>
              <legend>SHARK SPOT-R</legend>
@@ -43,7 +61,15 @@ function getStorage() {
             });
         });
 </script>
-<p>TIME- - - VIZ LOCAL.DRIVE:</p>
+
+<script>
+        navigator.getStorage().then(function(devices) {
+            devices.forEach(function(device) {
+                console.log(device.name);
+            });
+        });
+</script>
+ <p>TIME- - - VIZ LOCAL.DRIVE:</p>
 
 <input type="text" id="num1">
 <input type="text" id="num2">
