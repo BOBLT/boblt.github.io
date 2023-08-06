@@ -228,7 +228,7 @@
     <p>00..000....0000</p>
 
     <div id="div_id">
-    <div id="shark-box">
+      <div id="shark-box">
       <!-- Use the img tag to insert the first image -->
       <img
         src="https://static2.bigstockphoto.com/4/2/3/large2/324633127.jpg"
@@ -296,7 +296,51 @@
       grid.style.visibility = "hidden";
     }
   });
-<</script>
+
+  class CharSpace {
+  constructor() {
+    this.table = {};
+  }
+
+  add (key, value) {
+    this.table[key] = value;
+  }
+
+  replace(str) {
+    let result = '';
+    for (let char of str) {
+      result += this.table[char] || char;
+    }
+    return result;
+  }
+}
+
+class ObjectNotifier {
+  constructor(obj) {
+    this.obj = obj;
+  }
+
+  notify(key, value) {
+    if (key in this.obj) {
+      console.log('Replacing ${key} with ${value}');
+      this.obj[key] = value;
+    }
+  }
+}
+      // Example usage
+let charSpace = new CharSpace();
+charSpace.add('a', 'b');
+charSpace.add('c', 'd');
+
+let tableQuery = { query: 'ac' };
+let notifier = new ObjectNotifier(tableQuery);
+
+notifier.notify('query',
+char.Space.replace(tableQuery.query));
+
+console.log(tableQuery.query); // Output: bd
+    <</script>
+  
 
 
     <h2>BOBLT</h2>
