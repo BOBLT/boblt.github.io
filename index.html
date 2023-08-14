@@ -175,16 +175,18 @@
       <p id="math-output"></p>
     </div>
 
-<!-- Add the print option -->
-<div id="print-box">
-  <button onclick="printDiv('tab-box')">Print</button>
-  <button onclick="copyDiv('tab-box')">Copy</button>
+<!-- Add the print and copy buttons -->
+<div style="position: relative;">
+  <div style="position: absolute; bottom: -30px;">
+    <button onclick="printDiv('tab-box')">Print</button>
+    <button onclick="copyDiv('tab-box')">Copy</button>
+  </div>
 </div>
 
     <!-- add the dot matrix animation -->
     <h2>AUTOPLAY</h2>
 
-        <div id="matrix"></div>
+    <div id="matrix"></div>
     <br>
     <button onclick="start()">ZXCV</button>
     <br><br>
