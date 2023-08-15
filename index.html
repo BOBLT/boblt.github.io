@@ -3,6 +3,60 @@
   <head>
     <title>Welcome To Boblt</title>
     <style>
+      #svg_id {
+        max-width: 250px;
+        max-height: 250px;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+
+        padding: 10px;
+      }
+      .grid-item {
+        background-color: transparent;
+        padding: 20px;
+        font-size: 30px;
+        text-align:center ;
+        color:black ;
+      }
+      
+      .shark {
+        font-size: 8px;
+        font-weight:bold ;
+        color:black ;
+        background-color:white ;
+        border:2px solid black ;
+        padding:10px ;
+      }
+      
+      #remote-call-box {
+        width:300px ;
+        height:100px ;
+        border :1px solid black ;
+        padding :10px ;
+        margin: 10px;
+        display: none; /* Changed display to none */
+      }
+      .remote-call-box-visible {
+        display: block; /* Changed display to block */
+      }
+      button {
+        width: 100px; /* Set the width of the button to 100 pixels */
+        height: 50px; /* Set the height of the button to 50 pixels */
+        font-size: 20px; /* Set the font size of the text to 20 pixels */
+        padding: 10px; /* Set the padding around the text to 10 pixels */
+      }
+
+      /* Added CSS for positioning the uploaded image on top of image 2 */
+      #uploaded-image {
+          position: absolute; /* Set the position to absolute */
+          top: 10px; /* Set the distance from the top edge to 10 pixels */
+          right: 10px; /* Set the distance from the right edge to 10 pixels */
+      }
+    </style>
+  </head>
+  <body>
       /* Add styles for the tab element box */
       #reference-mode {
         display: none;
@@ -60,59 +114,7 @@
   </head>
   </body>
       <div id="background-image"></div>
-      
-      #svg_id {
-        max-width: 250px;
-        max-height: 250px;
-      }
-      .grid-container {
-        display: grid;
-        grid-template-columns: auto auto auto;
-
-        padding: 10px;
-      }
-      .grid-item {
-        background-color: transparent;
-        padding: 20px;
-        font-size: 30px;
-        text-align:center ;
-        color:black ;
-      }
-      
-      .shark {
-        font-size: 8px;
-        font-weight:bold ;
-        color:black ;
-        background-color:white ;
-        border:2px solid black ;
-        padding:10px ;
-      }
-      
-      #remote-call-box {
-        width:300px ;
-        height:100px ;
-        border :1px solid black ;
-        padding :10px ;
-        margin: 10px;
-        display: none; /* Changed display to none */
-      }
-      .remote-call-box-visible {
-        display: block; /* Changed display to block */
-      }
-      button {
-        width: 100px; /* Set the width of the button to 100 pixels */
-        height: 50px; /* Set the height of the button to 50 pixels */
-        font-size: 20px; /* Set the font size of the text to 20 pixels */
-        padding: 10px; /* Set the padding around the text to 10 pixels */
-      }
-
-      /* Added CSS for positioning the uploaded image on top of image 2 */
-      #uploaded-image {
-          position: absolute; /* Set the position to absolute */
-          top: 10px; /* Set the distance from the top edge to 10 pixels */
-          right: 10px; /* Set the distance from the right edge to 10 pixels */
-      }
-    </style>
+  
     <style>
     .dot {
       height: 25px;
