@@ -312,40 +312,50 @@
 </div>
 
 <div class="box" onmouseover="showImage()" onmouseout="hideImage()">
-  <div class="styled-box"></div>
-  <div class="styled-box"></div>
+<div class="container">
+  <div class="buttons">
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button>Button 3</button>
+  </div>
+  
+  <div class="box">
+    <div class="styled-box"></div>
+    <div class="styled-box"></div>
+  </div>
 </div>
 
 <style>
-  #uploaded-image {
+  .container {
+    position: relative;
+  }
+
+  .buttons {
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
   }
 
-  #uploaded-image img {
-    width: 0.2;
-    height: 0.2;
-  }
-
-  .styled-box {
-    width: 50%;
-    height: 100px;
-    background-color: #f2f2f2;
-    border: 1px solid #ccc;
-    float: left;
-  }
-
-    .box {
+  .box {
     position: absolute;
-    top: 100px;
+    top: 100%;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5px;
+    margin-top: 10px;
+  }
+
+  .styled-box {
+    width: 50px;
+    height: 50px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    margin-right: 10px;
   }
 </style>
-
-    
-    <div class="box" onmouseover="showImage()"
+  
+  <div class="box" onmouseover="showImage()"
     onmouseout="hideImage()">
 
 <!-- Added a button element with the id "myButton" -->
