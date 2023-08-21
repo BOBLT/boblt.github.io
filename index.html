@@ -306,12 +306,35 @@
         <div class="box"id="image2">
 
           <img src
-         <!-- Added a div element that contains the uploaded image -->
-         <div id="uploaded-image">
-           <img src="uploaded-image.jpg" alt="CLOCK|FREQUENCY|EDIT">
-         </div>
-       </div>
-    </div>
+<!-- Added a div element that contains the uploaded image -->
+<div id="uploaded-image">
+  <img src="uploaded-image.jpg" alt="CLOCK|FREQUENCY|EDIT">
+</div>
+
+<div class="box" onmouseover="showImage()" onmouseout="hideImage()">
+  <div class="styled-box"></div>
+  <div class="styled-box"></div>
+</div>
+
+<style>
+  #uploaded-image {
+    display: flex;
+  }
+
+  #uploaded-image img {
+    width: 0.5;
+    height: 0.5;
+  }
+
+  .styled-box {
+    width: 50%;
+    height: 100px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    float: left;
+  }
+</style>
+
     
     <div class="box" onmouseover="showImage()"
     onmouseout="hideImage()">
