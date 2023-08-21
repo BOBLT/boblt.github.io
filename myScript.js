@@ -83,3 +83,13 @@ window.onload = function() {
   
   setTime();
 </script>
+
+  #_8:12P.M. 8/20/2023#
+
+    <!-- Add this img element for displaying a small image -->
+    <img id="uploaded-image" src="https://i.imgur.com/9zjvZLb.png" alt="Small Image" onclick="document.getElementById('image-input').click();">
+
+    <!-- Add this input element for selecting an image file -->
+    <input id="image-input" type="file" style="display:none;" onchange="document.getElementById('uploaded-image').src = window.URL.createObjectURL(this.files[0]);">
+
+    <!-- Add your existing HTML code here -->
