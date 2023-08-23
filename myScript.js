@@ -84,12 +84,29 @@ window.onload = function() {
   setTime();
 </script>
 
-  #_8:12P.M. 8/20/2023#
+  #_8:12P.M. 8/20/2023#358358358358
 
-    <!-- Add this img element for displaying a small image -->
-    <img id="uploaded-image" src="https://i.imgur.com/9zjvZLb.png" alt="Small Image" onclick="document.getElementById('image-input').click();">
+function functionName() {
+    // Add this img element for displaying a small image
+    var img = document.createElement('img');
+    img.id = 'uploaded-image';
+    img.src = 'https://i.imgur.com/9zjvZLb.png';
+    img.alt = 'Small Image';
+    img.onclick = function() {
+        document.getElementById('image-input').click();
+    };
+    document.body.appendChild(img);
 
-    <!-- Add this input element for selecting an image file -->
-    <input id="image-input" type="file" style="display:none;" onchange="document.getElementById('uploaded-image').src = window.URL.createObjectURL(this.files[0]);">
+    // Add this input element for selecting an image file
+    var input = document.createElement('input');
+    input.id = 'image-input';
+    input.type = 'file';
+    input.style.display = 'none';
+    input.onchange = function() {
+        document.getElementById('uploaded-image').src = window.URL.createObjectURL(this.files[0]);
+    };
+    document.body.appendChild(input);
 
-    <!-- Add your existing HTML code here -->
+    // Add your existing HTML code here
+}
+
