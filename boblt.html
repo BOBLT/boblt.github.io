@@ -11,6 +11,7 @@
   transform: translate(-50%, 0%);
   background-color: #f1f1f1;
   width: 80%;
+  height: 100px;
   padding: 20px;
 }
   
@@ -30,6 +31,12 @@
   alert(this.info);
  }
  myNewObject.showInfo = myFunc;
+
+var container = document.getElementsByClassName('container')[0];
+
+container.addEventListener('click', function() {
+  // code to execute when the container div is clicked
+});
 </script>
 
 </head>
@@ -39,6 +46,7 @@
   <h2>Container</h2>
   <p>This is a container div that is centered and at the top of the page.</p>
 </div>
+
 
  <select class="abcd-select">
     <option value="a">a</option>
