@@ -588,13 +588,16 @@ console.log(tableQuery.query); // Output: bd
     <!-- Added id and class attributes -->
 
     <script>
-      function sharkAttack() {
+      function sharkAttack(url) {
         alert("SHARK ATTACK");
+        window.location.href = url;
       }
 
       var sharkBtn = document.getElementById("sharkBtn");
 
-      sharkBtn.addEventListener("click", sharkAttack);
+      sharkBtn.addEventListener("click", function() {
+        sharkAttack("https://boblt.github.io/boblt.html");
+      });
 
       // Use semicolons at the end of each statement
     </script>
