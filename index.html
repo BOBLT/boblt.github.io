@@ -287,52 +287,59 @@ family=Material+Icons">
     <br><br>
     <div id="state"></div>
 
-  <!-- Add the graph animation -->
-  <h2>Graph Animation</h2>
+    <!-- Add the graph animation -->
+<h2>Graph Animation</h2>
 
-  <div id="canvas-container"></div>
+<div id="canvas-container"></div>
 
-    <script>
-    function animateTracer() {
-      // Generate a random point in the first quadrant
-      const x1 = Math.floor(Math.random() * 6); // Random x-coordinate between 0 and 15
-      const y1 = Math.floor(Math.random() * 6); // Random y-coordinate between 0 and 15
+<script>
+function animateTracer() {
+  // Generate a random point in the first quadrant
+  const x1 = Math.floor(Math.random() * 6); // Random x-coordinate between 0 and 15
+  const y1 = Math.floor(Math.random() * 6); // Random y-coordinate between 0 and 15
 
-      // Generate a random x-coordinate on the x-axis
-      const x2 = Math.floor(Math.random() * 6); // Random x-coordinate between 0 and 15
-      const y2 = 0; // y-coordinate is always zero
+  // Generate a random x-coordinate on the x-axis
+  const x2 = Math.floor(Math.random() * 6); // Random x-coordinate between 0 and 15
+  const y2 = 0; // y-coordinate is always zero
 
-      // Create a canvas element and add it to the document body
-      const canvas = document.createElement('canvas');
-      canvas.width = window.innerWidth / 2;
-      canvas.height = window.innerHeight / 2;
-      document.getElementById('canvas-container').appendChild(canvas);
+  // Create a canvas element and add it to the document body
+  const canvas = document.createElement('canvas');
+  canvas.width = window.innerWidth / 2;
+  canvas.height = window.innerHeight / 2;
+  document.getElementById('canvas-container').appendChild(canvas);
 
-      // Get the canvas context and set the line style
-      const ctx = canvas.getContext('2d');
-      ctx.strokeStyle = 'red';
-      ctx.lineWidth = 2;
+  // Get the canvas context and set the line style
+  const ctx = canvas.getContext('2d');
+  ctx.strokeStyle = 'red';
+  ctx.lineWidth = 2;
 
-      // Scale down the canvas by a factor of 2
-      ctx.scale(0.5, 0.5);
-      
-      // Animate the tracer from (x1, y1) to (x2, y2)
-      let t = 0;
-      const animate = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        const x = x1 + t * (x2 - x1);
-        const y = y1 + t * (y2 - y1);
-        ctx.lineTo(x, y);
-        ctx.stroke();
-        t += 0.01;
-        if (t <= 1) {
-          requestAnimationFrame(animate);
-        } else {
-          document.getElementById('canvas-container').removeChild(canvas);
-          setTimeout(animateTracer, Math.floor(Math.random() * (33 - 10 + 1)) + 10); // Animate again after a random delay between 10 and 33 seconds
-      </script>
+  // Scale down the canvas by a factor of 2
+  ctx.scale(0.5, 0.5);
+  
+  // Animate the tracer from (x1, y1) to (x2, y2)
+  
+    let t = 0;
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.beginPath();
+      ctx.moveTo(x1,y1);
+      let x=x1+t*(x2-x1);
+      let y=y1+t*(y2-y1);
+      ctx.lineTo(x,y);
+      ctx.stroke();
+      t+=0.01;
+      if(t<=1){
+        requestAnimationFrame(animate);
+      }else{
+        document.getElementById('canvas-container').removeChild(canvas);
+        setTimeout(animateTracer, Math.floor(Math.random() * (33 - 10 + 1)) + 10); // Animate again after a random delay between 10 and 33 seconds
+      }
+    }
+    animate();
+}
+animateTracer();
+</script>
+
   
     
     <script>
