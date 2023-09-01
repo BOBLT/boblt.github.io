@@ -277,7 +277,7 @@ family=Material+Icons">
     <br><br>
     <div id="state"></div>
 
-    <!-- Add the graph animation -->
+<!-- Add the graph animation -->
 <h2>Graph Animation</h2>
 
 <div id="canvas-container" style="position: fixed; top: 200px; left: 50%; transform: translateX(-50%); width: 3in; height: 3in; border: 1px solid black;"></div>
@@ -295,8 +295,8 @@ function animateDot() {
   ctx.fillStyle = 'red';
 
   // Set the initial position of the dot
-  let x = Math.floor(Math.random() * (canvas.width - 20)) + 10;
-  let y = Math.floor(Math.random() * (canvas.height - 20)) + 10;
+  let x = Math.floor(Math.random() * (canvas.width - 20)) + (canvas.width / 4);
+  let y = Math.floor(Math.random() * (canvas.height - 20)) + (canvas.height / 4);
 
   // Set the speed and direction of the dot
   let dx = Math.random() * 4 - 2;
@@ -310,10 +310,10 @@ function animateDot() {
     ctx.fill();
     x += dx;
     y += dy;
-    if (x < 10 || x > canvas.width - 10) {
+    if (x < canvas.width / 4 + 10 || x > canvas.width / 4 * 3 - 10) {
       dx = -dx;
     }
-    if (y < 10 || y > canvas.height - 10) {
+    if (y < canvas.height / 4 + 10 || y > canvas.height / 4 * 3 - 10) {
       dy = -dy;
     }
     requestAnimationFrame(animate);
