@@ -281,6 +281,7 @@ family=Material+Icons">
 <h2>Graph Animation</h2>
 
 <div id="canvas-container" style="position: fixed; top: 200px; left: 50%; transform: translateX(-50%); width: 3in; height: 3in; border: 1px solid black;"></div>
+
 <script>
 function animateDot() {
   // Create a canvas element and add it to the document body
@@ -294,8 +295,8 @@ function animateDot() {
   ctx.fillStyle = 'red';
 
   // Set the initial position of the dot
-  let x = Math.floor(Math.random() * canvas.width);
-  let y = Math.floor(Math.random() * canvas.height);
+  let x = Math.floor(Math.random() * (canvas.width - 20)) + 10;
+  let y = Math.floor(Math.random() * (canvas.height - 20)) + 10;
 
   // Set the speed and direction of the dot
   let dx = Math.random() * 4 - 2;
@@ -309,10 +310,10 @@ function animateDot() {
     ctx.fill();
     x += dx;
     y += dy;
-    if (x < 0 || x > canvas.width) {
+    if (x < 10 || x > canvas.width - 10) {
       dx = -dx;
     }
-    if (y < 0 || y > canvas.height) {
+    if (y < 10 || y > canvas.height - 10) {
       dy = -dy;
     }
     requestAnimationFrame(animate);
@@ -322,11 +323,10 @@ function animateDot() {
 }
 animateDot();
 </script>
-    
-    
 
-    
-    <script>
+
+  
+  <script>
   function printDiv(divId) {
     var divToPrint = document.getElementById(divId);
     var newWin = window.open('', 'Print-Window');
