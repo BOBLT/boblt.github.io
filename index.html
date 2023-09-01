@@ -195,56 +195,6 @@ family=Material+Icons">
     }
     </style>
 
-    <script>
-    function animateTracer() {
-      // Generate a random point in the first quadrant
-      const x1 = Math.floor(Math.random() * 16); // Random x-coordinate between 0 and 500
-      const y1 = Math.floor(Math.random() * 16); // Random y-coordinate between 0 and 500
-
-      // Generate a random x-coordinate on the x-axis
-      const x2 = Math.floor(Math.random() * 16); // Random x-coordinate between 0 and 500
-      const y2 = 0; // y-coordinate is always zero
-
-      // Create a canvas element and add it to the document body
-      const canvas = document.createElement('canvas');
-      canvas.width = window.innerWidth; / 2;
-      canvas.height = window.innerHeight; / 2;
-      document.getElementById('canvas-container').appendChild(canvas);
-
-      // Get the canvas context and set the line style
-      const ctx = canvas.getContext('2d');
-      ctx.strokeStyle = 'red';
-      ctx.lineWidth = 2;
-
-      // Scale down the canvas by a factor of 2
-      ctx.scale(0.5, 0.5);
-      
-      // Animate the tracer from (x1, y1) to (x2, y2)
-      let t = 0;
-      const animate = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        const x = x1 + t * (x2 - x1);
-        const y = y1 + t * (y2 - y1);
-        ctx.lineTo(x, y);
-        ctx.stroke();
-        t += 0.01;
-        if (t <= 1) {
-          requestAnimationFrame(animate);
-        } else {
-          document.getElementById('canvas-container').removeChild(canvas);
-          setTimeout(animateTracer, Math.floor(Math.random() * (33 - 10 + 1)) + 10); // Animate again after a random delay between 10 and 33 seconds
-        }
-      };
-      
-      animate();
-    }
-
-    // Start the animation from (0,0)
-    animateTracer();
-  </script> 
-
 <script>
     let matrix = [
             [0,0,0],
@@ -361,6 +311,56 @@ family=Material+Icons">
         }
       });
     </script>
+
+        <script>
+    function animateTracer() {
+      // Generate a random point in the first quadrant
+      const x1 = Math.floor(Math.random() * 16); // Random x-coordinate between 0 and 500
+      const y1 = Math.floor(Math.random() * 16); // Random y-coordinate between 0 and 500
+
+      // Generate a random x-coordinate on the x-axis
+      const x2 = Math.floor(Math.random() * 16); // Random x-coordinate between 0 and 500
+      const y2 = 0; // y-coordinate is always zero
+
+      // Create a canvas element and add it to the document body
+      const canvas = document.createElement('canvas');
+      canvas.width = window.innerWidth; / 2;
+      canvas.height = window.innerHeight; / 2;
+      document.getElementById('canvas-container').appendChild(canvas);
+
+      // Get the canvas context and set the line style
+      const ctx = canvas.getContext('2d');
+      ctx.strokeStyle = 'red';
+      ctx.lineWidth = 2;
+
+      // Scale down the canvas by a factor of 2
+      ctx.scale(0.5, 0.5);
+      
+      // Animate the tracer from (x1, y1) to (x2, y2)
+      let t = 0;
+      const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        const x = x1 + t * (x2 - x1);
+        const y = y1 + t * (y2 - y1);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        t += 0.01;
+        if (t <= 1) {
+          requestAnimationFrame(animate);
+        } else {
+          document.getElementById('canvas-container').removeChild(canvas);
+          setTimeout(animateTracer, Math.floor(Math.random() * (33 - 10 + 1)) + 10); // Animate again after a random delay between 10 and 33 seconds
+        }
+      };
+      
+      animate();
+    }
+
+    // Start the animation from (0,0)
+    animateTracer();
+  </script> 
   </body>
 </html>
     <!-- Your content goes here -->
