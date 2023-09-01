@@ -295,8 +295,8 @@ function animateDot() {
   ctx.fillStyle = 'red';
 
   // Set the initial position of the dot
-  let x = Math.floor(Math.random() * (canvas.width - 20)) + (canvas.width / 4);
-  let y = Math.floor(Math.random() * (canvas.height - 20)) + (canvas.height / 4);
+  let x = canvas.width / 2;
+  let y = canvas.height / 2;
 
   // Set the speed and direction of the dot
   let dx = Math.random() * 4 - 2;
@@ -323,10 +323,8 @@ function animateDot() {
 }
 animateDot();
 </script>
-
-
   
-  <script>
+    <script>
   function printDiv(divId) {
     var divToPrint = document.getElementById(divId);
     var newWin = window.open('', 'Print-Window');
