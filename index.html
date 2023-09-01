@@ -304,13 +304,15 @@ family=Material+Icons">
 
           const result = Math.round(eval(mathInput.value) *
                                     1000) / 1000;
-          mathOuput.textContent = result.toFixed(3);
+          mathOutput.textContent = result.toFixed(3);
           mathOutput.textContent = eval(mathInput.value);
         } catch (e) {
           mathOutput.textContent = 'Invalid expression';
         }
       });
     </script>
+
+    <div id="canvas-container"></div>
 
         <script>
     function animateTracer() {
@@ -324,8 +326,8 @@ family=Material+Icons">
 
       // Create a canvas element and add it to the document body
       const canvas = document.createElement('canvas');
-      canvas.width = window.innerWidth; / 2;
-      canvas.height = window.innerHeight; / 2;
+      canvas.width = window.innerWidth / 2;
+      canvas.height = window.innerHeight / 2;
       document.getElementById('canvas-container').appendChild(canvas);
 
       // Get the canvas context and set the line style
