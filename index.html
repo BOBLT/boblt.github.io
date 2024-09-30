@@ -25,16 +25,25 @@
             border: 1px solid black;
         }
 
-        #blinker {
-            width: 96px; /* 1 inch = 96 pixels */
-            height: 96px;
-            background-color: red;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            visibility: visible; /* Ensure initial visibility */
-        }
+#blinker {
+    width: 96px; /* 1 inch = 96 pixels */
+    height: 96px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: blink 3s infinite; /* Add animation */
+}
+
+@keyframes blink {
+    0%, 50%, 100% {
+        visibility: visible;
+    }
+    25%, 75% {
+        visibility: hidden;
+    }
+}
 
         nav ul {
             list-style-type: none;
