@@ -71,31 +71,35 @@
             padding: 10px;
         }
 
-        .grid-item {
-            background-color: transparent; /* Make the background transparent */
-            padding: 20px;
-            font-size: 30px;
-            text-align: center;
-            color: black; /* Keep the text color black */
-        }
+.grid-item {
+    background-color: transparent; /* Make the background transparent */
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: black; /* Keep the text color black */
+    position: relative; /* Ensure positioning context */
+}
 
-        .grid-item figure {
-            background-color: white; /* Set a background color to make it stand out */
-            padding: 10px; /* Add some padding */
-            border: 1px solid black; /* Add a border */
-            color: black; /* Set text color */
-        }
+.grid-item figure {
+    background-color: white; /* Set a background color to make it stand out */
+    padding: 10px; /* Add some padding */
+    border: 1px solid black; /* Add a border */
+    color: black; /* Set text color */
+    z-index: 1; /* Bring the figure to the front */
+    position: relative; /* Ensure it is positioned correctly */
+}
 
-        .grid-item figure img {
-            max-width: 100%; /* Ensure the image fits within the figure */
-            height: auto; /* Maintain aspect ratio */
-        }
+.grid-item figure img {
+    max-width: 100%; /* Ensure the image fits within the figure */
+    height: auto; /* Maintain aspect ratio */
+}
 
-        .grid-item figure figcaption {
-            text-align: center; /* Center the caption text */
-            font-size: 14px; /* Set a font size for the caption */
-            color: black; /* Set text color */
-        }
+.grid-item figure figcaption {
+    text-align: center; /* Center the caption text */
+    font-size: 14px; /* Set a font size for the caption */
+    color: black; /* Set text color */
+}
+
 
         .shark {
             font-size: 8px;
@@ -185,7 +189,7 @@
     <div class="grid-container">
         <div class="grid-item">
             <figure>
-                <img src="path/to/image.jpg" alt="Description" style="width:100%;">
+                <img src="path/to/image.jpg" alt="90210" style="width:100%;">
                 <figcaption><a href="https://youtu.be/rxBBRLWF0mM" target="_blank">Watch Video</a></figcaption>
             </figure>
         </div>
