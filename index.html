@@ -189,10 +189,12 @@ family=Material+Icons">
     <script>
         function toggleBlinker() {
             const blinker = document.getElementById('blinker');
+            console.log('Blinker visibility before toggle:', blinker.style.visibility);
             blinker.style.visibility = (blinker.style.visibility === 'hidden') ? 'visible' : 'hidden';
+            console.log('Blinker visibility after toggle:', blinker.style.visibility);
         }
 
-        setInterval(toggleBlinker, 3000); // Blink every 3 seconds
+        setInterval(toggleBlinker, 3000);
     </script>
      <!-- Add styles for the tab element box -->
       <div id="background-image"></div>
