@@ -23,6 +23,16 @@ family=Material+Icons">
         float: right;
       }
 
+      #blinker {
+      width: 96px; /* 1 inch = 96 pixels */
+      height: 96px;
+      background-color: red;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      } 
+
 #left-box, #right-box {
   width: 50%;
   height: 100px;
@@ -174,7 +184,15 @@ family=Material+Icons">
         <p>-155.844437</p>
     </div>
 </div>
-      
+
+    <script>
+        function toggleBlinker() {
+            const blinker = document.getElementById('blinker');
+            blinker.style.visibility = (blinker.style.visibility === 'hidden') ? 'visible' : 'hidden';
+        }
+
+        setInterval(toggleBlinker, 3000); // Blink every 3 seconds
+    </script>
      <!-- Add styles for the tab element box -->
       <div id="background-image"></div>
    </body>
