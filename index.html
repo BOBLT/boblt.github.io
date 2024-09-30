@@ -1,190 +1,167 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Welcome To Boblt</title>
-    <link rel="stylesheet" 
-href="https://fonts.googleapis.com/icon?
-family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
-      
-      /* Add styles for the left box */
-      #left-box {
-        width: 50%;
-        height: 100px;
-        background-color: transparent;
-        float: left;
-      }
+        /* Add styles for the left box */
+        #left-box {
+            width: 50%;
+            height: 100px;
+            background-color: transparent;
+            float: left;
+            box-sizing: border-box;
+            border: 1px solid black;
+            position: relative;
+        }
 
-      /* Add styles for the right box */
-      #right-box {
-        width: 50%;
-        height: 100px;
-        background-color: transparent;
-        float: right;
-      }
+        /* Add styles for the right box */
+        #right-box {
+            width: 50%;
+            height: 100px;
+            background-color: transparent;
+            float: right;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
 
-      #blinker {
-      width: 96px; /* 1 inch = 96 pixels */
-      height: 96px;
-      background-color: red;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      visibility: visible;
-      } 
+        #blinker {
+            width: 96px; /* 1 inch = 96 pixels */
+            height: 96px;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            visibility: visible; /* Ensure initial visibility */
+        }
 
-#left-box, #right-box {
-  width: 50%;
-  height: 100px;
-  background-color: transparent;
-  float: left;
-  box-sizing: border-box;
-  border: 1px solid black;
-}
+        #svg_id {
+            max-width: 250px;
+            max-height: 250px;
+        }
 
-      #svg_id {
-        max-width: 250px;
-        max-height: 250px;
-      }
-      .grid-container {
-        display: grid;
-        grid-template-columns: auto auto auto;
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            padding: 10px;
+        }
 
-        padding: 10px;
-      }
-      .grid-item {
-        background-color: black;
-        padding: 20px;
-        font-size: 30px;
-        text-align:center ;
-        color:black ;
-      }
-      
-      .shark {
-        font-size: 8px;
-        font-weight:bold ;
-        color:black ;
-        background-color:white ;
-        border:2px solid black ;
-        padding:10px ;
-      }
-      
-      #remote-call-box {
-        width:300px ;
-        height:100px ;
-        border :1px solid black ;
-        padding :10px ;
-        margin: 10px;
-        display: none; /* Changed display to none */
-      }
-      .remote-call-box-visible {
-        display: block; /* Changed display to block */
-      }
-      button {
-        width: 100px; /* Set the width of the button to 100 pixels */
-        height: 50px; /* Set the height of the button to 50 pixels */
-        font-size: 20px; /* Set the font size of the text to 20 pixels */
-        padding: 10px; /* Set the padding around the text to 10 pixels */
-      }
+        .grid-item {
+            background-color: black;
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+            color: black;
+        }
 
-      /* Added CSS for positioning the uploaded image on top of image 2 */
-      #uploaded-image {
-          position: absolute; /* Set the position to absolute */
-          top: 10px; /* Set the distance from the top edge to 10 pixels */
-          right: 10px; /* Set the distance from the right edge to 10 pixels */
-      }
+        .shark {
+            font-size: 8px;
+            font-weight: bold;
+            color: black;
+            background-color: white;
+            border: 2px solid black;
+            padding: 10px;
+        }
 
-      /* Add styles for the tab element box */
-      #reference-mode {
-        display: none;
-        width: 300px;
-        height: 200px;
-        background-color: white;
-        border: 1px solid black;
-      }
+        #remote-call-box {
+            width: 300px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px;
+            display: none; /* Changed display to none */
+        }
 
-      /* Add styles for the edit button */
-      #edit-btn {
-        position: relative;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background-color: white;
-        border: 1px solid black;
-      }
-      
-      /* ADD STYLES FOR THE EDIT ICON */
-      #tab-box {
-        position: fixed;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 300px;
-        height: 200px;
-        background-color:white ;
-        border :1px solid black ;
-        overflow-y :scroll ;
-      }
-      
-      #tab-box input {
-          width :100% ;
-          box-sizing :border-box ;
-      }
-      
-      #tab-box p {
-          margin :0 ;
-      }
-      
-#background-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-image: url("https://i.pinimg.com/originals/3b/ae/b7/3baeb7b444c7583689181070a3157196.jpg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
-  opacity: 0.5; /* Set the opacity of the element to 0.8 */
-  filter: brightness(80%); /* Set the brightness of the element to 50% */
-}
+        .remote-call-box-visible {
+            display: block; /* Changed display to block */
+        }
 
-/* Apply different styles for handheld devices */
-@media (max-width: 600px) {
-  #background-image {
-    background-size: 80%; /* Change the size of the background image */
-    background-position: top center; /* Change the position of the background image */
-  }
-}
+        button {
+            width: 100px; /* Set the width of the button to 100 pixels */
+            height: 50px; /* Set the height of the button to 50 pixels */
+            font-size: 20px; /* Set the font size of the text to 20 pixels */
+            padding: 10px; /* Set the padding around the text to 10 pixels */
+        }
 
-      .my-link {
-        position: absolute;
-        top: 50px;
-        left:50px;
-      }
+        /* Added CSS for positioning the uploaded image on top of image 2 */
+        #uploaded-image {
+            position: absolute; /* Set the position to absolute */
+            top: 10px; /* Set the distance from the top edge to 10 pixels */
+            right: 10px; /* Set the distance from the right edge to 10 pixels */
+        }
+
+        /* Add styles for the tab element box */
+        #reference-mode {
+            display: none;
+            width: 300px;
+            height: 200px;
+            background-color: white;
+            border: 1px solid black;
+        }
+
+        /* Add styles for the edit button */
+        #edit-btn {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            border: 1px solid black;
+        }
+
+        /* ADD STYLES FOR THE EDIT ICON */
+        #tab-box {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 200px;
+            background-color: white;
+            border: 1px solid black;
+            overflow-y: scroll;
+        }
+
+        #tab-box input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #tab-box p {
+            margin: 0;
+        }
+
+        #background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url("https://i.pinimg.com/originals/3b/ae/b7/3baeb7b444c7583689181070a3157196.jpg");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            opacity: 0.5; /* Set the opacity of the element to 0.8 */
+            filter: brightness(80%); /* Set the brightness of the element to 50% */
+        }
+
+        /* Apply different styles for handheld devices */
+        @media (max-width: 600px) {
+            #background-image {
+                background-size: 80%; /* Change the size of the background image */
+                background-position: top center; /* Change the position of the background image */
+            }
+        }
     </style>
-    <script src="path/to/your/script.js"></script>
-    </head>
-   <body>
-
-       <div id="canvas-container"></div>
-     
-     <!-- Add the left box -->
+</head>
+<body>
     <div id="left-box">
-      <div class="box">
-        <p>19.741755</p>
-      </div>
-  </div>
-    
-     <!-- Add the right box -->
-    <div id="right-box">
-      <div class="box">
-        <p>-155.844437</p>
+        <div id="blinker"></div>
     </div>
-</div>
+    <div id="right-box"></div>
 
     <script>
         function toggleBlinker() {
@@ -194,12 +171,11 @@ family=Material+Icons">
             console.log('Blinker visibility after toggle:', blinker.style.visibility);
         }
 
-        setInterval(toggleBlinker, 3000);
+        setInterval(toggleBlinker, 3000); // Blink every 3 seconds
     </script>
-     <!-- Add styles for the tab element box -->
-      <div id="background-image"></div>
-   </body>
+</body>
 </html>
+
 
   
     <style>
