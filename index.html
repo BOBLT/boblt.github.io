@@ -113,6 +113,41 @@
             width: 50%;
             margin: 0 auto;
         }
+
+        /* Navigation bar styles */
+        #nav-bar {
+            background-color: #333;
+            overflow: hidden;
+            display: none; /* Hide the navigation bar initially */
+        }
+
+        #nav-bar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #nav-bar ul li {
+            float: left;
+        }
+
+        #nav-bar ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #nav-bar ul li a:hover {
+            background-color: #111;
+        }
+
+        #nav-bar ul li a.selected {
+            background-color: #4CAF50;
+        }
     </style>
 </head>
 <body>
@@ -120,10 +155,12 @@
         <div id="blinker"></div>
     </div>
     <div id="right-box"></div>
-    <nav>
+    <nav id="nav-bar">
         <ul>
             <li><a href="#" class="selected">Home</a></li>
             <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
     </nav>
     <div id="svg_id"></div>
@@ -151,6 +188,9 @@
                 drawMatrix();
                 drawState();
             }, 1000);
+
+            // Display the navigation bar
+            document.getElementById("nav-bar").style.display = "block";
         }
 
         function updateMatrix() {
@@ -183,6 +223,7 @@
     </script>
 </body>
 </html>
+
 
 <!-- Add a container for the tab box and buttons -->
 <h1>BOBLT.INC</h1>
