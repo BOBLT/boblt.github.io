@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to BOBLT</title>
+    <title>Draggable Dots</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow: auto;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
         }
         .background-container {
             position: absolute;
@@ -24,7 +20,7 @@
             z-index: -1;
         }
         .matrix-container {
-            position: absolute;
+            position: relative;
             z-index: 1;
         }
         .dot {
@@ -35,20 +31,10 @@
             margin: 2px;
             position: absolute;
             cursor: pointer;
-            border-radius: 50%
+            border-radius: 50%;
         }
         .dot.on {
             background-color: green;
-        }
-        @keyframes bounce {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(100vw, 0); }
-            50% { transform: translate(100vw, 100vh); }
-            75% { transform: translate(0, 100vh); }
-            100% { transform: translate(0, 0); }
-        }
-        .bouncing {
-            animation: bounce 5s infinite linear;
         }
         #nav-bar {
             position: fixed;
@@ -179,6 +165,7 @@
 
     window.onload = start;
 </script>
+
 </body>
 </html>
 
