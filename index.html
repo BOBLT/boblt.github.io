@@ -201,6 +201,32 @@
     .dot.on {
         background-color: blue;
     }
+    #nav-bar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.5); /* Adjust the transparency here */
+        z-index: 2;
+    }
+    #nav-bar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #nav-bar li {
+        float: left;
+    }
+    #nav-bar li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    #nav-bar li a:hover {
+        background-color: rgba(255, 255, 255, 0.7); /* Adjust the hover transparency here */
+    }
 </style>
 </head>
 <body>
