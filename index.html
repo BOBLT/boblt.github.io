@@ -197,6 +197,8 @@
         height: 10px;
         background-color: black;
         margin: 2px;
+        position: absolute;
+        cursor: pointer;
     }
     .dot.on {
         background-color: blue;
@@ -304,12 +306,29 @@
                 for (let j = 0; j < matrix[i].length; j++) {
                     let dot = document.createElement("span");
                     dot.className = "dot" + (matrix[i][j] ? " on" : "");
+
+                    dot.style.top = '${i * 20}px';
+                    dot.style.left = '${j * 20}px;
+                    dot.draggable = true;
+                    dot.ondragstart = dragStart;
+                    dot.ondragend = dragEnd;
                     matrixDiv.appendChild(dot);
+                    matrixDiv.appendChild(document.createElement("br"));
                 }
-                matrixDiv.appendChild(document.createElement("br"));
             }
         }
 
+        function dragStart(event) {
+            event.dataTransfer.setData("text/plain",
+    event.target.id);
+            event.target.style.opacity = "0.5";
+        }
+
+        function dragEnd(event) {
+            event.target.style.opacity = "1";
+            event.target.style.top = '${event.clientY -5}px';
+            event.target.style.left = '${event.clientX -5}px';
+        }
         function drawState() {
             let stateDiv = document.getElementById("state");
             stateDiv.innerHTML
