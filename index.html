@@ -3,233 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome To Boblt</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Draggable Dots</title>
     <style>
-        /* Add styles for the left box */
-        #left-box {
-            width: 50%;
-            height: 100px;
-            background-color: transparent;
-            float: left;
-            box-sizing: border-box;
-            border: 1px solid black;
-            position: relative;
-        }
-
-        /* Add styles for the right box */
-        #right-box {
-            width: 50%;
-            height: 100px;
-            background-color: transparent;
-            float: right;
-            box-sizing: border-box;
-            border: 1px solid black;
-        }
-
-        #blinker {
-            width: 96px; /* 1 inch = 96 pixels */
-            height: 96px;
-            background-color: red;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        nav ul {
-            list-style-type: none;
+        body {
+            margin: 0;
             padding: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns */
-            gap: 10px;
-        }
-
-        nav ul li {
-            background-color: lightgray;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-        }
-
-        nav ul li a.selected {
-            color: red;
-        }
-
-        #svg_id {
-            max-width: 250px;
-            max-height: 250px;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: auto auto auto;
-            padding: 10px;
-        }
-
-        .grid-item {
-            background-color: transparent; /* Make the background transparent */
-            padding: 20px;
-            font-size: 30px;
-            text-align: center;
-            color: black; /* Keep the text color black */
-            position: relative; /* Ensure positioning context */
-        }
-
-        .grid-item figure {
-            background-color: white; /* Set a background color to make it stand out */
-            padding: 10px; /* Add some padding */
-            border: 1px solid black; /* Add a border */
-            color: black; /* Set text color */
-            z-index: 1; /* Bring the figure to the front */
-            position: relative; /* Ensure it is positioned correctly */
-        }
-
-        .grid-item figure img {
-            max-width: 100%; /* Ensure the image fits within the figure */
-            height: auto; /* Maintain aspect ratio */
-        }
-
-        .grid-item figure figcaption {
-            text-align: center; /* Center the caption text */
-            font-size: 14px; /* Set a font size for the caption */
-            color: black; /* Set text color */
-        }
-
-        .shark {
-            font-size: 8px;
-            font-weight: bold;
-            color: black;
-            background-color: white;
-            border: 2px solid black;
-            padding: 10px;
-        }
-
-        #remote-call-box {
-            width: 300px;
-            height: 100px;
-            border: 1px solid black;
-            padding: 10px;
-            margin: 10px;
-            display: none; /* Changed display to none */
-        }
-
-        .dot {
-            height: 25px;
-            width: 25px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .dot.on {
-            background-color: #824caf;
-        }
-
-        #canvas-container {
-            width: 50%;
-            margin: 0 auto;
-        }
-
-        /* Navigation bar styles */
-        #nav-bar {
-            background-color: #333;
             overflow: hidden;
-            display: none; /* Hide the navigation bar initially */
         }
-
+        .background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .matrix-container {
+            position: relative;
+            z-index: 1;
+        }
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            margin: 2px;
+            position: absolute;
+            cursor: pointer;
+        }
+        .dot.on {
+            background-color: green;
+        }
+        #nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+            z-index: 2;
+        }
         #nav-bar ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: space-around;
+            overflow: hidden;
         }
-
-        #nav-bar ul li {
-            background-color: clear;
-            padding: 10px;
-            text-align: center;
+        #nav-bar li {
+            float: left;
         }
-
-        #nav-bar ul li a {
-            text-decoration: none;
+        #nav-bar li a {
+            display: block;
             color: black;
-            font-weight: bold;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
         }
-
-        #nav-bar ul li a.selected {
-            color: red;
+        #nav-bar li a:hover {
+            background-color: rgba(255, 255, 255, 0.7);
         }
     </style>
-</head>
-<body>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden:
-    }
-    .background-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
-    .matrix-container {
-        positon: relative;
-        z-index: 1;
-    }
-    .matrix-container {
-        position: relative;
-        z-index: 1;
-    }
-    .dot {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        background-color: black;
-        margin: 2px;
-        position: absolute;
-        cursor: pointer;
-    }
-    .dot.on {
-        background-color: blue;
-    }
-    #nav-bar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.5); /* Adjust the transparency here */
-        z-index: 2;
-    }
-    #nav-bar ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-    }
-    #nav-bar li {
-        float: left;
-    }
-    #nav-bar li a {
-        display: block;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-    #nav-bar li a:hover {
-        background-color: rgba(255, 255, 255, 0.7); /* Adjust the hover transparency here */
-    }
-</style>
 </head>
 <body>
     <div class="background-container">
@@ -237,20 +68,18 @@
     </div>
     <div class="matrix-container" id="matrix"></div>
     <div id="state"></div>
-    <div id="nav-bar" style="display: none;">Navigation Bar</div>
-    
-    <div id="left-box">
-        <div id="blinker"></div>
-    </div>
-    <div id="right-box"></div>
-    <nav id="nav-bar">
+    <div id="nav-bar">
         <ul>
             <li><a href="#" class="selected">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
-    </nav>
+    </div>
+    <div id="left-box">
+        <div id="blinker"></div>
+    </div>
+    <div id="right-box"></div>
     <div id="svg_id"></div>
     <div class="grid-container">
         <div class="grid-item">
@@ -271,70 +100,69 @@
         <div id="state"></div>
     </div>
 </body>
+</html>
 
+<script>
+    let matrix = [
+        [0, 0, 0],
+    ];
+    let interval;
 
-    <script>
-        let matrix = [
-            [0, 0, 0],
-        ];
-        let interval;
+    function start() {
+        clearInterval(interval);
+        interval = setInterval(() => {
+            updateMatrix();
+            drawMatrix();
+            drawState();
+        }, 1000);
 
-        function start() {
-            clearInterval(interval);
-            interval = setInterval(() => {
-                updateMatrix();
-                drawMatrix();
-                drawState();
-            }, 1000);
+        // Display the navigation bar
+        document.getElementById("nav-bar").style.display = "block";
+    }
 
-            // Display the navigation bar
-            document.getElementById("nav-bar").style.display = "block";
-        }
-
-        function updateMatrix() {
-            for (let i = 0; i < matrix.length; i++) {
-                for (let j = 0; j < matrix[i].length; j++) {
-                    matrix[i][j] = Math.round(Math.random());
-                }
+    function updateMatrix() {
+        for (let i = 0; i < matrix.length; i++) {
+            for (let j = 0; j < matrix[i].length; j++) {
+                matrix[i][j] = Math.round(Math.random());
             }
         }
+    }
 
-        function drawMatrix() {
-            let matrixDiv = document.getElementById("matrix");
-            matrixDiv.innerHTML = "";
-            for (let i = 0; i < matrix.length; i++) {
-                for (let j = 0; j < matrix[i].length; j++) {
-                    let dot = document.createElement("span");
-                    dot.className = "dot" + (matrix[i][j] ? " on" : "");
-
-                    dot.style.top = '${i * 20}px';
-                    dot.style.left = '${j * 20}px;
-                    dot.draggable = true;
-                    dot.ondragstart = dragStart;
-                    dot.ondragend = dragEnd;
-                    matrixDiv.appendChild(dot);
-                    matrixDiv.appendChild(document.createElement("br"));
-                }
+    function drawMatrix() {
+        let matrixDiv = document.getElementById("matrix");
+        matrixDiv.innerHTML = "";
+        for (let i = 0; i < matrix.length; i++) {
+            for (let j = 0; j < matrix[i].length; j++) {
+                let dot = document.createElement("span");
+                dot.className = "dot" + (matrix[i][j] ? " on" : "");
+                dot.style.top = `${i * 20}px`;
+                dot.style.left = `${j * 20}px`;
+                dot.draggable = true;
+                dot.ondragstart = dragStart;
+                dot.ondragend = dragEnd;
+                matrixDiv.appendChild(dot);
             }
         }
+    }
 
-        function dragStart(event) {
-            event.dataTransfer.setData("text/plain", event.target.id);
-            event.target.style.opacity = "0.5";
-        }
+    function dragStart(event) {
+        event.dataTransfer.setData("text/plain", event.target.id);
+        event.target.style.opacity = "0.5";
+    }
 
-        function dragEnd(event) {
-            event.target.style.opacity = "1";
-            event.target.style.top = '${event.clientY -5}px';
-            event.target.style.left = '${event.clientX -5}px';
-        }
-        function drawState() {
-            let stateDiv = document.getElementById("state");
-            stateDiv.innerHTML
-        }
+    function dragEnd(event) {
+        event.target.style.opacity = "1";
+        event.target.style.top = `${event.clientY - 5}px`;
+        event.target.style.left = `${event.clientX - 5}px`;
+    }
 
-        window.onload = start;
-    </script>
+    function drawState() {
+        let stateDiv = document.getElementById("state");
+        stateDiv.innerHTML = "";
+    }
+
+    window.onload = start;
+</script>
 </body>
 </html>
 
