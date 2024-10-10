@@ -1,126 +1,38 @@
-<script>
-    let matrix = [
-        [0, 0, 0],
-    ];
-    let interval;
-
-    function start() {
-        clearInterval(interval);
-        interval = setInterval(() => {
-            updateMatrix();
-            drawMatrix();
-            drawState();
-        }, 1000);
-
-        // Display the navigation bar
-        document.getElementById("nav-bar").style.display = "block";
-    }
-
-    function updateMatrix() {
-        for (let i = 0; i < matrix.length; i++) {
-            for (let j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = Math.round(Math.random());
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Animation</title>
+    <style>
+        #matrix {
+            position: relative;
+            width: 100px;
+            height: 100px;
         }
-    }
-
-    function drawMatrix() {
-        let matrixDiv = document.getElementById("matrix");
-        matrixDiv.innerHTML = "";
-        for (let i = 0; i < matrix.length; i++) {
-            for (let j = 0; j < matrix[i].length; j++) {
-                let dot = document.createElement("span");
-                dot.className = "dot" + (matrix[i][j] ? " on" : "");
-                dot.style.top = `${i * 20}px`;
-                dot.style.left = `${j * 20}px`;
-                dot.draggable = true;
-                dot.ondragstart = dragStart;
-                dot.ondragend = dragEnd;
-                matrixDiv.appendChild(dot);
-            }
+        .dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: grey;
         }
-    }
-
-    function dragStart(event) {
-        event.dataTransfer.setData("text/plain", event.target.id);
-        event.target.style.opacity = "0.5";
-    }
-
-    function dragEnd(event) {
-        event.target.style.opacity = "1";
-        event.target.style.top = `${event.clientY - 5}px`;
-        event.target.style.left = `${event.clientX - 5}px`;
-    }
-
-    function drawState() {
-        let stateDiv = document.getElementById("state");
-        stateDiv.innerHTML = "";
-    }
-
-    window.onload = start;
-</script>
-
-<script>
-    let matrix = [
-        [0, 0, 0],
-    ];
-    let interval;
-
-    function start() {
-        clearInterval(interval);
-        interval = setInterval(() => {
-            updateMatrix();
-            drawMatrix();
-            drawState();
-        }, 1000);
-
-        // Display the navigation bar
-        document.getElementById("nav-bar").style.display = "block";
-    }
-
-    function updateMatrix() {
-        for (let i = 0; i < matrix.length; i++) {
-            for (let j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = Math.round(Math.random());
-            }
+        .dot.on {
+            background-color: black;
         }
-    }
-
-    function drawMatrix() {
-        let matrixDiv = document.getElementById("matrix");
-        matrixDiv.innerHTML = "";
-        for (let i = 0; i < matrix.length; i++) {
-            for (let j = 0; j < matrix[i].length; j++) {
-                let dot = document.createElement("span");
-                dot.className = "dot" + (matrix[i][j] ? " on" : "");
-                dot.style.top = `${i * 20}px`;
-                dot.style.left = `${j * 20}px`;
-                dot.draggable = true;
-                dot.ondragstart = dragStart;
-                dot.ondragend = dragEnd;
-                matrixDiv.appendChild(dot);
-            }
+        #nav-bar {
+            display: none;
         }
-    }
-
-    function dragStart(event) {
-        event.dataTransfer.setData("text/plain", event.target.id);
-        event.target.style.opacity = "0.5";
-    }
-
-    function dragEnd(event) {
-        event.target.style.opacity = "1";
-        event.target.style.top = `${event.clientY - 5}px`;
-        event.target.style.left = `${event.clientX - 5}px`;
-    }
-
-    function drawState() {
-        let stateDiv = document.getElementById("state");
-        stateDiv.innerHTML = "";
-    }
-
-    window.onload = start;
-</script>
+    </style>
+</head>
+<body>
+    <div id="nav-bar">Navigation Bar</div>
+    <div id="matrix"></div>
+    <div id="state"></div>
+    <script>
+        // Your JavaScript code here
+    </script>
+</body>
+</html>
 
 
 ##########
