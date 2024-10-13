@@ -42,9 +42,22 @@
     <div id="matrix"></div>
     <div id="state"></div>
         <input type="file" id="image-input" accept="image/*">
-        <img id="uploaded-image" src="" alt="Uploaded Image">
+        <img id="uploaded-image" src="" alt="">
     </div>
     <script>
+        document.getElementById('image-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('uploaded-image').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
                 let matrix = [
             [0, 0, 0],
         ];
