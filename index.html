@@ -32,8 +32,7 @@
         }
         #image-host img {
             width: 100%;
-            height: 100%;0--
-                
+            height: 100%;
         }
     </style>
 </head>
@@ -41,6 +40,7 @@
     <div id="nav-bar">Navigation Bar</div>
     <div id="matrix"></div>
     <div id="state"></div>
+    <div id="image-host">
         <input type="file" id="image-input" accept="image/*">
         <img id="uploaded-image" src="" alt="">
     </div>
@@ -55,10 +55,8 @@
                 reader.readAsDataURL(file);
             }
         });
-    </script>
-</body>
-</html>
-                let matrix = [
+
+        let matrix = [
             [0, 0, 0],
         ];
         let interval;
@@ -84,42 +82,30 @@
         }
 
         function drawMatrix() {
-            let matrixDiv = document.getElementById("matrix");
-            matrixDiv.innerHTML = "";
+            const matrixDiv = document.getElementById('matrix');
+            matrixDiv.innerHTML = '';
             for (let i = 0; i < matrix.length; i++) {
                 for (let j = 0; j < matrix[i].length; j++) {
-                    let dot = document.createElement("span");
-                    dot.className = "dot" + (matrix[i][j] ? " on" : "");
+                    const dot = document.createElement('div');
+                    dot.className = 'dot' + (matrix[i][j] ? ' on' : '');
                     dot.style.top = `${i * 20}px`;
                     dot.style.left = `${j * 20}px`;
-                    dot.draggable = true;
-                    dot.ondragstart = dragStart;
-                    dot.ondragend = dragEnd;
                     matrixDiv.appendChild(dot);
                 }
             }
         }
 
-        function dragStart(event) {
-            event.dataTransfer.setData("text/plain", event.target.id);
-            event.target.style.opacity = "0.5";
-        }
-
-        function dragEnd(event) {
-            event.target.style.opacity = "1";
-            event.target.style.top = `${event.clientY - 5}px`;
-            event.target.style.left = `${event.clientX - 5}px`;
-        }
-
         function drawState() {
-            let stateDiv = document.getElementById("state");
-            stateDiv.innerHTML = "";
+            const stateDiv = document.getElementById('state');
+            stateDiv.innerHTML = JSON.stringify(matrix);
         }
 
-        window.onload = start;
+        // Start the matrix animation
+        start();
     </script>
 </body>
 </html>
+
 
 
 ##########
