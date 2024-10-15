@@ -103,6 +103,15 @@
         // Start the matrix animation
         start();
     </script>
+
+    
+
+    <!-- Draggable icon and dropzone -->
+    <div class="dropzone" id="dropzone">Drop files here</div>
+    <img id="icon" class="draggable-icon" src="https://example.com/your-icon-url.png" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', null)">
+    <input type="file" id="fileInput" accept="image/*">
+
+    <!-- Include the external JavaScript file -->
 </body>
 </html>
 
