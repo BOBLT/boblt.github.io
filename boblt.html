@@ -38,6 +38,30 @@
   }
 </style>
 
+  <style>
+     
+    <style>
+        .dropzone {
+            width: 300px;
+            height: 300px;
+            margin: 50px;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .dropzone-hover {
+            border-color: #4CAF50;
+        }
+
+        img.draggable-icon {
+            width: 100px;
+            height: 100px;
+            cursor: grab;
+        }
+  </style>
+
  <script>
  myNewObject = new Object();
  myNewObject.info = "GW-TI89 TS-TI89 HH-TI89"
@@ -55,6 +79,47 @@ container.addEventListener('click', function() {
 
 </head>
 <body>
+  
+
+    <!-- Add the draggable icon and dropzone -->
+    <div class="dropzone" id="dropzone">Drop files here</div>
+    <img id="icon" class="draggable-icon" src="https://example.com/your-icon-url.png" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', null)">
+    <input type="file" id="fileInput" accept="image/*">
+
+    <!-- Add the script to handle the drag-and-drop functionality -->
+    <script>
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+        const icon = document.getElementById('icon');
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    icon.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        dropzone.addEventListener('dragover', function(event) {
+            event.preventDefault();
+            dropzone.classList.add('dropzone-hover');
+        });
+
+        dropzone.addEventListener('dragleave', function(event) {
+            dropzone.classList.remove('dropzone-hover');
+        });
+
+        dropzone.addEventListener('drop', function(event) {
+            event.preventDefault();
+            dropzone.classList.remove('dropzone-hover');
+            const file = event.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload 
+  
   <!-- ADD YOUR HTML CODE HERE -->
   <div id="parent-box"></div>
 
