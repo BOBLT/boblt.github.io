@@ -106,16 +106,7 @@
 </body>
 </html>
 
-
-    <!-- Draggable icon and dropzone -->
-    <div class="dropzone" id="dropzone">Drop files here</div>
-    <img id="icon" class="draggable-icon" src="https://example.com/your-icon-url.png" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', null)">
-    <input type="file" id="fileInput" accept="image/*">
-
-    <!-- Include the external JavaScript file -->
-    <script src="dragdrop.js"></script>
 ##########
-
 
 <!-- Add a container for the tab box and buttons -->
 <h1>BOBLT.INC</h1>
@@ -195,6 +186,14 @@ function animateDot() {
 }
 animateDot();
 </script>
+
+    <!-- Draggable icon and dropzone -->
+    <div class="dropzone" id="dropzone">Drop files here</div>
+    <img id="icon" class="draggable-icon" src="https://example.com/your-icon-url.png" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', null)">
+    <input type="file" id="fileInput" accept="image/*">
+
+    <!-- Include the external JavaScript file -->
+    <script src="dragdrop.js"></script>
   
     <script>
   function printDiv(divId) {
