@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape Generator</title>
+    <style>
+        .shape {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            display: inline-block;
+            background-color: #4CAF50;
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+
+        .square {
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="generateShape('circle')">Generate Circle</button>
+    <button onclick="generateShape('square')">Generate Square</button>
+    <div id="shapesContainer"></div>
+
+    <script>
+        function generateShape(shapeType) {
+            const shape = document.createElement('div');
+            shape.className = `shape ${shapeType}`;
+            document.getElementById('shapesContainer').appendChild(shape);
+        }
+    </script>
+
+</body>
+</html>
