@@ -6,23 +6,34 @@
     <title>BOBLT</title>
     <h1>BOBLT.INC</h1>
     <style>
+        body {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100vh;
+        }
+
         #matrix {
             position: relative;
             width: 100px;
             height: 100px;
         }
+
         .dot {
             position: absolute;
             width: 20px;
             height: 20px;
             background-color: grey;
         }
+
         .dot.on {
             background-color: black;
         }
+
         #nav-bar {
             display: none;
         }
+
         #image-host {
             position: absolute;
             top: 120px;
@@ -31,11 +42,12 @@
             height: 69px;
             border: 1px solid #000;
         }
+
         #image-host img {
             width: 75%;
             height: 69%;
         }
-        
+
         .dropzone {
             width: 300px;
             height: 300px;
@@ -56,10 +68,12 @@
             cursor: grab;
             display: inline-block;
         }
+
         img.draggable-icon {
-            width:  70%;
+            width: 70%;
             height: 70%;
         }
+
         .file-input-container {
             display: flex;
             justify-content: flex-end;
