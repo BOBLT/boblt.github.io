@@ -76,14 +76,15 @@
         .file-input-container { 
             display: flex; 
              justify-content: flex-end; /* Align the text to the right */ 
-             width: 100%; 
-             padding: 10px; 
-             background-color: white; 
+             width: 100%;
+            text-align: right;
         }
-
-        
+        .file-input-wrapper { margin-left: auto; /* Ensure the input itself is on the right */ 
+        } 
+    </style>
 </head>
 <body>
+    
     <div id="nav-bar">Navigation Bar</div>
     <div id="matrix"></div>
     <div id="state"></div>
@@ -91,17 +92,23 @@
         <input type="file" id="image-input" accept="image/*">
         <img id="uploaded-image" src="" alt="">
     </div>
-    <script>
-        document.getElementById('image-input').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('uploaded-image').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+
+    <div class="file-input-container">
+        <input typ="file" id="fileInput" accept="image/*>
+    </div>
+    
+<script> 
+    document.getElementById('image-input').addEventListener('change', function(event) { 
+        const file = event.target.files[0]; 
+        if (file) { 
+            const reader = new FileReader(); 
+            reader.onload = function(e) { 
+                document.getElementById('uploaded-image').src = e.target.result; 
+            }; 
+            reader.readAsDataURL(file); 
+        } 
+    }); 
+</script>
 
         let matrix = [
             [0, 0, 0],
