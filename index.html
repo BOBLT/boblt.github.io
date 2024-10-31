@@ -125,6 +125,7 @@
     </style>
 </head>
 <body>
+    <h1>BOBLT.INC</h1>
 
     <div id="clocks"> 
         <div id="pacific-time" class="clock"> 
@@ -135,6 +136,15 @@
             <div class="half-circle"></div> 
             <div class="time-display">12:00</div> 
         </div>
+    </div>
+
+   <div id="nav-bar">Navigation Bar</div> 
+    <div id="matrix"></div> 
+    <div id="state"></div> 
+    <div id="image-host"> 
+        <input type="file" id="image-input" accept="image/*"> 
+        <img id="uploaded-image" src="" alt=""> 
+    </div> 
 
     <div id="clocks"> 
         <div id="pacific-time" class="clock"> 
@@ -146,19 +156,15 @@
             <div class="time-display">12:00</div> </div> 
         </div>
 
-        <script src="myScript.js"></script>
-    
-    <div id="nav-bar">Navigation Bar</div>
-    <div id="matrix"></div>
-    <div id="state"></div>
-    <div id="image-host">
-        <input type="file" id="image-input" accept="image/*">
-        <img id="uploaded-image" src="" alt="">
-    </div>
-
-    <div class="file-input-container">
+        <div class="file-input-container">
         <input typ="file" id="fileInput" accept="image/*>
     </div>
+</div>
+
+    <script src="myScript.js"></script>
+</body>
+</html>
+            
     
 <script> 
     document.getElementById('image-input').addEventListener('change', function(event) { 
