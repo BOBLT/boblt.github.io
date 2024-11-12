@@ -112,16 +112,36 @@
         
         .file-input-container { 
             display: flex; 
-            justify-content: flex-end; /* Align the text to the right */ 
+            justify-content: center; /* Align the text to the right */ 
             width: 100%; 
-            text-align: right; 
+            text-align: 20px; 
         } 
         
-        .file-input-wrapper { margin-left: auto; /* Ensure the input itself is on the right */ 
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input-wrapper input[type="file"] [
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-input-wrapper .btn { 
+            border: 2px solid #4CAF50; 
+            color: white; 
+            background-color: #4CAF50; 
+            padding: 8px 20px; 
+            display: inline-block; 
+            cursor: pointer; 
         }
     </style> 
 </head> 
-<body>
 <body>
     <h1>BOBLT.INC</h1>
 
