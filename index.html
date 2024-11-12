@@ -431,22 +431,32 @@
     <h2>AUTOPLAY</h2>
     
 <style>
-    .bouncing-image {
+    .bouncing-image .bouncing-image2 {
         position: absolute;
         width: 100px; /* Adjust the width of the image as needed */
         height: 100px; /* Adjust the height of the image as needed */
-        background-image: url('https://th.bing.com/th/id/OIP.iuosuvrLqiGJmqIs_CzvlAHaFj?w=229&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7'); /* Replace with the path to your image */
         background-size: cover;
         animation: bounce 2s linear infinite;
     }
 
+    .bouncing-image1 {
+        background-image: url('https://th.bing.com/th/id/OIP.iuosuvrLqiGJmqIs_CzvlAHaFj?w=229&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7');
+    }
+
+    .bouncing-image2 {
+        background-image: url('https://th.bing.com/th/id/OIP.iuosuvrLqiGJmqIs_CzvlAHaFj?w=229&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7');
+    }
+        
     @keyframes bounce {
         0% { left: 0; }
         50% { left: calc(100% - 100px); } /* Adjust the 100px to the width of your image */
         100% { left: 0; }
     }
 </style>
-<div class="bouncing-image"></div>
+</head>
+
+<div class="bouncing-image1"></div>
+<div class="bouncing-image2" style="top: 120px;"></div>
 <div id="matrix"></div>
     
     <div id="matrix"></div>
