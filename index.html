@@ -176,13 +176,14 @@
         } 
     }); 
 </script>
-
-        let matrix = [
+    
+<script>
+    let matrix = [
             [0, 0, 0],
-        ];
-        let interval;
+    ];
+    let interval;
 
-        function start() {
+    function start() {
             clearInterval(interval);
             interval = setInterval(() => {
                 updateMatrix();
@@ -223,6 +224,8 @@
 
         // Start the matrix animation
         start();
+    </script>
+    <script src="dragdrop.js"></script>
 
     <div class="file-input-container"> 
         <input type="file" id="fileInput" accept="image/*"> 
