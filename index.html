@@ -408,7 +408,26 @@
 
     <!-- add the dot matrix animation -->
     <h2>AUTOPLAY</h2>
+    
+<style>
+    .bouncing-image {
+        position: absolute;
+        width: 100px; /* Adjust the width of the image as needed */
+        height: 100px; /* Adjust the height of the image as needed */
+        background-image: url('your_image.png'); /* Replace with the path to your image */
+        background-size: cover;
+        animation: bounce 2s linear infinite;
+    }
 
+    @keyframes bounce {
+        0% { left: 0; }
+        50% { left: calc(100% - 100px); } /* Adjust the 100px to the width of your image */
+        100% { left: 0; }
+    }
+</style>
+<div class="bouncing-image"></div>
+<div id="matrix"></div>
+    
     <div id="matrix"></div>
     <br>
     <button onclick="start()">ZXCV</button>
