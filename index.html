@@ -6,6 +6,26 @@
     <title>BOBLT</title>
     <h1>BOBLT.INC</h1>
     <style>
+       <style> 
+        #canvas { 
+           border: 1px solid black; } 
+        
+        .bouncing-image { 
+            position: relative; /* Change from absolute to relative */ 
+            width: 229px; /* Set the width according to the image dimensions */ 
+            height: 180px; /* Set the height according to the image dimensions */ 
+            background-image: url('https://th.bing.com/th/id/OIP.iuosuvrLqiGJmqIs_CzvlAHaFj?w=229&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7'); 
+            background-size: cover; 
+            animation: bounce 2s linear infinite; 
+            margin-top: 20px; /* Add margin to create space below the heading */ 
+        } 
+        
+        @keyframes bounce { 
+            0% { left: 0; } 
+            50% { left: calc(100% - 229px); } /* Adjust the 229px to the width of your image */ 
+            100% { left: 0; } 
+        } 
+    </style>
         body { 
             display: flex; 
             flex-direction: column; 
