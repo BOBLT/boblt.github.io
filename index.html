@@ -472,7 +472,31 @@
 <!-- Add the graph animation -->
 <img src= "https://www.bing.com/th/id/OGC.d6a51567d6b83a63acf8a093562c46ce?pid=1.7&rurl=http%3a%2f%2fi1.wp.com%2fwww.mathemafrica.org%2fwp-content%2fuploads%2f2019%2f07%2fftc-1.gif&ehk=16mjk%2fFkcsWrx8Xm8wYNw6M3ECPBvYQJwg%2f3DyazqH0%3d" alt="Image 1" width="200" height="200" style="opacity: 0.2;">
 
-<div id="canvas-container" style="position: fixed; top: 200px; left: 50%; transform: translateX(-50%); width: 3in; height: 3in; border: 1px solid black;"></div>
+<style> 
+    #canvas-container { 
+        position: fixed; 
+        top: 200px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        width: 3in; 
+        height: 3in; 
+        border: 1px solid black; 
+        overflow: hidden; 
+    }
+#gif-container { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: -1; /* Ensures it stays behind the canvas */ 
+} 
+
+#gif-container img { 
+    width: 100%; 
+    height: 100%; 
+}
+</style>
 
 <script>
 function animateDot() {
