@@ -545,14 +545,14 @@
         ctx.fill();
         x += dx;
         y += dy;
-        if (x < canvas.width / 4 + 10 || x > canvas.width / 4 * 3 - 10) {
-          dx = -dx;
-    }
-    if (y < canvas.height / 4 + 10 || y > canvas.height / 4 * 3 - 10) {
-      dy = -dy;
-    }
-    requestAnimationFrame(animate);
+        // Remove movement restrictions 
+        if (x < 0) x = canvas.width; 
+        if (x > canvas.width) x = 0; 
+        if (y < 0) y = canvas.height; 
+        if (y > canvas.height) y = 0; 
+        requestAnimationFrame(animate);
 }
+
 animate();
 }
 animateDot();
