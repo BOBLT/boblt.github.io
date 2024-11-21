@@ -519,8 +519,15 @@
 
       // Load the GIF image 
         const gif = document.getElementById('gif'); 
+        const offScreenCanvas = document.createElement('canvas'); 
+        const offScreenCtx = offScreenCanvas.getContext('2d'); 
+        
         gif.onload = function () { 
-            ctx.drawImage(gif, 0, 0, canvas.width, canvas.height); 
+            ctx.drawImage(gif, 0, 0, canvas.width, canvas.height);
+            offScreenCanvas.height = canvas.height; 
+            offScreenCtx.drawImage(gif, 0, 0, offScreenCanvas.width, offScreenCanvas.height);
+           
+            
             // Make the GIF transparent 
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height); 
             for (let i = 0; i < imageData.data.length; i += 4) { 
@@ -529,14 +536,20 @@
                     imageData.data[i + 3] = 0; // Set alpha to 0 (transparent)
                 }
             }
-            ctx.putImageData(imageData, 0, 0);
-            ctx.drawImage(gif, 0, 0, canvas.width, canvas.height);
-            startAnimation();
+
+            offScreenCtx.putImageData(imageData, 0, 0); 
+            requestAnimationFrame(animateGreenDot); // Start the animation 
         };
 
         gif.src = gif.src;
 
-        // Function to draw the green dot function drawGreenDot() { 
+        let dotX = canvas.width / 2; 
+        let dotY = canvas.height / 2; 
+        let dotSpeedX = 2; 
+        let dotSpeedY = 2;
+
+        // Function to draw the green dot 
+        function drawGreenDot() { 
         ctx.beginPath(); 
         ctx.arc(canvas.width / 2, canvas.height / 2, 10, 0, Math.PI * 2, true); // Adjust position and size as needed 
         ctx.fillStyle = 'green'; 
