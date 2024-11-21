@@ -535,6 +535,14 @@
         };
 
         gif.src = gif.src;
+
+        // Function to draw the green dot function drawGreenDot() { 
+        ctx.beginPath(); 
+        ctx.arc(canvas.width / 2, canvas.height / 2, 10, 0, Math.PI * 2, true); // Adjust position and size as needed 
+        ctx.fillStyle = 'green'; 
+        ctx.fill(); 
+        ctx.closePath(); 
+    }
             
       // Set the initial position of the dot
       let x = canvas.width / 2;
