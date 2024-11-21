@@ -477,6 +477,7 @@
   #gif-container img { 
     width: 100%; 
     height: 100%; 
+    display: none;
       
 }  
 </style>
@@ -496,7 +497,7 @@
     
     <div id="matrix"></div>
     <br>
-    <button onclick="start()">ZXCV</button>
+    <button onclick="animateDot()">ZXCV</button>
     <br><br>
     <div id="state"></div>
 
@@ -523,7 +524,8 @@
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height); 
             for (let i = 0; i < imageData.data.length; i += 4) { 
                 if (imageData.data[i] === 255 && 
-                    imageData.data[i + 1] === 255 && imageData.data[i + 2] === 255) { imageData.data[i + 3] = 0; // Set alpha to 0 (transparent)
+                    imageData.data[i + 1] === 255 && imageData.data[i + 2] === 255) { 
+                    imageData.data[i + 3] = 0; // Set alpha to 0 (transparent)
                 }
             }
             ctx.putImageData(imageData, 0, 0);
@@ -540,24 +542,24 @@
       // Animate the dot bouncing back and forth
       function animate() {
         ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(gif, 0, 0, canvas.width, canvas.height);
         ctx.beginPath();
         ctx.arc(x, y, 10, 0, Math.PI * 2);
         ctx.fill();
         x += dx;
-        y += dy;
-        // Remove movement restrictions 
+        y += dy; 
         if (x < 0) x = canvas.width; 
         if (x > canvas.width) x = 0; 
         if (y < 0) y = canvas.height; 
         if (y > canvas.height) y = 0; 
         requestAnimationFrame(animate);
-}
+      }
 
-animate();
-}
-animateDot();
-</script>
-</body>    
+      animate();
+    }
+    </script>
+</body>
+</html>
 
     <!-- Draggable icon and dropzone -->
     <div class="dropzone" id="dropzone">Drop files here</div>
