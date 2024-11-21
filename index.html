@@ -13,7 +13,7 @@
             margin: 0; 
             text-align: center; /* Center text */ 
         }
-        
+
         h1 { 
             z-index: 1; /* Ensure the text is above other elements */ 
         } 
@@ -23,7 +23,7 @@
             margin-top: 10px; 
             z-index: 0; 
         } 
-        
+
         .clock { 
             width: 100px; 
             height: 100px; 
@@ -32,7 +32,7 @@
             position: relative; 
             margin: 10px; /* Add some spacing between clocks */ 
         } 
-        
+
         .half-circle { 
             width: 50px; 
             height: 50px; 
@@ -42,20 +42,20 @@
             top: -1px; 
             left: calc(50% - 25px); 
         } 
-        
+
         .time-display { 
             position: absolute; 
             bottom: 10px; 
             width: 100%; 
             text-align: center; 
         } 
-        
+
         #matrix { 
             position: relative; 
             width: 100px; 
             height: 100px; 
         } 
-        
+
         .dot { 
             position: 
                 absolute; 
@@ -63,13 +63,13 @@
                 height: 20px; 
                 background-color: grey; 
         } 
-        
+
         .dot.on { 
             background-color: black; } 
-        
+
         #nav-bar { 
             display: none; } 
-        
+
         #image-host { 
             position: absolute; 
             top: 120px; 
@@ -78,12 +78,12 @@
             height: 69px; 
             border: 1px solid #000; 
         } 
-        
+
         #image-host img {
             width: 75%; 
             height: 69%; 
         } 
-        
+
         .dropzone { 
             width: 300px; 
             height: 300px; 
@@ -93,30 +93,30 @@
             border-radius: 4px; 
             text-align: center; 
         } 
-        
+
         .dropzone-hover { 
             border-color: #4CAF50; 
         } 
-        
+
         .draggable-container { 
             width: 40px; 
             height: 40px; 
             cursor: grab; 
             display: inline-block; 
         } 
-        
+
         img.draggable-icon { 
             width: 70%; 
             height: 70%; 
         } 
-        
+
         .file-input-container { 
             display: flex; 
             justify-content: center; /* Align the text to the right */ 
             width: 100%; 
             text-align: 20px; 
         } 
-        
+
         .file-input-wrapper {
             position: relative;
             overflow: hidden;
@@ -178,12 +178,11 @@
         <input typ="file" id="fileInput" accept="image/*>
     </div>
 </div>
-
     <script src="myScript.js"></script>
 </body>
 </html>
-            
-    
+
+
 <script> 
     document.getElementById('image-input').addEventListener('change', function(event) { 
         const file = event.target.files[0]; 
@@ -196,7 +195,7 @@
         } 
     }); 
 </script>
-    
+
 <script>
     let matrix = [
             [0, 0, 0],
@@ -250,11 +249,11 @@
     <div class="file-input-container"> 
         <input type="file" id="fileInput" accept="image/*"> 
     </div> <script src="dragdrop.js"></script>
-        
+
     <script> 
         document.addEventListener('DOMContentLoaded', function() { 
             const fileInput = document.getElementById('fileInput'); 
-            
+
             fileInput.addEventListener('change', function(event) { 
             const file = event.target.files[0]; 
             if (file && file.type.startsWith('image/')) { 
@@ -270,7 +269,7 @@
 
     <a href="shapegenerator.html">Go to Shape Generator</a>
 
-    
+
     <title>Draggable Icon with Upload</title>
     <style>
         .dropzone {
@@ -417,7 +416,7 @@
     <div id="tab-box" style="position: relative;">
       <input type="text" id="math-input" placeholder="🦈">
       <p id="math-output"></p>
-    
+
   <!-- Add the print and copy buttons -->
   <div style="text-align: center; margin-top: 10px;">
   <button onclick="printDiv('tab-box')" style="font-size: 14px; padding: 5px 10px;">Print</button>
@@ -429,7 +428,7 @@
 
     <!-- add the dot matrix animation -->
     <h2>AUTOPLAY</h2>
-    
+
 <style>
     .bouncing-image1, .bouncing-image2 {
         position: absolute;
@@ -447,7 +446,7 @@
         background-image: url('https://th.bing.com/th/id/OIP.iuosuvrLqiGJmqIs_CzvlAHaFj?w=229&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7');
         top: 120px;
     }
-        
+
     @keyframes bounce {
         0% { left: 0; }
         50% { left: calc(100% - 100px); } /* Adjust the 100px to the width of your image */
@@ -478,10 +477,8 @@
     width: 100%; 
     height: 100%; 
     display: none;
-      
 }  
 </style>
-</head>
 <body>
     <h1>BOBLT.INC</h1>
     <h2>AUTOPLAY</h2>
@@ -492,13 +489,13 @@
     <div id="canvas-container"> 
         <!-- Container for the GIF --> 
         <div id="gif-container"> 
-            <img id="gif" src="https://cdn.britannica.com/98/157198-050-8B4735F2/Octopus-swimming.jpg" alt="Animated GIF"> 
+            <img src="https://cdn.britannica.com/98/157198-050-8B4735F2/Octopus-swimming.jpg" alt="Animated GIF"> 
         </div> 
     </div>
-    
+
     <div id="matrix"></div>
     <br>
-    <button onclick="animateDot()">ZXCV</button>
+    <button onclick="start()">ZXCV</button>
     <br><br>
     <div id="state"></div>
 
@@ -519,43 +516,17 @@
 
       // Load the GIF image 
         const gif = document.getElementById('gif'); 
-        const offScreenCanvas = document.createElement('canvas'); 
-        const offScreenCtx = offScreenCanvas.getContext('2d'); 
-        
         gif.onload = function () { 
-            ctx.drawImage(gif, 0, 0, canvas.width, canvas.height);
-            offScreenCanvas.height = canvas.height; 
-            offScreenCtx.drawImage(gif, 0, 0, offScreenCanvas.width, offScreenCanvas.height);
-           
-            
+            ctx.drawImage(gif, 0, 0, canvas.width, canvas.height); 
             // Make the GIF transparent 
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height); 
             for (let i = 0; i < imageData.data.length; i += 4) { 
                 if (imageData.data[i] === 255 && 
-                    imageData.data[i + 1] === 255 && imageData.data[i + 2] === 255) { 
-                    imageData.data[i + 3] = 0; // Set alpha to 0 (transparent)
+                    imageData.data[i + 1] === 255 && imageData.data[i + 2] === 255) { imageData.data[i + 3] = 0; // Set alpha to 0 (transparent)
                 }
             }
-
-            offScreenCtx.putImageData(imageData, 0, 0); 
-            requestAnimationFrame(animateGreenDot); // Start the animation 
+            ctx.putImageData(imageData, 0, 0);
         };
-
-        gif.src = gif.src;
-
-        let dotX = canvas.width / 2; 
-        let dotY = canvas.height / 2; 
-        let dotSpeedX = 2; 
-        let dotSpeedY = 2;
-
-        // Function to draw the green dot 
-        function drawGreenDot() { 
-        ctx.beginPath(); 
-        ctx.arc(canvas.width / 2, canvas.height / 2, 10, 0, Math.PI * 2, true); // Adjust position and size as needed 
-        ctx.fillStyle = 'green'; 
-        ctx.fill(); 
-        ctx.closePath(); 
-    }
             
       // Set the initial position of the dot
       let x = canvas.width / 2;
@@ -564,27 +535,27 @@
       let dx = Math.random() * 4 - 2;
       let dy = Math.random() * 4 - 2;
 
-      function startAnimation() { 
-          // Animate the dot moving freely 
-          function animate() { 
-              ctx.clearRect(0, 0, canvas.width, canvas.height); 
-              ctx.drawImage(gif, 0, 0, canvas.width, canvas.height); // Redraw the GIF 
-              ctx.beginPath(); 
-              ctx.arc(x, y, 10, 0, Math.PI * 2); 
-              ctx.fill(); 
-              x += dx; 
-              y += dy; 
-              if (x < 0) x = canvas.width; 
-              if (x > canvas.width) x = 0; 
-              if (y < 0) y = canvas.height; 
-              if (y > canvas.height) y = 0; 
-              requestAnimationFrame(animate); 
-          } 
-          animate(); 
-      } 
-    } 
-</script> 
-</body>
+      // Animate the dot bouncing back and forth
+      function animate() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.beginPath();
+        ctx.arc(x, y, 10, 0, Math.PI * 2);
+        ctx.fill();
+        x += dx;
+        y += dy;
+        if (x < canvas.width / 4 + 10 || x > canvas.width / 4 * 3 - 10) {
+          dx = -dx;
+    }
+    if (y < canvas.height / 4 + 10 || y > canvas.height / 4 * 3 - 10) {
+      dy = -dy;
+    }
+    requestAnimationFrame(animate);
+}
+animate();
+}
+animateDot();
+</script>
+</body>    
 
     <!-- Draggable icon and dropzone -->
     <div class="dropzone" id="dropzone">Drop files here</div>
@@ -593,7 +564,7 @@
 
     <!-- Include the external JavaScript file -->
     <script src="dragdrop.js"></script>
-  
+
     <script>
   function printDiv(divId) {
     var divToPrint = document.getElementById(divId);
@@ -615,7 +586,7 @@
     window.getSelection().removeAllRanges();
   }
 </script>
-    
+
       <script>
       const mathInput = document.querySelector('#math-input');
       const mathOutput = document.querySelector('#math-output');
@@ -656,7 +627,7 @@
            <a href="#">Edit</a>
          </div>
        </div>
-    
+
        <!-- Added an id attribute to the div element that contains image 2 -->
        <div class="box" id="image2">
          <img src="https://www.researchgate.net/profile/Ping-Jack-Soh/publication/258793360/figure/fig2/AS:392783337672704@1470658253047/Designed-radar-waveform_Q320.jpg" alt="Image 2" width="200" height="200">
@@ -690,7 +661,7 @@
 </div>
 
 <div class="box" onmouseover="showImage()" onmouseout="hideImage()">
-  
+
   <div class="box" onmouseover="showImage()"
     onmouseout="hideImage()">
 
@@ -731,8 +702,8 @@
   }, 5000);
 });
     </script>
-    
-    
+
+
     <div id="remote-call-box"></div>
 
     <div id="remote-call-box"></div>
@@ -782,7 +753,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-    
+
     <script>
       window.onload = function () {
         // Get the remote call box element by id
@@ -854,7 +825,7 @@ char.Space.replace(tableQuery.query));
 
 console.log(tableQuery.query); // Output: bd
     <</script>
-  
+
 
 
     <h2>BOBLT</h2>
@@ -917,7 +888,7 @@ console.log(tableQuery.query); // Output: bd
     padding: 10px;
   }
 </style>    
-    
+
   <p class="shark">
       PLEASE DO NOT TAP ON THE GLASS...NO SERIOUSLY DO NOT TAP THIS BUTTON
     </p>
