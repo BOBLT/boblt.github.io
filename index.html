@@ -481,6 +481,7 @@
       
 }  
 </style>
+</head>
 <body>
     <h1>BOBLT.INC</h1>
     <h2>AUTOPLAY</h2>
@@ -530,7 +531,10 @@
             }
             ctx.putImageData(imageData, 0, 0);
             ctx.drawImage(gif, 0, 0, canvas.width, canvas.height);
+            startAnimation();
         };
+
+        gif.src = gif.src;
             
       // Set the initial position of the dot
       let x = canvas.width / 2;
