@@ -492,7 +492,7 @@
     <div id="canvas-container"> 
         <!-- Container for the GIF --> 
         <div id="gif-container"> 
-            <img src="https://cdn.britannica.com/98/157198-050-8B4735F2/Octopus-swimming.jpg" alt="Animated GIF"> 
+            <img id="gif" src="https://cdn.britannica.com/98/157198-050-8B4735F2/Octopus-swimming.jpg" alt="Animated GIF"> 
         </div> 
     </div>
     
@@ -543,25 +543,26 @@
       let dx = Math.random() * 4 - 2;
       let dy = Math.random() * 4 - 2;
 
-      // Animate the dot bouncing back and forth
-      function animate() {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.drawImage(gif, 0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
-        ctx.arc(x, y, 10, 0, Math.PI * 2);
-        ctx.fill();
-        x += dx;
-        y += dy; 
-        if (x < 0) x = canvas.width; 
-        if (x > canvas.width) x = 0; 
-        if (y < 0) y = canvas.height; 
-        if (y > canvas.height) y = 0; 
-        requestAnimationFrame(animate);
-      }
-
-      animate();
-    }
-    </script>
+      function startAnimation() { 
+          // Animate the dot moving freely 
+          function animate() { 
+              ctx.clearRect(0, 0, canvas.width, canvas.height); 
+              ctx.drawImage(gif, 0, 0, canvas.width, canvas.height); // Redraw the GIF 
+              ctx.beginPath(); 
+              ctx.arc(x, y, 10, 0, Math.PI * 2); 
+              ctx.fill(); 
+              x += dx; 
+              y += dy; 
+              if (x < 0) x = canvas.width; 
+              if (x > canvas.width) x = 0; 
+              if (y < 0) y = canvas.height; 
+              if (y > canvas.height) y = 0; 
+              requestAnimationFrame(animate); 
+          } 
+          animate(); 
+      } 
+    } 
+</script> 
 </body>
 </html>
 
