@@ -1,17 +1,146 @@
+window.onload = function() {
+  var link = document.createElement('a');
+  link.href = 'https://www.hawaiicommunityfoundation.org/maui-strong';
+  link.textContent = 'HAWAII HAWAII';
+  
+  var h1 = document.createElement('h1');
+  h1.appendChild(link);
+  
+  document.body.appendChild(h1);
+};
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Page</title>
+<meta charset="UTF-8">
+<title>Central Lodge Boot</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background: #fafafa;
+  }
+
+  /* 0.1px digital wave line (visual simulation) */
+  .wave-line {
+    width: 85%;
+    height: 2px;
+    margin: 25px auto;
+    background: repeating-linear-gradient(
+      to right,
+      rgba(0, 120, 255, 0.4) 0px,
+      rgba(0, 120, 255, 0.4) 1px,
+      rgba(0, 120, 255, 0.1) 2px
+    );
+    transform: scaleY(0.05);
+  }
+
+  /* 4‑pax central lodge grid */
+  .central-lodge {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    max-width: 420px;
+    margin: 30px auto;
+  }
+
+  .pax-slot {
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 6px;
+    background: #fff;
+  }
+
+  .label {
+    font-weight: bold;
+  }
+</style>
 </head>
+
 <body>
 
-<p>islam first</p>
-<p>isreal second</p>
-<p>america? lol</p>
+<h1>
+  <a href="https://www.hawaiicommunityfoundation.org/maui-strong">
+    HAWAII HAWAII
+  </a>
+</h1>
 
-<a href="https://www.bing.com/aclk?ld=e8Dax15SikfHfWmgoWhl7UQzVUCUz3zjUe61fIziTgigVJIe0rl2XWUxJILhGbSGEnnTFERcDoZwQIPUIuH1pH5tCyhhIpEcuP-Rp15dDle0lVdM9J3ofrMAVH_eW8pGk9ekpIKV10Bezh1GJ3LfrYO8xk-gCsrnpNkN3aGNkdOBoKdzNYiiKKZuD3eLcLiWOKkYrplT8rConR6isU6k6NO1a63BQ&u=aHR0cHMlM2ElMmYlMmZnaXZlLnVucmVmdWdlZXMub3JnJTJmMTkxMTAxd2ludF9tYWlucGdfcF8zMDAwJTJmJTNmU0Zfb25ldGltZSUzZDcwMVJmMDAwMDBmMGpGcElBSSUyNlNGX21vbnRobHklM2Q3MDFSZjAwMDAwZjBqRnFJQUklMjZ1dG1fY2FtcGFpZ24lM2RVU19FTl9VTkhDUl9Db3JlQnJhbmRfQ29yZSUyNmdjbGlkJTNkMzA1YTczMGRkNjY1MTY1MWE1MjgxYTcyYWU1M2I5YTklMjZnY2xzcmMlM2QzcC5kcyUyNm1zY2xraWQlM2QzMDVhNzMwZGQ2NjUxNjUxYTUyODFhNzJhZTUzYjlhOQ&rlid=305a730dd6651651a5281a72ae53b9a9">
-  Link
-</a>
+<div class="wave-line"></div>
+
+<div id="central-lodge" class="central-lodge">
+  <div class="pax-slot"><span class="label">PAX 1:</span> <span class="status" data-id="1">...</span></div>
+  <div class="pax-slot"><span class="label">PAX 2:</span> <span class="status" data-id="2">...</span></div>
+  <div class="pax-slot"><span class="label">PAX 3:</span> <span class="status" data-id="3">...</span></div>
+  <div class="pax-slot"><span class="label">PAX 4:</span> <span class="status" data-id="4">...</span></div>
+</div>
+
+<script>
+/* ============================================================
+   REFERENCE MODULE EXPLAINER (C++ BACKEND EXPECTATION)
+   ------------------------------------------------------------
+   MODULE: LockSensorCaseModule
+
+   INPUT:
+     id → integer (1–4)
+
+   INTERNAL LOGIC:
+     state = read_lock_sensor(id)
+
+     switch(state):
+       LOCKED   → E = 10 + id
+       UNLOCKED → E = 5 * id
+       JAMMED   → E = 99
+       UNKNOWN  → E = NaN
+
+   OUTPUT (JSON):
+     { state: "LOCKED" | "UNLOCKED" | "ERROR" | "UNKNOWN",
+       E: <number or null> }
+
+   AJAX FRONT-END EXPECTS THIS FORMAT.
+   ============================================================ */
+
+window.onload = function() {
+
+  const statuses = document.querySelectorAll('.status');
+
+  function updatePaxStatus() {
+    statuses.forEach(span => {
+      const id = span.getAttribute('data-id');
+
+      // AJAX COM LOGIC CENTRAL
+      fetch('/api/lock-sensor?id=' + encodeURIComponent(id))
+        .then(res => res.json())
+        .then(data => {
+          span.textContent = data.state + ' (E=' + data.E + ')';
+        })
+        .catch(err => {
+          span.textContent = 'COM ERROR';
+          console.error('AJAX error for PAX', id, err);
+        });
+    });
+  }
+
+  // Initial pull
+  updatePaxStatus();
+
+  // vc calculus limit <100>
+  let count = 0;
+  const limit = 100;
+
+  const interval = setInterval(() => {
+    if (count++ >= limit) {
+      clearInterval(interval);
+      return;
+    }
+    updatePaxStatus();
+  }, 5000);
+};
+</script>
 
 </body>
 </html>
+HTML 
+
+VISA : PORT TO TRACE > MOUNT VECTOR 
+  apex = "follow this line" |set this term for vc calculus limit <100>|
