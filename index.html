@@ -1,14 +1,3 @@
-window.onload = function() {
-  var link = document.createElement('a');
-  link.href = 'https://www.hawaiicommunityfoundation.org/maui-strong';
-  link.textContent = 'HAWAII HAWAII';
-  
-  var h1 = document.createElement('h1');
-  h1.appendChild(link);
-  
-  document.body.appendChild(h1);
-};
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,21 +11,27 @@ window.onload = function() {
     background: #fafafa;
   }
 
-  /* 0.1px digital wave line (visual simulation) */
   .wave-line {
     width: 85%;
-    height: 2px;
+    height: 3px;
     margin: 25px auto;
-    background: repeating-linear-gradient(
+    background: linear-gradient(
       to right,
-      rgba(0, 120, 255, 0.4) 0px,
-      rgba(0, 120, 255, 0.4) 1px,
-      rgba(0, 120, 255, 0.1) 2px
+      rgba(0, 140, 255, 1),
+      rgba(0, 200, 255, 0.6),
+      rgba(0, 140, 255, 1)
     );
-    transform: scaleY(0.05);
+    animation: wavePulse 2s infinite ease-in-out;
+    transform-origin: center;
+    border-radius: 2px;
   }
 
-  /* 4‑pax central lodge grid */
+  @keyframes wavePulse {
+    0%   { transform: scaleY(0.25); opacity: 0.6; }
+    50%  { transform: scaleY(1.0); opacity: 1.0; }
+    100% { transform: scaleY(0.25); opacity: 0.6; }
+  }
+
   .central-lodge {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -55,76 +50,98 @@ window.onload = function() {
   .label {
     font-weight: bold;
   }
+
+  .wave-rail {
+    width: 100%;
+    height: 3px;
+    margin-top: 8px;
+    background: linear-gradient(
+      to right,
+      rgba(0, 140, 255, 1),
+      rgba(0, 200, 255, 0.6),
+      rgba(0, 140, 255, 1)
+    );
+    animation: railPulse 1.8s infinite ease-in-out;
+    transform-origin: center;
+    border-radius: 2px;
+  }
+
+  @keyframes railPulse {
+    0%   { transform: scaleY(0.25); opacity: 0.6; }
+    50%  { transform: scaleY(1.0); opacity: 1.0; }
+    100% { transform: scaleY(0.25); opacity: 0.6; }
+  }
 </style>
 </head>
 
 <body>
 
-<h1>
-  <a href="https://www.hawaiicommunityfoundation.org/maui-strong">
-    HAWAII HAWAII
-  </a>
-</h1>
+<div id="dynamic-heading"></div>
 
 <div class="wave-line"></div>
 
 <div id="central-lodge" class="central-lodge">
-  <div class="pax-slot"><span class="label">PAX 1:</span> <span class="status" data-id="1">...</span></div>
-  <div class="pax-slot"><span class="label">PAX 2:</span> <span class="status" data-id="2">...</span></div>
-  <div class="pax-slot"><span class="label">PAX 3:</span> <span class="status" data-id="3">...</span></div>
-  <div class="pax-slot"><span class="label">PAX 4:</span> <span class="status" data-id="4">...</span></div>
+  <div class="pax-slot">
+    <span class="label">PAX 1:</span> <span class="status" data-id="1">...</span>
+    <div class="wave-rail"></div>
+  </div>
+
+  <div class="pax-slot">
+    <span class="label">PAX 2:</span> <span class="status" data-id="2">...</span>
+    <div class="wave-rail"></div>
+  </div>
+
+  <div class="pax-slot">
+    <span class="label">PAX 3:</span> <span class="status" data-id="3">...</span>
+    <div class="wave-rail"></div>
+  </div>
+
+  <div class="pax-slot">
+    <span class="label">PAX 4:</span> <span class="status" data-id="4">...</span>
+    <div class="wave-rail"></div>
+  </div>
 </div>
 
 <script>
-/* ============================================================
-   REFERENCE MODULE EXPLAINER (C++ BACKEND EXPECTATION)
-   ------------------------------------------------------------
-   MODULE: LockSensorCaseModule
-
-   INPUT:
-     id → integer (1–4)
-
-   INTERNAL LOGIC:
-     state = read_lock_sensor(id)
-
-     switch(state):
-       LOCKED   → E = 10 + id
-       UNLOCKED → E = 5 * id
-       JAMMED   → E = 99
-       UNKNOWN  → E = NaN
-
-   OUTPUT (JSON):
-     { state: "LOCKED" | "UNLOCKED" | "ERROR" | "UNKNOWN",
-       E: <number or null> }
-
-   AJAX FRONT-END EXPECTS THIS FORMAT.
-   ============================================================ */
-
 window.onload = function() {
 
+  // Heading injection
+  const link = document.createElement('a');
+  link.href = 'https://www.hawaiicommunityfoundation.org/maui-strong';
+  link.textContent = 'HAWAII HAWAII';
+
+  const h1 = document.createElement('h1');
+  h1.appendChild(link);
+  document.getElementById('dynamic-heading').appendChild(h1);
+
+  // AJAX Bender
   const statuses = document.querySelectorAll('.status');
 
-  function updatePaxStatus() {
-    statuses.forEach(span => {
-      const id = span.getAttribute('data-id');
+  function ajaxBender(id, element) {
+    fetch('/api/lock-sensor?id=' + id)
+      .then(r => r.json())
+      .then(data => {
+        element.textContent = data.state + ' (E=' + data.E + ')';
 
-      // AJAX COM LOGIC CENTRAL
-      fetch('/api/lock-sensor?id=' + encodeURIComponent(id))
-        .then(res => res.json())
-        .then(data => {
-          span.textContent = data.state + ' (E=' + data.E + ')';
-        })
-        .catch(err => {
-          span.textContent = 'COM ERROR';
-          console.error('AJAX error for PAX', id, err);
-        });
+        const rail = element.parentElement.querySelector('.wave-rail');
+        if (rail) {
+          rail.style.opacity = Math.min(1, 0.4 + (data.E / 100));
+          rail.style.transform = `scaleY(${0.2 + (data.E / 200)})`;
+        }
+      })
+      .catch(() => {
+        element.textContent = 'COM ERROR';
+      });
+  }
+
+  function updateAll() {
+    statuses.forEach(span => {
+      ajaxBender(span.dataset.id, span);
     });
   }
 
-  // Initial pull
-  updatePaxStatus();
+  updateAll();
 
-  // vc calculus limit <100>
   let count = 0;
   const limit = 100;
 
@@ -133,14 +150,10 @@ window.onload = function() {
       clearInterval(interval);
       return;
     }
-    updatePaxStatus();
+    updateAll();
   }, 5000);
 };
 </script>
 
 </body>
 </html>
-HTML 
-
-VISA : PORT TO TRACE > MOUNT VECTOR 
-  apex = "follow this line" |set this term for vc calculus limit <100>|
