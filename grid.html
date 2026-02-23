@@ -128,12 +128,28 @@
   <!-- RTX Image -->
   <img id="rtx-image"
      src="https://tse3.mm.bing.net/th/id/OIP.oOyGsr3RTqdhDm-XAABYCwHaFc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-     alt="RTX Graphics Card">
-     style="display:none;
-            position:absolute;
-            width:120px;
-            pointer-events:none;
-            filter:drop-shadow(0 0 15px #00ffcc);">
+     alt="RTX Graphics Card"
+     style="position: absolute;
+            bottom: 30px;          /* or top/left/right as desired */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            pointer-events: auto;   /* important – allow hover */
+            filter: drop-shadow(0 0 15px #00ffcc);
+            border: 2px solid #00ffcc;
+            box-shadow: 0 0 20px #00ffcc;
+            z-index: 10;">
+  
+<img id="bolt"
+     src="https://thumbs.dreamstime.com/b/large-cloud-lightning-bolt-coming-out-273653386.jpg"  <!-- 512×512 icon, transparent -->
+     alt="Lightning pointer"
+     style="display: none;
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);">
 
   <!-- Live Satellite Button -->
   <button class="live-button" onclick="window.open('https://satellitemap.space', '_blank')">
@@ -241,8 +257,8 @@ function attachLightningPointer() {
 
   rtx.addEventListener("mousemove", (e) => {
     // Track cursor position
-    bolt.style.left = (e.pageX + 20) + "px";
-    bolt.style.top  = (e.pageY - 20) + "px";
+    bolt.style.left = e.pageX + "px";  // no +20
+    bolt.style.top  = e.pageY + "px"; // no -20
   });
 
   rtx.addEventListener("mouseleave", () => {
