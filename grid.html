@@ -134,6 +134,7 @@
   <img id="phase-image" 
      src="https://th.bing.com/th/id/OIP.P1wSCrlDsNOMimDn39bkPgHaFX?w=246&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
      style="display:none; position:absolute; top:20px; right:20px; width:200px; border:2px solid #00ffcc; box-shadow:0 0 10px #00ffcc;">
+
 <script>
 /* ---------------------------
    PYTHON FUNCTIONS (unchanged)
@@ -172,6 +173,42 @@ window.$pythonFunctions = {
   }
 };
 
+/* ============================================================
+   PHI REWRITE DATA SIGNAL SUBSYSTEM
+============================================================ */
+function phiRewrite(input, phase = 1) {
+  let arr = [];
+
+  if (typeof input === "string") {
+    arr = input.split("").map(ch => ch.charCodeAt(0));
+  } else if (Array.isArray(input)) {
+    arr = input;
+  } else {
+    return null;
+  }
+
+  const PHI = (1 + Math.sqrt(5)) / 2;
+
+  return arr.map((v, i) => {
+    const shifted = v * PHI;
+    const biased = shifted + phase * (i + 1);
+    return Number(biased.toFixed(3));
+  });
+}
+
+function attachPhiToPythonWindow() {
+  const pyBox = document.getElementById("python-code");
+  if (!pyBox) return;
+
+  pyBox.addEventListener("input", () => {
+    const raw = pyBox.value;
+    const phiSignal = phiRewrite(raw, 1);
+    console.log("PHI SIGNAL:", phiSignal);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", attachPhiToPythonWindow);
+
 /* ---------------------------
    WALRUS LOCK SYSTEM
 ---------------------------- */
@@ -205,26 +242,27 @@ function phaseFunction() {
 document.getElementById("python-code").addEventListener("input", function() {
   const text = this.value.trim();
 
-if (text === "ICEPICK") {
-  WALRUS_UNLOCKED = true;
-  console.log("%cWALRUS OPERATOR UNLOCKED", "color:#00ffcc;font-weight:bold;");
-  phaseFunction();
-  startVibrationPortal();
-} 
+  if (text === "ICEPICK") {
+    WALRUS_UNLOCKED = true;
+    console.log("%cWALRUS OPERATOR UNLOCKED", "color:#00ffcc;font-weight:bold;");
+    phaseFunction();
+    startVibrationPortal();
+  }
 });
+
+/* ---------------------------
+   RUN SEQUENCE
+---------------------------- */
 function runSequence() {
   console.log("%cRUN SEQUENCE INITIATED", "color:#00ffcc;font-weight:bold;");
 
-  // Example: animate the phase image
   const img = document.getElementById("phase-image");
   img.style.transition = "transform 1.5s ease-out";
   img.style.transform = "scale(1.2) rotate(3deg)";
 
-  // Example: log antiVUCurve data
   const symbols = window.$pythonFunctions.antiVUCurve(6);
   console.log("RUN Sequence Symbols:", symbols);
 
-  // Example: pulse the background
   document.body.style.transition = "background-color 1s";
   document.body.style.backgroundColor = "rgba(0, 255, 204, 0.15)";
   setTimeout(() => {
@@ -232,7 +270,10 @@ function runSequence() {
   }, 1200);
 }
 
-  function vibrationPattern() {
+/* ---------------------------
+   VIBRATION PORTAL
+---------------------------- */
+function vibrationPattern() {
   const frames = [
     "~ ~ ~ ~ ~",
     " ~ ~ ~ ~ ",
@@ -242,7 +283,7 @@ function runSequence() {
   return frames;
 }
 
-  function startVibrationPortal() {
+function startVibrationPortal() {
   const box = document.getElementById("python-code");
   const frames = vibrationPattern();
   let i = 0;
@@ -252,8 +293,6 @@ function runSequence() {
     i++;
   }, 180);
 }
-
-
 
 /* ---------------------------
    TIMESTAMP LOGIC (unchanged)
