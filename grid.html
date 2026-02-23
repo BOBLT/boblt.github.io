@@ -16,6 +16,7 @@
       font-family: monospace;
       color: #00ffcc;
     }
+
     #cluster-container {
       position: absolute;
       top: 50%;
@@ -25,17 +26,21 @@
       height: 420px;
       z-index: 5;
     }
+
     svg {
       width: 100%;
       height: 100%;
     }
+
     .node {
       animation: pulse 2s infinite;
     }
+
     @keyframes pulse {
       0%, 100% { r: 6; opacity: 1; }
       50% { r: 9; opacity: 0.6; }
     }
+
     .branch {
       stroke: #00ffcc;
       stroke-width: 2.5;
@@ -43,9 +48,11 @@
       stroke-dasharray: 100;
       animation: flowBranch 4s linear infinite;
     }
+
     @keyframes flowBranch {
       to { stroke-dashoffset: -100; }
     }
+
     .live-button {
       position: fixed;
       bottom: 20px;
@@ -60,9 +67,11 @@
       box-shadow: 0 0 12px #00ffcc;
       z-index: 100;
     }
+
     .live-button:hover {
       background: #00ffaa;
     }
+
     #python-section {
       position: fixed;
       top: 16px;
@@ -75,6 +84,7 @@
       z-index: 50;
       max-width: 340px;
     }
+
     #python-code {
       width: 300px;
       height: 140px;
@@ -85,40 +95,53 @@
       font-family: monospace;
       resize: vertical;
     }
+
+    /* RTX IMAGE */
     #rtx-image {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 320px;          /* bigger for center prominence */
+      width: 320px;
       max-width: 80vw;
-      z-index: 15;           /* below cluster text but above branches if needed */
+      z-index: 15;
       cursor: pointer;
       transition: transform 0.25s ease;
       border: 2px solid #00ffcc;
       box-shadow: 0 0 30px #00ffcc88;
       border-radius: 8px;
     }
+
     #rtx-image:hover {
       transform: translate(-50%, -50%) scale(1.08);
     }
+
+    /* NEW REALISTIC LIGHTNING */
     #bolt {
       position: fixed;
-      width: 80px;
-      height: 80px;
+      width: 220px;
+      height: 220px;
       pointer-events: none;
       transform: translate(-50%, -50%);
       display: none;
-      z-index: 30;
-      opacity: 0.9;
+      z-index: 40;
+      opacity: 0;
+      filter: brightness(2.2) contrast(1.4);
     }
-    #bolt.active {
-      animation: boltPulse 0.3s infinite;
+
+    #bolt.flash-sequence {
+      animation: boltFlash 5s ease-out forwards;
     }
-    @keyframes boltPulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.95; }
-      50% { transform: translate(-50%, -50%) scale(1.25) rotate(10deg); opacity: 1; }
+
+    @keyframes boltFlash {
+      0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+      5%   { opacity: 1; transform: translate(-50%, -50%) scale(1.4); }
+      15%  { opacity: 0.85; transform: translate(-50%, -50%) scale(1.2); }
+      30%  { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+      60%  { opacity: 0.5; }
+      100% { opacity: 0; }
     }
+
     #phase-image {
       position: fixed;
       top: 20px;
@@ -154,10 +177,8 @@
     </svg>
   </div>
 
-  <!-- Lightning follows mouse over RTX -->
   <img id="bolt" src="https://thumbs.dreamstime.com/b/lightning-bolts-strike-mountain-monsoon-thunderstorm-arizona-168814122.jpg">
 
-  <!-- Centered NVIDIA RTX image (now truly in the middle of the page) -->
   <img id="rtx-image"
        src="https://m.media-amazon.com/images/I/512T3hTT5ZL.jpg"
        alt="NVIDIA RTX Graphics Card">
@@ -171,13 +192,11 @@
     <textarea id="python-code" placeholder="Enter Python here... (ICEPICK to unlock)"></textarea>
   </section>
 
-  <!-- Phase image (NOAA Ian rainfall) -->
   <img id="phase-image"
        src="https://www.ncei.noaa.gov/monitoring-content/sotc/national/2022/sep/ian/prcp-total-2022-0927-0930.png"
        alt="NOAA Hurricane Ian Rainfall">
 
 <script>
-// (your existing JavaScript remains unchanged — lightning, unlock, vibration, etc. all still work)
 const $pythonFunctions = {
   antiVUCurve(iterations, decay = 1) {
     const symbols = [];
@@ -237,21 +256,26 @@ document.getElementById("python-code")?.addEventListener("input", function() {
   }
 });
 
+/* NEW LIGHTNING SYSTEM */
 function attachLightning() {
   const rtx = document.getElementById("rtx-image");
   const bolt = document.getElementById("bolt");
   if (!rtx || !bolt) return;
+
+  let hasFlashed = false;
+
   rtx.addEventListener("mouseenter", () => {
+    if (hasFlashed) return;
+    hasFlashed = true;
+
     bolt.style.display = "block";
-    bolt.classList.add("active");
+    bolt.classList.add("flash-sequence");
   });
+
   rtx.addEventListener("mousemove", e => {
+    if (!hasFlashed) return;
     bolt.style.left = e.clientX + "px";
     bolt.style.top = e.clientY + "px";
-  });
-  rtx.addEventListener("mouseleave", () => {
-    bolt.style.display = "none";
-    bolt.classList.remove("active");
   });
 }
 
