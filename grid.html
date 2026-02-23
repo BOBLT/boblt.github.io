@@ -131,52 +131,127 @@
       title="Only Python syntax is accepted. Code will not be executed."></textarea>
   </section>
 
-  <script>
-    window.$pythonFunctions = {
-      antiVUCurve: function(iterations, decay = 1) {
-        let symbols = [];
-        for (let r = 0; r < iterations; r++) {
-          let value = Math.log(r + 1) * decay;
-          symbols.push({
-            id: `Symbol_${r}`,
-            value: parseFloat(value.toFixed(2)),
-            uniqueId: `${r}_${Math.random().toString(36).substr(2, 9)}`
-          });
-        }
-        return symbols;
-      },
-
-      clusterGenerate: function(subject, count) {
-        return `$${subject}_cluster_${count}`;
-      },
-
-      nodePosition: function(index, radius = 150, centerX = 200, centerY = 200) {
-        let angle = (index / 6) * Math.PI * 2;
-        return {
-          x: centerX + radius * Math.cos(angle),
-          y: centerY + radius * Math.sin(angle)
-        };
-      },
-
-      execute: function(fnName, ...args) {
-        if (typeof this[fnName] === 'function') {
-          return this[fnName](...args);
-        }
-        return `Function ${fnName} not found`;
-      }
-    };
-
-    const now = Date.now();
-    const lastPing = localStorage.getItem('lastPing') || 0;
-    const twelveHours = 12 * 60 * 60 * 1000;
-
-    if (now - lastPing > twelveHours) {
-      localStorage.setItem('lastPing', now);
+  <img id="phase-image" 
+     src="https://th.bing.com/th/id/OIP.P1wSCrlDsNOMimDn39bkPgHaFX?w=246&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
+     style="display:none; position:absolute; top:20px; right:20px; width:200px; border:2px solid #00ffcc; box-shadow:0 0 10px #00ffcc;">
+<script>
+/* ---------------------------
+   PYTHON FUNCTIONS (unchanged)
+---------------------------- */
+window.$pythonFunctions = {
+  antiVUCurve: function(iterations, decay = 1) {
+    let symbols = [];
+    for (let r = 0; r < iterations; r++) {
+      let value = Math.log(r + 1) * decay;
+      symbols.push({
+        id: `Symbol_${r}`,
+        value: parseFloat(value.toFixed(2)),
+        uniqueId: `${r}_${Math.random().toString(36).substr(2, 9)}`
+      });
     }
+    return symbols;
+  },
 
-    console.log('Anti-VU Curve Symbols:', window.$pythonFunctions.antiVUCurve(6));
-    console.log('Cluster Generated:', window.$pythonFunctions.clusterGenerate('fastener', 5));
-  </script>
+  clusterGenerate: function(subject, count) {
+    return `$${subject}_cluster_${count}`;
+  },
+
+  nodePosition: function(index, radius = 150, centerX = 200, centerY = 200) {
+    let angle = (index / 6) * Math.PI * 2;
+    return {
+      x: centerX + radius * Math.cos(angle),
+      y: centerY + radius * Math.sin(angle)
+    };
+  },
+
+  execute: function(fnName, ...args) {
+    if (typeof this[fnName] === 'function') {
+      return this[fnName](...args);
+    }
+    return `Function ${fnName} not found`;
+  }
+};
+
+/* ---------------------------
+   WALRUS LOCK SYSTEM
+---------------------------- */
+let WALRUS_UNLOCKED = false;
+
+/* gated walrus operator */
+const $ = (eid) => {
+  if (!WALRUS_UNLOCKED) {
+    console.warn("Walrus operator locked. Type ICEPICK in the Python window.");
+    return null;
+  }
+  return document.getElementById(eid);
+};
+
+/* ---------------------------
+   PHASE FUNCTION
+---------------------------- */
+function phaseFunction() {
+  const img = document.getElementById("phase-image");
+  img.style.display = "block";
+
+  console.log("%cPHASE-1 ACTIVATED", "color:#00ffcc;font-weight:bold;");
+
+  // Optional: tie phase to antiVUCurve
+  const symbols = window.$pythonFunctions.antiVUCurve(3);
+  console.log("Phase Symbols:", symbols);
+}
+
+/* ---------------------------
+   PYTHON WINDOW UNLOCK LISTENER
+---------------------------- */
+document.getElementById("python-code").addEventListener("input", function() {
+  const text = this.value.trim();
+
+  if (text === "ICEPICK") {
+    WALRUS_UNLOCKED = true;
+    console.log("%cWALRUS OPERATOR UNLOCKED", "color:#00ffcc;font-weight:bold;");
+
+    // Trigger phase function
+    phaseFunction();
+  }
+});
+
+/* ---------------------------
+   OPTIONAL: EID POWER FUNCTION
+---------------------------- */
+function powerEID() {
+  if (!WALRUS_UNLOCKED) return;
+
+  const symbols = window.$pythonFunctions.antiVUCurve(3);
+
+  const map = {
+    "eid_A": symbols[0].value,
+    "eid_B": symbols[1].value,
+    "eid_C": symbols[2].value
+  };
+
+  Object.keys(map).forEach(eid => {
+    const el = $(eid);
+    if (el) {
+      el.textContent = map[eid];
+      el.style.fontWeight = "bold";
+      el.style.color = "#00ffcc";
+    }
+  });
+}
+
+/* ---------------------------
+   TIMESTAMP LOGIC (unchanged)
+---------------------------- */
+const now = Date.now();
+const lastPing = localStorage.getItem('lastPing') || 0;
+const twelveHours = 12 * 60 * 60 * 1000;
+
+if (now - lastPing > twelveHours) {
+  localStorage.setItem('lastPing', now);
+}
+
+console.log('Anti-VU Curve Symbols:', window.$pythonFunctions.antiVUCurve(6));
+console.log('Cluster Generated:', window.$pythonFunctions.clusterGenerate('fastener', 5));
 
 </body>
 </html>
