@@ -195,7 +195,6 @@ function phaseFunction() {
 
   console.log("%cPHASE-1 ACTIVATED", "color:#00ffcc;font-weight:bold;");
 
-  // Optional: tie phase to antiVUCurve
   const symbols = window.$pythonFunctions.antiVUCurve(3);
   console.log("Phase Symbols:", symbols);
 }
@@ -209,35 +208,9 @@ document.getElementById("python-code").addEventListener("input", function() {
   if (text === "ICEPICK") {
     WALRUS_UNLOCKED = true;
     console.log("%cWALRUS OPERATOR UNLOCKED", "color:#00ffcc;font-weight:bold;");
-
-    // Trigger phase function
     phaseFunction();
   }
 });
-
-/* ---------------------------
-   OPTIONAL: EID POWER FUNCTION
----------------------------- */
-function powerEID() {
-  if (!WALRUS_UNLOCKED) return;
-
-  const symbols = window.$pythonFunctions.antiVUCurve(3);
-
-  const map = {
-    "eid_A": symbols[0].value,
-    "eid_B": symbols[1].value,
-    "eid_C": symbols[2].value
-  };
-
-  Object.keys(map).forEach(eid => {
-    const el = $(eid);
-    if (el) {
-      el.textContent = map[eid];
-      el.style.fontWeight = "bold";
-      el.style.color = "#00ffcc";
-    }
-  });
-}
 
 /* ---------------------------
    TIMESTAMP LOGIC (unchanged)
@@ -253,6 +226,7 @@ if (now - lastPing > twelveHours) {
 console.log('Anti-VU Curve Symbols:', window.$pythonFunctions.antiVUCurve(6));
 console.log('Cluster Generated:', window.$pythonFunctions.clusterGenerate('fastener', 5));
 </script>
+
 
 </body>
 </html>
