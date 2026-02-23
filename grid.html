@@ -205,13 +205,14 @@ function phaseFunction() {
 document.getElementById("python-code").addEventListener("input", function() {
   const text = this.value.trim();
 
-  if (text === "ICEPICK") {
-    WALRUS_UNLOCKED = true;
-    console.log("%cWALRUS OPERATOR UNLOCKED", "color:#00ffcc;font-weight:bold;");
-    phaseFunction();
-  }
-  if (WALRUS_UNLOCKED && text === "RUN") { 
-    runSequence();
+if (text === "ICEPICK") {
+  WALRUS_UNLOCKED = true;
+  console.log("%cWALRUS OPERATOR UNLOCKED", "color:#00ffcc;font-weight:bold;");
+  phaseFunction();
+
+  // Turn the Python window into a vibration portal
+  startVibrationPortal();
+}
   }  
 });
 function runSequence() {
@@ -233,6 +234,29 @@ function runSequence() {
     document.body.style.backgroundColor = "";
   }, 1200);
 }
+
+  function vibrationPattern() {
+  const frames = [
+    "~ ~ ~ ~ ~",
+    " ~ ~ ~ ~ ",
+    "~ ~ ~ ~ ~",
+    " ~ ~ ~ ~ ",
+  ];
+  return frames;
+}
+
+  function startVibrationPortal() {
+  const box = document.getElementById("python-code");
+  const frames = vibrationPattern();
+  let i = 0;
+
+  setInterval(() => {
+    box.value = frames[i % frames.length];
+    i++;
+  }, 180);
+}
+
+
 
 /* ---------------------------
    TIMESTAMP LOGIC (unchanged)
