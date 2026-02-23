@@ -53,14 +53,6 @@
       to { stroke-dashoffset: -100; }
     }
 
-    img {
-      max-width: 90%;
-      height: auto;
-      border: 2px solid #00ffcc;
-      box-shadow: 0 0 20px #00ffcc;
-      opacity: 0.8;
-    }
-
     .live-button {
       position: fixed;
       bottom: 20px;
@@ -106,10 +98,10 @@
 
     #rtx-image {
       position: fixed;
-      bottom: 90px;
+      bottom: 100px;
       left: 50%;
       transform: translateX(-50%);
-      width: 140px;
+      width: 180px;
       border: 2px solid #00ffcc;
       box-shadow: 0 0 24px #00ffcc;
       filter: drop-shadow(0 0 16px #00ffcc);
@@ -119,17 +111,18 @@
     }
 
     #rtx-image:hover {
-      transform: translateX(-50%) scale(1.08);
+      transform: translateX(-50%) scale(1.1);
     }
 
     #bolt {
       position: fixed;
-      width: 64px;
-      height: 64px;
+      width: 80px;
+      height: 80px;
       pointer-events: none;
       transform: translate(-50%, -50%);
       display: none;
       z-index: 30;
+      opacity: 0.9;
     }
 
     #bolt.active {
@@ -137,8 +130,8 @@
     }
 
     @keyframes boltPulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1)   rotate(0deg);  opacity: 0.95; }
-      50%      { transform: translate(-50%, -50%) scale(1.2) rotate(8deg);  opacity: 1;    }
+      0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.95; }
+      50%      { transform: translate(-50%, -50%) scale(1.25) rotate(10deg); opacity: 1; }
     }
 
     #phase-image {
@@ -176,12 +169,13 @@
     </svg>
   </div>
 
-  <!-- Lightning cursor follow -->
-  <img id="bolt" src="https://img.icons8.com/fluency/96/000000/lightning-bolt.png" alt="⚡">
+  <!-- Lightning follows mouse over RTX -->
+  <img id="bolt" src="https://www.vhv.rs/dpng/d/514-5149701_red-lightening-bolt-png-icons-circle-lightning-bolt.png" alt="⚡">
 
+  <!-- Centered NVIDIA RTX image -->
   <img id="rtx-image"
-       src="https://tse3.mm.bing.net/th/id/OIP.oOyGsr3RTqdhDm-XAABYCwHaFc?rs=1&pid=ImgDetMain"
-       alt="RTX">
+       src="https://m.media-amazon.com/images/I/512T3hTT5ZL.jpg"
+       alt="NVIDIA RTX Graphics Card">
 
   <button class="live-button" onclick="window.open('https://satellitemap.space', '_blank')">
     Live Satellite Map
@@ -192,22 +186,19 @@
     <textarea id="python-code" placeholder="Enter Python here... (ICEPICK to unlock)"></textarea>
   </section>
 
+  <!-- Restored original-style NOAA Ian rainfall image -->
   <img id="phase-image"
-       src="https://th.bing.com/th/id/OIP.P1wSCrlDsNOMimDn39bkPgHaFX?w=246&h=180"
-       alt="Phase">
+       src="https://www.ncei.noaa.gov/monitoring-content/sotc/national/2022/sep/ian/prcp-total-2022-0927-0930.png"
+       alt="NOAA Hurricane Ian Rainfall">
 
 <script>
-// ────────────────────────────────────────────────
+// Python-like functions (unchanged)
 const $pythonFunctions = {
   antiVUCurve(iterations, decay = 1) {
     const symbols = [];
     for (let r = 0; r < iterations; r++) {
       const value = Math.log(r + 1) * decay;
-      symbols.push({
-        id: `Symbol_${r}`,
-        value: +value.toFixed(2),
-        uniqueId: `${r}_${Math.random().toString(36).slice(2,10)}`
-      });
+      symbols.push({ id: `Symbol_${r}`, value: +value.toFixed(2) });
     }
     return symbols;
   },
@@ -216,7 +207,7 @@ const $pythonFunctions = {
   }
 };
 
-// ────────────────────────────────────────────────
+// PHI rewrite on input
 function phiRewrite(input, phase = 1) {
   let arr = typeof input === "string" ? [...input].map(c => c.charCodeAt(0)) : input;
   if (!Array.isArray(arr)) return null;
@@ -224,7 +215,6 @@ function phiRewrite(input, phase = 1) {
   return arr.map((v, i) => Number((v * PHI + phase * (i + 1)).toFixed(3)));
 }
 
-// ────────────────────────────────────────────────
 let WALRUS_UNLOCKED = false;
 
 const $ = (id) => {
@@ -235,15 +225,12 @@ const $ = (id) => {
   return document.getElementById(id);
 };
 
-// ────────────────────────────────────────────────
 function phaseFunction() {
   const img = document.getElementById("phase-image");
   if (img) img.style.display = "block";
   console.log("%cPHASE-1 ACTIVATED", "color:#0f0;font-weight:bold");
-  console.log("Symbols:", $pythonFunctions.antiVUCurve(4));
 }
 
-// ────────────────────────────────────────────────
 function startVibrationPortal() {
   const box = document.getElementById("python-code");
   if (!box) return;
@@ -252,16 +239,12 @@ function startVibrationPortal() {
   const iv = setInterval(() => {
     box.value = frames[i++ % frames.length];
   }, 220);
-
-  // Stop after 8 seconds so user can type again
-  setTimeout(() => clearInterval(iv), 8000);
+  setTimeout(() => clearInterval(iv), 8000); // stop after ~8s
 }
 
-// ────────────────────────────────────────────────
+// Unlock & effects
 document.getElementById("python-code")?.addEventListener("input", function() {
   const val = this.value.trim();
-
-  // Show PHI signal in console
   console.log("PHI →", phiRewrite(val));
 
   if (val.toUpperCase() === "ICEPICK") {
@@ -272,7 +255,7 @@ document.getElementById("python-code")?.addEventListener("input", function() {
   }
 });
 
-// ────────────────────────────────────────────────
+// Lightning pointer subsystem – now fully validated
 function attachLightning() {
   const rtx = document.getElementById("rtx-image");
   const bolt = document.getElementById("bolt");
