@@ -2,238 +2,278 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grid View</title>
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background-image: url('https://www.gannett-cdn.com/presto/2022/10/05/USAT/98e8113e-799e-4b49-9f74-65fb63733961-Ian_rainfall.jpg?width=1320&height=744&fit=crop&format=pjpg&auto=webp');
+      background-image: url('https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&q=80&w=1975');
       background-size: cover;
       background-position: center;
-      display: grid;
-      place-items: center;
-      position: relative;
+      background-attachment: fixed;
+      overflow: hidden;
+      font-family: monospace;
+      color: #00ffcc;
     }
-    img {
-      max-width: 90%;
-      height: auto;
-      border: 2px solid #00ffcc;
-      box-shadow: 0 0 20px #00ffcc;
-      opacity: 0.75;
-    }
-    .live-button {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      background-color: #00ffcc;
-      color: #000;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00ffcc;
-    }
-    .live-button:hover {
-      background-color: #00ffaa;
-    }
+
     #cluster-container {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 400px;
-      height: 400px;
+      width: 420px;
+      height: 420px;
+      z-index: 5;
     }
+
     svg {
       width: 100%;
       height: 100%;
     }
+
     .node {
       animation: pulse 2s infinite;
     }
+
     @keyframes pulse {
-      0%, 100% { r: 6px; opacity: 1; }
-      50% { r: 8px; opacity: 0.7; }
+      0%, 100% { r: 6; opacity: 1; }
+      50%      { r: 9; opacity: 0.6; }
     }
+
     .branch {
       stroke: #00ffcc;
-      stroke-width: 2;
+      stroke-width: 2.5;
       fill: none;
-      animation: flowBranch 3s infinite;
-    }
-    @keyframes flowBranch {
-      0% { stroke-dashoffset: 100; }
-      100% { stroke-dashoffset: 0; }
+      stroke-dasharray: 100;
+      animation: flowBranch 4s linear infinite;
     }
 
-    /* Python window styling */
-    #python-section {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background: rgba(0,0,0,0.6);
-      padding: 10px;
-      border: 1px solid #00ffcc;
-      box-shadow: 0 0 10px #00ffcc;
-      color: #00ffcc;
+    @keyframes flowBranch {
+      to { stroke-dashoffset: -100; }
     }
+
+    img {
+      max-width: 90%;
+      height: auto;
+      border: 2px solid #00ffcc;
+      box-shadow: 0 0 20px #00ffcc;
+      opacity: 0.8;
+    }
+
+    .live-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 24px;
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+      box-shadow: 0 0 12px #00ffcc;
+      z-index: 100;
+    }
+
+    .live-button:hover {
+      background: #00ffaa;
+    }
+
+    #python-section {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      background: rgba(0,0,0,0.65);
+      padding: 12px 16px;
+      border: 1px solid #00ffcc;
+      border-radius: 6px;
+      box-shadow: 0 0 16px #00ffcc88;
+      z-index: 50;
+      max-width: 340px;
+    }
+
     #python-code {
       width: 300px;
-      height: 150px;
-      background: #111;
+      height: 140px;
+      background: #0a0a0a;
       color: #00ffcc;
       border: 1px solid #00ffcc;
-      padding: 5px;
-      resize: none;
+      padding: 8px;
+      font-family: monospace;
+      resize: vertical;
     }
 
-@keyframes boltPulse {
-  0%   { transform: scale(1) rotate(0deg); opacity: 0.9; }
-  50%  { transform: scale(1.15) rotate(3deg); opacity: 1; }
-  100% { transform: scale(1) rotate(0deg); opacity: 0.9; }
-}
+    #rtx-image {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      border: 2px solid #00ffcc;
+      box-shadow: 0 0 24px #00ffcc;
+      filter: drop-shadow(0 0 16px #00ffcc);
+      z-index: 20;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
 
-#bolt.active {
-  animation: boltPulse 0.25s infinite;
-}
-</style>
+    #rtx-image:hover {
+      transform: translateX(-50%) scale(1.08);
+    }
+
+    #bolt {
+      position: fixed;
+      width: 64px;
+      height: 64px;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 30;
+    }
+
+    #bolt.active {
+      animation: boltPulse 0.3s infinite;
+    }
+
+    @keyframes boltPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1)   rotate(0deg);  opacity: 0.95; }
+      50%      { transform: translate(-50%, -50%) scale(1.2) rotate(8deg);  opacity: 1;    }
+    }
+
+    #phase-image {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 220px;
+      border: 2px solid #00ffcc;
+      box-shadow: 0 0 16px #00ffcc;
+      display: none;
+      z-index: 10;
+    }
+  </style>
 </head>
-
 <body>
 
-  <!-- Symbol Cluster -->
   <div id="cluster-container">
-    <svg viewBox="0 0 400 400">
-      <line class="branch" x1="200" y1="200" x2="100" y2="100" stroke-dasharray="100"/>
-      <line class="branch" x1="200" y1="200" x2="300" y2="100" stroke-dasharray="100"/>
-      <line class="branch" x1="200" y1="200" x2="150" y2="300" stroke-dasharray="100"/>
-      <line class="branch" x1="200" y1="200" x2="300" y2="300" stroke-dasharray="100"/>
-      <line class="branch" x1="200" y1="200" x2="200" y2="350" stroke-dasharray="100"/>
-
-      <circle class="node" cx="200" cy="200" r="6" fill="#00ffcc"/>
-      <circle class="node" cx="100" cy="100" r="6" fill="#00ffcc"/>
-      <circle class="node" cx="300" cy="100" r="6" fill="#00ffcc"/>
-      <circle class="node" cx="150" cy="300" r="6" fill="#00ffcc"/>
-      <circle class="node" cx="300" cy="300" r="6" fill="#00ffcc"/>
-      <circle class="node" cx="200" cy="350" r="6" fill="#00ffcc"/>
-
-      <text x="100" y="85" fill="#00ffcc" font-size="12">Symbol_0</text>
-      <text x="300" y="85" fill="#00ffcc" font-size="12">Symbol_1</text>
-      <text x="130" y="320" fill="#00ffcc" font-size="12">Symbol_2</text>
-      <text x="310" y="320" fill="#00ffcc" font-size="12">Symbol_3</text>
-      <text x="210" y="370" fill="#00ffcc" font-size="12">Rx</text>
+    <svg viewBox="0 0 420 420">
+      <line class="branch" x1="210" y1="210" x2="110" y2="110"/>
+      <line class="branch" x1="210" y1="210" x2="310" y2="110"/>
+      <line class="branch" x1="210" y1="210" x2="140" y2="320"/>
+      <line class="branch" x1="210" y1="210" x2="310" y2="320"/>
+      <line class="branch" x1="210" y1="210" x2="210" y2="370"/>
+      <circle class="node" cx="210" cy="210" r="6" fill="#00ffcc"/>
+      <circle class="node" cx="110" cy="110" r="6" fill="#00ffcc"/>
+      <circle class="node" cx="310" cy="110" r="6" fill="#00ffcc"/>
+      <circle class="node" cx="140" cy="320" r="6" fill="#00ffcc"/>
+      <circle class="node" cx="310" cy="320" r="6" fill="#00ffcc"/>
+      <circle class="node" cx="210" cy="370" r="6" fill="#00ffcc"/>
+      <text x="100" y="95"  fill="#00ffcc" font-size="13">Symbol_0</text>
+      <text x="320" y="95"  fill="#00ffcc" font-size="13">Symbol_1</text>
+      <text x="120" y="340" fill="#00ffcc" font-size="13">Symbol_2</text>
+      <text x="320" y="340" fill="#00ffcc" font-size="13">Symbol_3</text>
+      <text x="220" y="390" fill="#00ffcc" font-size="13">Rx</text>
     </svg>
   </div>
 
-  <!-- RTX Image -->
+  <!-- Lightning cursor follow -->
+  <img id="bolt" src="https://img.icons8.com/fluency/96/000000/lightning-bolt.png" alt="⚡">
+
   <img id="rtx-image"
-     src="https://tse3.mm.bing.net/th/id/OIP.oOyGsr3RTqdhDm-XAABYCwHaFc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-     alt="RTX Graphics Card"
-     style="position: absolute;
-            bottom: 30px;          /* or top/left/right as desired */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            pointer-events: auto;   /* important – allow hover */
-            filter: drop-shadow(0 0 15px #00ffcc);
-            border: 2px solid #00ffcc;
-            box-shadow: 0 0 20px #00ffcc;
-            z-index: 10;">
-  
-  <!-- Live Satellite Button -->
+       src="https://tse3.mm.bing.net/th/id/OIP.oOyGsr3RTqdhDm-XAABYCwHaFc?rs=1&pid=ImgDetMain"
+       alt="RTX">
+
   <button class="live-button" onclick="window.open('https://satellitemap.space', '_blank')">
-    View Live Satellite Map
+    Live Satellite Map
   </button>
 
-  <!-- Python Code Window -->
   <section id="python-section">
-    <h3>Python Code Entry Window</h3>
-    <textarea id="python-code" placeholder="Enter your Python code here..."
-      oninput="this.value = this.value.slice(0, 1024);"
-      title="Only Python syntax is accepted. Code will not be executed."></textarea>
+    <h3>Python Code (simulated)</h3>
+    <textarea id="python-code" placeholder="Enter Python here... (ICEPICK to unlock)"></textarea>
   </section>
 
-  <img id="phase-image" 
-     src="https://th.bing.com/th/id/OIP.P1wSCrlDsNOMimDn39bkPgHaFX?w=246&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
-     style="display:none; position:absolute; top:20px; right:20px; width:200px; border:2px solid #00ffcc; box-shadow:0 0 10px #00ffcc;">
+  <img id="phase-image"
+       src="https://th.bing.com/th/id/OIP.P1wSCrlDsNOMimDn39bkPgHaFX?w=246&h=180"
+       alt="Phase">
+
 <script>
-/* ---------------------------
-   PYTHON FUNCTIONS (unchanged)
----------------------------- */
-window.$pythonFunctions = {
-  antiVUCurve: function(iterations, decay = 1) {
-    let symbols = [];
+// ────────────────────────────────────────────────
+const $pythonFunctions = {
+  antiVUCurve(iterations, decay = 1) {
+    const symbols = [];
     for (let r = 0; r < iterations; r++) {
-      let value = Math.log(r + 1) * decay;
+      const value = Math.log(r + 1) * decay;
       symbols.push({
         id: `Symbol_${r}`,
-        value: parseFloat(value.toFixed(2)),
-        uniqueId: `${r}_${Math.random().toString(36).substr(2, 9)}`
+        value: +value.toFixed(2),
+        uniqueId: `${r}_${Math.random().toString(36).slice(2,10)}`
       });
     }
     return symbols;
   },
-
-  clusterGenerate: function(subject, count) {
+  clusterGenerate(subject, count) {
     return `$${subject}_cluster_${count}`;
-  },
-
-  nodePosition: function(index, radius = 150, centerX = 200, centerY = 200) {
-    let angle = (index / 6) * Math.PI * 2;
-    return {
-      x: centerX + radius * Math.cos(angle),
-      y: centerY + radius * Math.sin(angle)
-    };
-  },
-
-  execute: function(fnName, ...args) {
-    if (typeof this[fnName] === 'function') {
-      return this[fnName](...args);
-    }
-    return `Function ${fnName} not found`;
   }
 };
 
-/* ============================================================
-   PHI REWRITE DATA SIGNAL SUBSYSTEM
-============================================================ */
+// ────────────────────────────────────────────────
 function phiRewrite(input, phase = 1) {
-  let arr = [];
+  let arr = typeof input === "string" ? [...input].map(c => c.charCodeAt(0)) : input;
+  if (!Array.isArray(arr)) return null;
+  const PHI = (1 + Math.sqrt(5)) / 2;
+  return arr.map((v, i) => Number((v * PHI + phase * (i + 1)).toFixed(3)));
+}
 
-  if (typeof input === "string") {
-    arr = input.split("").map(ch => ch.charCodeAt(0));
-  } else if (Array.isArray(input)) {
-    arr = input;
-  } else {
+// ────────────────────────────────────────────────
+let WALRUS_UNLOCKED = false;
+
+const $ = (id) => {
+  if (!WALRUS_UNLOCKED) {
+    console.warn("Walrus locked. Type ICEPICK");
     return null;
   }
+  return document.getElementById(id);
+};
 
-  const PHI = (1 + Math.sqrt(5)) / 2;
-
-  return arr.map((v, i) => {
-    const shifted = v * PHI;
-    const biased = shifted + phase * (i + 1);
-    return Number(biased.toFixed(3));
-  });
+// ────────────────────────────────────────────────
+function phaseFunction() {
+  const img = document.getElementById("phase-image");
+  if (img) img.style.display = "block";
+  console.log("%cPHASE-1 ACTIVATED", "color:#0f0;font-weight:bold");
+  console.log("Symbols:", $pythonFunctions.antiVUCurve(4));
 }
 
-function attachPhiToPythonWindow() {
-  const pyBox = document.getElementById("python-code");
-  if (!pyBox) return;
+// ────────────────────────────────────────────────
+function startVibrationPortal() {
+  const box = document.getElementById("python-code");
+  if (!box) return;
+  const frames = ["~ ~ ~ ~ ~", " ~ ~ ~ ~ ", "~ ~ ~ ~ ~", " ~ ~ ~ ~ "];
+  let i = 0;
+  const iv = setInterval(() => {
+    box.value = frames[i++ % frames.length];
+  }, 220);
 
-  pyBox.addEventListener("input", () => {
-    const raw = pyBox.value;
-    const phiSignal = phiRewrite(raw, 1);
-    console.log("PHI SIGNAL:", phiSignal);
-  });
+  // Stop after 8 seconds so user can type again
+  setTimeout(() => clearInterval(iv), 8000);
 }
 
-document.addEventListener("DOMContentLoaded", attachPhiToPythonWindow);
+// ────────────────────────────────────────────────
+document.getElementById("python-code")?.addEventListener("input", function() {
+  const val = this.value.trim();
 
-  /* ============================================================
-   RTX HOVER → LIGHTNING POINTER SUBSYSTEM
-============================================================ */
-function attachLightningPointer() {
+  // Show PHI signal in console
+  console.log("PHI →", phiRewrite(val));
+
+  if (val.toUpperCase() === "ICEPICK") {
+    WALRUS_UNLOCKED = true;
+    console.log("%cWALRUS UNLOCKED", "color:#0f0;font-weight:bold");
+    phaseFunction();
+    startVibrationPortal();
+  }
+});
+
+// ────────────────────────────────────────────────
+function attachLightning() {
   const rtx = document.getElementById("rtx-image");
   const bolt = document.getElementById("bolt");
   if (!rtx || !bolt) return;
@@ -241,120 +281,23 @@ function attachLightningPointer() {
   rtx.addEventListener("mouseenter", () => {
     bolt.style.display = "block";
     bolt.classList.add("active");
-    console.log("%cNODE-SELECT: RTX → LIGHTNING", "color:#00ffcc;font-weight:bold;");
   });
 
-  rtx.addEventListener("mousemove", (e) => {
-    // Track cursor position
-    bolt.style.left = e.pageX + "px";  // no +20
-    bolt.style.top  = e.pageY + "px"; // no -20
+  rtx.addEventListener("mousemove", e => {
+    bolt.style.left = e.clientX + "px";
+    bolt.style.top  = e.clientY + "px";
   });
 
   rtx.addEventListener("mouseleave", () => {
     bolt.style.display = "none";
     bolt.classList.remove("active");
-    console.log("%cNODE-DESELECT: RTX", "color:#00ffcc;font-weight:bold;");
   });
 }
 
-document.addEventListener("DOMContentLoaded", attachLightningPointer);
-/* ---------------------------
-   WALRUS LOCK SYSTEM
----------------------------- */
-let WALRUS_UNLOCKED = false;
-
-/* gated walrus operator */
-const $ = (eid) => {
-  if (!WALRUS_UNLOCKED) {
-    console.warn("Walrus operator locked. Type ICEPICK in the Python window.");
-    return null;
-  }
-  return document.getElementById(eid);
-};
-
-/* ---------------------------
-   PHASE FUNCTION
----------------------------- */
-function phaseFunction() {
-  const img = document.getElementById("phase-image");
-  img.style.display = "block";
-
-  console.log("%cPHASE-1 ACTIVATED", "color:#00ffcc;font-weight:bold;");
-
-  const symbols = window.$pythonFunctions.antiVUCurve(3);
-  console.log("Phase Symbols:", symbols);
-}
-
-/* ---------------------------
-   PYTHON WINDOW UNLOCK LISTENER
----------------------------- */
-document.getElementById("python-code").addEventListener("input", function() {
-  const text = this.value.trim();
-
-  if (text === "ICEPICK") {
-    WALRUS_UNLOCKED = true;
-    console.log("%cWALRUS OPERATOR UNLOCKED", "color:#00ffcc;font-weight:bold;");
-    phaseFunction();
-    startVibrationPortal();
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  attachLightning();
+  console.log("Cluster:", $pythonFunctions.clusterGenerate("quantum", 7));
 });
-
-/* ---------------------------
-   RUN SEQUENCE
----------------------------- */
-function runSequence() {
-  console.log("%cRUN SEQUENCE INITIATED", "color:#00ffcc;font-weight:bold;");
-
-  const img = document.getElementById("phase-image");
-  img.style.transition = "transform 1.5s ease-out";
-  img.style.transform = "scale(1.2) rotate(3deg)";
-
-  const symbols = window.$pythonFunctions.antiVUCurve(6);
-  console.log("RUN Sequence Symbols:", symbols);
-
-  document.body.style.transition = "background-color 1s";
-  document.body.style.backgroundColor = "rgba(0, 255, 204, 0.15)";
-  setTimeout(() => {
-    document.body.style.backgroundColor = "";
-  }, 1200);
-}
-
-/* ---------------------------
-   VIBRATION PORTAL
----------------------------- */
-function vibrationPattern() {
-  const frames = [
-    "~ ~ ~ ~ ~",
-    " ~ ~ ~ ~ ",
-    "~ ~ ~ ~ ~",
-    " ~ ~ ~ ~ ",
-  ];
-  return frames;
-}
-
-function startVibrationPortal() {
-  const box = document.getElementById("python-code");
-  const frames = vibrationPattern();
-  let i = 0;
-
-  setInterval(() => {
-    box.value = frames[i % frames.length];
-    i++;
-  }, 180);
-}
-
-/* ---------------------------
-   TIMESTAMP LOGIC (unchanged)
----------------------------- */
-const now = Date.now();
-const lastPing = localStorage.getItem('lastPing') || 0;
-const twelveHours = 12 * 60 * 60 * 1000;
-
-if (now - lastPing > twelveHours) {
-  localStorage.setItem('lastPing', now);
-}
-
-console.log('Cluster Generated:', window.$pythonFunctions.clusterGenerate('fastener', 5));
 </script>
 </body>
 </html>
