@@ -86,7 +86,17 @@
       padding: 5px;
       resize: none;
     }
-  </style>
+
+@keyframes boltPulse {
+  0%   { transform: scale(1) rotate(0deg); opacity: 0.9; }
+  50%  { transform: scale(1.15) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 0.9; }
+}
+
+#bolt.active {
+  animation: boltPulse 0.25s infinite;
+}
+</style>
 </head>
 
 <body>
@@ -117,6 +127,13 @@
 
   <!-- RTX Image -->
   <img src="https://tse3.mm.bing.net/th/id/OIP.oOyGsr3RTqdhDm-XAABYCwHaFc?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="RTX Graphics Card">
+  <img id="bolt"
+     src="https://th.bing.com/th/id/OIP.HZN_Re_bFXwFfdtqVf0LWwHaE7?w=281&h=187&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
+     style="display:none;
+            position:absolute;
+            width:120px;
+            pointer-events:none;
+            filter:drop-shadow(0 0 15px #00ffcc);">
 
   <!-- Live Satellite Button -->
   <button class="live-button" onclick="window.open('https://satellitemap.space', '_blank')">
@@ -208,6 +225,34 @@ function attachPhiToPythonWindow() {
 
 document.addEventListener("DOMContentLoaded", attachPhiToPythonWindow);
 
+  /* ============================================================
+   RTX HOVER → LIGHTNING POINTER SUBSYSTEM
+============================================================ */
+function attachLightningPointer() {
+  const rtx = document.getElementById("rtx-image");
+  const bolt = document.getElementById("bolt");
+  if (!rtx || !bolt) return;
+
+  rtx.addEventListener("mouseenter", () => {
+    bolt.style.display = "block";
+    bolt.classList.add("active");
+    console.log("%cNODE-SELECT: RTX → LIGHTNING", "color:#00ffcc;font-weight:bold;");
+  });
+
+  rtx.addEventListener("mousemove", (e) => {
+    // Track cursor position
+    bolt.style.left = (e.pageX + 20) + "px";
+    bolt.style.top  = (e.pageY - 20) + "px";
+  });
+
+  rtx.addEventListener("mouseleave", () => {
+    bolt.style.display = "none";
+    bolt.classList.remove("active");
+    console.log("%cNODE-DESELECT: RTX", "color:#00ffcc;font-weight:bold;");
+  });
+}
+
+document.addEventListener("DOMContentLoaded", attachLightningPointer);
 /* ---------------------------
    WALRUS LOCK SYSTEM
 ---------------------------- */
