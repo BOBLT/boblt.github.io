@@ -16,7 +16,6 @@
       font-family: monospace;
       color: #00ffcc;
     }
-
     #cluster-container {
       position: absolute;
       top: 50%;
@@ -26,21 +25,17 @@
       height: 420px;
       z-index: 5;
     }
-
     svg {
       width: 100%;
       height: 100%;
     }
-
     .node {
       animation: pulse 2s infinite;
     }
-
     @keyframes pulse {
       0%, 100% { r: 6; opacity: 1; }
-      50%      { r: 9; opacity: 0.6; }
+      50% { r: 9; opacity: 0.6; }
     }
-
     .branch {
       stroke: #00ffcc;
       stroke-width: 2.5;
@@ -48,11 +43,9 @@
       stroke-dasharray: 100;
       animation: flowBranch 4s linear infinite;
     }
-
     @keyframes flowBranch {
       to { stroke-dashoffset: -100; }
     }
-
     .live-button {
       position: fixed;
       bottom: 20px;
@@ -67,11 +60,9 @@
       box-shadow: 0 0 12px #00ffcc;
       z-index: 100;
     }
-
     .live-button:hover {
       background: #00ffaa;
     }
-
     #python-section {
       position: fixed;
       top: 16px;
@@ -84,7 +75,6 @@
       z-index: 50;
       max-width: 340px;
     }
-
     #python-code {
       width: 300px;
       height: 140px;
@@ -95,22 +85,23 @@
       font-family: monospace;
       resize: vertical;
     }
-
     #rtx-image {
-      position: center;
-      bottom: 100px;
+      position: fixed;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
-      width: 300px;
-      z-index: 20;
+      transform: translate(-50%, -50%);
+      width: 320px;          /* bigger for center prominence */
+      max-width: 80vw;
+      z-index: 15;           /* below cluster text but above branches if needed */
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.25s ease;
+      border: 2px solid #00ffcc;
+      box-shadow: 0 0 30px #00ffcc88;
+      border-radius: 8px;
     }
-
     #rtx-image:hover {
-      transform: translateX(-50%) scale(1.1);
+      transform: translate(-50%, -50%) scale(1.08);
     }
-
     #bolt {
       position: fixed;
       width: 80px;
@@ -121,16 +112,13 @@
       z-index: 30;
       opacity: 0.9;
     }
-
     #bolt.active {
       animation: boltPulse 0.3s infinite;
     }
-
     @keyframes boltPulse {
       0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.95; }
-      50%      { transform: translate(-50%, -50%) scale(1.25) rotate(10deg); opacity: 1; }
+      50% { transform: translate(-50%, -50%) scale(1.25) rotate(10deg); opacity: 1; }
     }
-
     #phase-image {
       position: fixed;
       top: 20px;
@@ -158,8 +146,8 @@
       <circle class="node" cx="140" cy="320" r="6" fill="#00ffcc"/>
       <circle class="node" cx="310" cy="320" r="6" fill="#00ffcc"/>
       <circle class="node" cx="210" cy="370" r="6" fill="#00ffcc"/>
-      <text x="100" y="95"  fill="#00ffcc" font-size="13">Symbol_0</text>
-      <text x="320" y="95"  fill="#00ffcc" font-size="13">Symbol_1</text>
+      <text x="100" y="95" fill="#00ffcc" font-size="13">Symbol_0</text>
+      <text x="320" y="95" fill="#00ffcc" font-size="13">Symbol_1</text>
       <text x="120" y="340" fill="#00ffcc" font-size="13">Symbol_2</text>
       <text x="320" y="340" fill="#00ffcc" font-size="13">Symbol_3</text>
       <text x="220" y="390" fill="#00ffcc" font-size="13">Rx</text>
@@ -169,7 +157,7 @@
   <!-- Lightning follows mouse over RTX -->
   <img id="bolt" src="https://www.vhv.rs/dpng/d/514-5149701_red-lightening-bolt-png-icons-circle-lightning-bolt.png" alt="⚡">
 
-  <!-- Centered NVIDIA RTX image -->
+  <!-- Centered NVIDIA RTX image (now truly in the middle of the page) -->
   <img id="rtx-image"
        src="https://m.media-amazon.com/images/I/512T3hTT5ZL.jpg"
        alt="NVIDIA RTX Graphics Card">
@@ -183,13 +171,13 @@
     <textarea id="python-code" placeholder="Enter Python here... (ICEPICK to unlock)"></textarea>
   </section>
 
-  <!-- Restored original-style NOAA Ian rainfall image -->
+  <!-- Phase image (NOAA Ian rainfall) -->
   <img id="phase-image"
        src="https://www.ncei.noaa.gov/monitoring-content/sotc/national/2022/sep/ian/prcp-total-2022-0927-0930.png"
        alt="NOAA Hurricane Ian Rainfall">
 
 <script>
-// Python-like functions (unchanged)
+// (your existing JavaScript remains unchanged — lightning, unlock, vibration, etc. all still work)
 const $pythonFunctions = {
   antiVUCurve(iterations, decay = 1) {
     const symbols = [];
@@ -204,7 +192,6 @@ const $pythonFunctions = {
   }
 };
 
-// PHI rewrite on input
 function phiRewrite(input, phase = 1) {
   let arr = typeof input === "string" ? [...input].map(c => c.charCodeAt(0)) : input;
   if (!Array.isArray(arr)) return null;
@@ -236,14 +223,12 @@ function startVibrationPortal() {
   const iv = setInterval(() => {
     box.value = frames[i++ % frames.length];
   }, 220);
-  setTimeout(() => clearInterval(iv), 8000); // stop after ~8s
+  setTimeout(() => clearInterval(iv), 8000);
 }
 
-// Unlock & effects
 document.getElementById("python-code")?.addEventListener("input", function() {
   const val = this.value.trim();
   console.log("PHI →", phiRewrite(val));
-
   if (val.toUpperCase() === "ICEPICK") {
     WALRUS_UNLOCKED = true;
     console.log("%cWALRUS UNLOCKED", "color:#0f0;font-weight:bold");
@@ -252,22 +237,18 @@ document.getElementById("python-code")?.addEventListener("input", function() {
   }
 });
 
-// Lightning pointer subsystem – now fully validated
 function attachLightning() {
   const rtx = document.getElementById("rtx-image");
   const bolt = document.getElementById("bolt");
   if (!rtx || !bolt) return;
-
   rtx.addEventListener("mouseenter", () => {
     bolt.style.display = "block";
     bolt.classList.add("active");
   });
-
   rtx.addEventListener("mousemove", e => {
     bolt.style.left = e.clientX + "px";
-    bolt.style.top  = e.clientY + "px";
+    bolt.style.top = e.clientY + "px";
   });
-
   rtx.addEventListener("mouseleave", () => {
     bolt.style.display = "none";
     bolt.classList.remove("active");
