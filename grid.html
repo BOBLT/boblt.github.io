@@ -127,7 +127,7 @@
   <section id="python-section">
     <h3>Python Code Entry Window</h3>
     <textarea id="python-code" placeholder="Enter your Python code here..."
-      oninput="this.value = this.value.replace(/[^\n\r\t ]/g, '').slice(0, 1024);"
+      oninput="this.value = this.value.slice(0, 1024);"
       title="Only Python syntax is accepted. Code will not be executed."></textarea>
   </section>
 
