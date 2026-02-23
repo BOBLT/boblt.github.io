@@ -210,7 +210,29 @@ document.getElementById("python-code").addEventListener("input", function() {
     console.log("%cWALRUS OPERATOR UNLOCKED", "color:#00ffcc;font-weight:bold;");
     phaseFunction();
   }
+  if (WALRUS_UNLOCKED && text === "RUN") { 
+    runSequence();
+  }  
 });
+function runSequence() {
+  console.log("%cRUN SEQUENCE INITIATED", "color:#00ffcc;font-weight:bold;");
+
+  // Example: animate the phase image
+  const img = document.getElementById("phase-image");
+  img.style.transition = "transform 1.5s ease-out";
+  img.style.transform = "scale(1.2) rotate(3deg)";
+
+  // Example: log antiVUCurve data
+  const symbols = window.$pythonFunctions.antiVUCurve(6);
+  console.log("RUN Sequence Symbols:", symbols);
+
+  // Example: pulse the background
+  document.body.style.transition = "background-color 1s";
+  document.body.style.backgroundColor = "rgba(0, 255, 204, 0.15)";
+  setTimeout(() => {
+    document.body.style.backgroundColor = "";
+  }, 1200);
+}
 
 /* ---------------------------
    TIMESTAMP LOGIC (unchanged)
